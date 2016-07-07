@@ -35,9 +35,11 @@
 		</plugins>
 	</build>
 	
+	<!-- librerías y dependencias a otros proyectos maven -->
 	<dependencies>
 
 		<dependency>
+			<scope>test</scope>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
