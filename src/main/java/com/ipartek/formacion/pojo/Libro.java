@@ -1,11 +1,5 @@
 package com.ipartek.formacion.pojo;
 
-public class Libro {
-
-}
-
-package com.ipartek.formacion.nombreproyecto.pojo;
-
 
 /**
  * Clase para generar objetos de tipo Libro
@@ -13,7 +7,7 @@ package com.ipartek.formacion.nombreproyecto.pojo;
  * @author Curso
  *
  */
-package com.ipartek.formacion.pojo;
+
 
 public class Libro {
 	
