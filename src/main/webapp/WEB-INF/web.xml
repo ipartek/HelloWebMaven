@@ -32,6 +32,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>LibroServlet</servlet-name>
-    <url-pattern>/Libro</url-pattern>
+    <url-pattern>/libro</url-pattern>
   </servlet-mapping>
 </web-app>

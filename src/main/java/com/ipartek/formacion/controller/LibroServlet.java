@@ -32,7 +32,7 @@ public class LibroServlet extends HttpServlet {
 		// recoger parametro
 		String parametroIdLibro = request.getParameter("idLibro");
 
-		// TODO buscar en BBDD el Candiddato
+		// TODO buscar en BBDD el Libro
 
 		// crear Candidato
 		Libro l = new Libro("Titulo" + parametroIdLibro);

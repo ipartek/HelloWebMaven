@@ -56,9 +56,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<%=Constantes.WEB_HOME%>">Inicio</a></li>
-            <li class="active"><a href="candidato/list.jsp">Candidato</a></li>
-            <li><a href="libro/listaLibros.jsp">Libro</a></li>
+            <li class="hover"><a href="<%=Constantes.WEB_HOME%>">Inicio</a></li>
+            <li class="hover"><a href="candidato/list.jsp">Candidato</a></li>
+            <li class="hover"><a href="libro/listaLibros.jsp">Libro</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">

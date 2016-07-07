@@ -23,8 +23,7 @@
 	 		i++;
 	%>
 	
-			<li><a href="libro?idLibro=<%=i %>&p2=pepe&p3=manolin"><%=l.getTitulo() + " " + l.getAutor()  %></a></li>
-			
+			<li><a href="libro?idLibro=<%=i %>&p2=pepe&p3=manolin"><%=l.getTitulo() + " " + l.getAutor()%></a></li>
 	
 	<% } //final del for %>
 </ol>
