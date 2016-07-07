@@ -24,4 +24,14 @@
     <servlet-name>CandidatoServlet</servlet-name>
     <url-pattern>/candidato</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description>Controlador de Libro</description>
+    <display-name>LibroServlet</display-name>
+    <servlet-name>LibroServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.LibroServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LibroServlet</servlet-name>
+    <url-pattern>/Libro</url-pattern>
+  </servlet-mapping>
 </web-app>

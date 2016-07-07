@@ -33,7 +33,7 @@ public class CandidatoServlet extends HttpServlet {
 		
 		//TODO buscar en BBDD el Candiddato
 		
-		//crear Candidato
+		//crear Candidato que como lanza una exception tenemos que capturarla
 		Candidato c = null;
 		try{
 			c = new Candidato("Candido" + parametroId, "apellido1", "apellido2", "dni", "email", 5);

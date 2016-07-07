@@ -7,10 +7,10 @@
 <h1>Listado Libros</h1>
 
 <%
-		
+	//Genero la lista de libros: un arrayList con 7 objetos de la clase Libro
 	ArrayList<Libro> lista = new ArrayList<Libro>();
 	for (int i=0; i<8;i++){
-		lista.add( new Libro ("Titulo libro"+ (i+1)) );
+		lista.add( new Libro ("Titulo libro "+ (i+1)) );
 	}
 		
 %>
@@ -23,7 +23,8 @@
 	 		i++;
 	%>
 	
-			<li><a href="libro?id=<%=i %>&p2=pepe&p3=manolin"><%=l.getTitulo() + " " + l.getAutor()  %></a></li>
+			<li><a href="libro?idLibro=<%=i %>&p2=pepe&p3=manolin"><%=l.getTitulo() + " " + l.getAutor()  %></a></li>
+			
 	
 	<% } //final del for %>
 </ol>
