@@ -18,9 +18,12 @@
 
 <!-- OL Lista Ordenada en HTML  -->
 <ol>
-	<% for ( Candidato c : lista ) { %>
+	<%
+	int i=0;
+	for ( Candidato c : lista ) {
+		i++;%>
 	
-			<li><a href="candidato/detalle.jsp"><%=c.getDni() + " " + c.getNombre() %></a></li>
+			<li><a href="candidato?id=<%=i%>"><%=c.getDni() + " " + c.getNombre() %></a></li>
 	
 	<% } //final del for %>
 </ol>
