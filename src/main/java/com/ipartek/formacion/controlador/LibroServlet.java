@@ -25,19 +25,19 @@ public class LibroServlet extends HttpServlet {
 				//recoger parametro
 				String parametroId = request.getParameter("id");
 				
-				//TODO buscar en BBDD el Candidato
+				//TODO buscar en BBDD el Libro
 				
-				//Crear Candidato
+				//Crear Libro
 				Libro l = null;
 				
 				 l = new Libro("Titulo"+parametroId);
 				
 				
-				//guardar atributo <Candidato> en request
+				//guardar atributo <Libro> en request
 				request.setAttribute("libro", l);
 				
 				//ir a candidato/detalleLibro.jsp, cargando el dispatcher con la url
-				request.getRequestDispatcher("candidato/detalleLibro.jsp").forward(request, response);;
+				request.getRequestDispatcher("candidato/detalleLibro.jsp").forward(request, response);
 			}
 		
 	
