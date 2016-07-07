@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>HelloWebMaven</display-name>
-  
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <description>primer ejemplo paraa pintar hola mundo por pantalla</description>
     <display-name>MiPrimerServlet</display-name>
@@ -16,5 +14,14 @@
     <servlet-name>MiPrimerServlet</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>CandidatoServlet</display-name>
+    <servlet-name>CandidatoServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.CandidatoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CandidatoServlet</servlet-name>
+    <url-pattern>/candidato</url-pattern>
+  </servlet-mapping>
 </web-app>
