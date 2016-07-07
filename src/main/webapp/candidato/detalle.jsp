@@ -1,5 +1,5 @@
 <%@ include file="../includes/head.jsp" %>
-
+<br><br><br><br>
 <h1>Detalle del Candidato</h1>
 
 <%

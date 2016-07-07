@@ -1,15 +1,10 @@
-<%@ include file="includes/head.jsp" %>
+<%@ include file="includes/head.jsp"%>
 
-	<!--  Etiquetas para que se visualice a los usuarios -->
-	<h1>ongi etorri web app</h1>
-	
-	<% 
-	for(int i=1; i < 7 ; i++ ){
-		out.print("<h"+i+">Cabecera"+i+"</h"+i+">");		
-	} 
-	%>
-	
-	<a href="candidato/list.jsp">enlace para listar Candidatos</a>
+	<div class="jumbotron">
+	  <h1>Hello, world!</h1>
+	  <p>Pincha en el boton para ir a candidatos moda foca</p>
+	  <p><a href="candidato/list.jsp" class="btn btn-primary btn-lg" id=botonCandidato role="button">Candidatos</a></p>
+	</div>
 
-<%@ include file="includes/footer.jsp" %>
+<%@ include file="includes/footer.jsp"%>
 

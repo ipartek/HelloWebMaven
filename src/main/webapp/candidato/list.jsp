@@ -4,7 +4,7 @@
 
 <%@ include file="../includes/head.jsp" %>
 
-
+<br><br><br><br>
 <h1>Listado Candidatos</h1>
 
 <%
