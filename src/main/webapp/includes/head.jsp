@@ -5,6 +5,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8"> <!-- juego de caracteres -->
+	
 	<title>Hello Web</title> <!-- titulo de la pagina-pestaña -->
 	 
 	<base href="<%=Constantes.WEB_HOME%>">
@@ -64,5 +65,5 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container">
+    <div class="container main-container">
     <div class="blanco"></div>
