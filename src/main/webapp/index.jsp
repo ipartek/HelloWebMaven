@@ -7,9 +7,9 @@
 			out.print("<h"+i+">Cabecera"+i+"</h"+i+">");		
 		} 
 		%></p>
-	  <p><a class="btn btn-primary btn-lg" href="candidato/list.jsp" role="button">enlace para listar Candidatos</a></p>
-
-
+	  <p><a class="btn btn-primary btn-lg" href="candidato/list.jsp" role="button">Enlace para listar Candidatos</a></p>
+	  <p><a class="btn btn-primary btn-lg" href="libro/listLibro.jsp" role="button">Enlace para listar Libros</a></p>
+	
 	<!-- <a href="candidato/list.jsp">enlace para listar Candidatos </a> -->
 
 <%@ include file="includes/footer.jsp" %>

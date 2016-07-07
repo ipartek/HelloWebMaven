@@ -1,15 +1,20 @@
+<%@page import="com.ipartek.formacion.pojo.Candidato"%>
 <%@ include file="../includes/head.jsp" %>
 
-<h1>Detalle del Candidato</h1>
+
 
 <%
-	//TODO crear Canditato Manolo
+	//recoger parámetro 
+	Candidato c = (Candidato)request.getAttribute("candidato");
 
 %>
+<h1>Candidato <%=c.getNombre() %></h1>
 
-Nombre:
-Apellido1:
-Apellido2:
-etc...
+Nombre:<%=c.getNombre()%> <br>
+Apellido1:<%=c.getApellido1() %> <br>
+Apellido2:<%=c.getApellido2() %>  <br>
+DNI:<%=c.getDni() %>  <br>
+Email:<%=c.getEmail() %> <br>
+Nota:<%=c.getNota() %><br>
 
 <%@ include file="../includes/footer.jsp" %>
