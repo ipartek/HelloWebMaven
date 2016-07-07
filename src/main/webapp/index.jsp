@@ -17,6 +17,7 @@
 	} 
 	%>
           <a class="btn btn-lg btn-success" href="candidato/list.jsp" role="button">Listar Candidatos</a>
+          <a class="btn btn-lg btn-warning" href="libro/list.jsp" role="button">Listar Libros</a>
         
       </div>
 	</div>
