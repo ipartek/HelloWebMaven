@@ -30,6 +30,13 @@ public class Libro {
 		this.isbn = "";
 		this.paginas = 0;
 	}
+	public Libro(String titulo, String autor, String isbn, int paginas) {
+		super();
+		this.titulo = titulo;
+		this.autor = "anonimo";
+		this.isbn = "";
+		this.paginas = 0;
+	}
 
 
 	public String getTitulo() {

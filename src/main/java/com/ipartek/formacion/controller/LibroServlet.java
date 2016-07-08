@@ -34,7 +34,7 @@ public class LibroServlet extends HttpServlet {
 		}
 		// Guardar atributo<Candidato> en request
 		request.setAttribute("libro", l);
-		// Ir a candidato/detalle.jsp
+		// Ir a libro/detalle.jsp
 		request.getRequestDispatcher("libro/detalle.jsp").forward(request, response);
 	}
 

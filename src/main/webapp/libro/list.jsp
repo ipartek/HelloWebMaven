@@ -11,7 +11,7 @@
 		
 	ArrayList<Libro> lista = new ArrayList<Libro>();
 	for (int i=0; i<10;i++){
-		lista.add( new Libro("Titulo"+i) );
+		lista.add( new Libro("Titulo"+i,"Autor","Isbn",0));
 	}
 		
 %>
@@ -24,7 +24,7 @@
 			i++;
 	%>
 	
-			<li><a href="libro?id=<%=i%>"><%=l.getTitulo()%></a></li>
+			<li><a href="libro?id=<%=i%>&p2=autor&p3=123-45-89"><%=l.getTitulo() + " " + l.getAutor() %></a></li>
 	
 	<% } //final del for %>
 </ol>
