@@ -26,6 +26,8 @@
 
   <!-- Enlaces a las hojas de Estilos -->
   <link rel="stylesheet" href="css/styles.css?v=2.0">
+  <!-- Enlace a Font awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -67,9 +69,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logeate</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
