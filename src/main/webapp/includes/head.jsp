@@ -7,7 +7,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"> <!-- juego de caracteres -->
-  <title>Hello Web</title> <!-- titulo de la pagina-pestaña -->
+  <title>Hello Web</title> <!-- titulo de la pagina-pestaï¿½a -->
   
   <base href="<%=Constantes.WEB_HOME%>">
   <meta name="description" content="App Web con JEE">
@@ -29,6 +29,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
 		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
 		crossorigin="anonymous"></script>
+
+
+<!-- font awesome --> 
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
   <!-- Enlaces a las hojas de Estilos propia-->
   <link rel="stylesheet" href="css/styles.css?v=2.0">
@@ -60,9 +64,9 @@
             <li class="hover"><a href="candidato/list.jsp">Candidato</a></li>
             <li class="hover"><a href="libro/listaLibros.jsp">Libro</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilidades <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
+                <li><a href="calculadora.jsp">Calculadora</a></li>
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
@@ -73,9 +77,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logï¿½ate </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
