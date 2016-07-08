@@ -37,7 +37,7 @@ public class LibroServlet extends HttpServlet {
 				request.setAttribute("libro", l);
 				
 				//ir a candidato/detalleLibro.jsp, cargando el dispatcher con la url
-				request.getRequestDispatcher("candidato/detalleLibro.jsp").forward(request, response);
+				request.getRequestDispatcher("libro/detalleLibro.jsp").forward(request, response);
 			}
 		
 	
