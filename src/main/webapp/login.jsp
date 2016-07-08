@@ -27,6 +27,6 @@
 <br>
 
 
-<label for=""Enviar">Enviar:</label>
-<input Type = "Submit"  value "Enviar"/>
+
+<input type = "submit"  value= "Enviar"/>
 </form>
