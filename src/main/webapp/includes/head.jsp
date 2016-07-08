@@ -7,11 +7,11 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"> <!-- juego de caracteres -->
-  <title>Hello Web</title> <!-- titulo de la pagina-pesta�a -->   
-  <base href="<%=Constantes.WEB_HOME%>">
-  
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Hello Web</title> <!-- titulo de la pagina-pestaña -->   
+  <base href="<%=Constantes.WEB_HOME%>">
   <meta name="description" content="App Web con JEE">
   <meta name="author" content="Ipartek Formacion SL">
   
@@ -20,10 +20,13 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-
+   
+  <!-- Custom styles for login template -->
+  <link href="css/singin.css?v=2.0" rel="stylesheet">    
+  
   <!-- Enlaces a las hojas de Estilos -->
   <link rel="stylesheet" href="css/styles.css?v=2.0">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -48,9 +51,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="<%=Constantes.WEB_HOME %>index.jsp">Inicio</a></li>
-            <li><a href="candidato/list.jsp">Candidatos</a></li>
-            <li><a href="libro/list.jsp">Libros</a></li>
+            <li><a href="<%=Constantes.WEB_HOME %>index.jsp"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Inicio</a></li>
+            <li><a href="candidato/list.jsp"><i class="fa fa-user" aria-hidden="true"></i> Candidatos</a></li>
+            <li><a href="libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
@@ -67,9 +70,7 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li><a href="login.jsp"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Loguéate</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
