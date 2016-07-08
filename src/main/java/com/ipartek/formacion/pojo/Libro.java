@@ -27,15 +27,15 @@ public class Libro {
 		super();
 		this.titulo = titulo;
 		this.autor = "anonimo";
-		this.isbn = "";
+		this.isbn = "Desconocido";
 		this.paginas = 0;
 	}
 	public Libro(String titulo, String autor, String isbn, int paginas) {
 		super();
 		this.titulo = titulo;
-		this.autor = "anonimo";
-		this.isbn = "";
-		this.paginas = 0;
+		this.autor = autor;
+		this.isbn = isbn;
+		this.paginas = paginas;
 	}
 
 

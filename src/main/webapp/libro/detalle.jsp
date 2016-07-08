@@ -12,8 +12,8 @@
 
 
 Titulo: <%=l.getTitulo()%><br>
-Autor:<br>
-Isbn:<br>
-paginas:<br>
+Autor: <%=l.getAutor()%><br>
+Isbn: <%=l.getIsbn()%><br>
+paginas:<%=l.getPaginas()%><br>
 
 <%@ include file="../includes/footer.jsp" %>
