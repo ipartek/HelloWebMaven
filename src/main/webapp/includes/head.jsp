@@ -60,7 +60,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Inicio</a></li>
-            <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+            <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp"><i class="fa fa-user" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

@@ -37,9 +37,10 @@ public class LoginServlet extends HttpServlet {
 		try{
 			//recoger parametros
 			String pUsuario = request.getParameter("usuario");
+			String pPassword = request.getParameter("password");
 			
 			//comprobar usuario valido
-			if (USUARIO_NAME_ADMIN.equals(pUsuario)){
+			if (USUARIO_NAME_ADMIN.equals(pUsuario) && USUARIO_PASS_ADMIN.equals(pPassword)){
 				//Ir a BackOffice
 				dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
 			}else{
