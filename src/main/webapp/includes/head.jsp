@@ -18,11 +18,13 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
+  <!-- Custom styles for login template -->
+  <link href="css/singin.css?v=2.0" rel="stylesheet">  
+  
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
    
-  <!-- Custom styles for login template -->
-  <link href="css/singin.css?v=2.0" rel="stylesheet">    
+  
   
   <!-- Enlaces a las hojas de Estilos -->
   <link rel="stylesheet" href="css/styles.css?v=2.0">
@@ -54,6 +56,7 @@
             <li><a href="<%=Constantes.WEB_HOME %>index.jsp"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Inicio</a></li>
             <li><a href="candidato/list.jsp"><i class="fa fa-user" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
+            <li><a href="calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
