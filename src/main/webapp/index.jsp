@@ -5,11 +5,11 @@
 	
 
 
-    <div class="container">
+
 
       <!-- Main component for a primary marketing message or call to action -->
-      <div class="panel panel-success">
-        <div class="panel-heading"><h1>ongi etorri web app</h1></div>
+      <div class="panel panel-info">
+        <div class="panel-heading"><h1><span class="glyphicon glyphicon-home" aria-hidden="true"></span> ongi etorri web app <span class="glyphicon glyphicon-home" aria-hidden="true"></span></h1></div>
         <div class="panel-body">
 	<% 
 	for(int i=1; i < 7 ; i++ ){

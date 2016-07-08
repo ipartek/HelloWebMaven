@@ -5,7 +5,10 @@
 <%@ include file="../includes/head.jsp" %>
 
 
-<h1>Listado Libros</h1>
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="panel panel-warning">
+        <div class="panel-heading"><h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> Listado Libros <span class="glyphicon glyphicon-book" aria-hidden="true"></span></h1></div>
+        <div class="panel-body">
 
 <%
 		
@@ -26,7 +29,10 @@
 			<li><a href="libro?isbn=<%=i%>"><%=l.getIsbn() + " - " + l.getTitulo() %></a></li>
 	
 	<% } //final del for %>
-</ol>
+</ol> 
+
+     </div>
+	</div>
 
 
 <%@ include file="../includes/footer.jsp" %>

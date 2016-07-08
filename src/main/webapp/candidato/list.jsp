@@ -4,8 +4,9 @@
 
 <%@ include file="../includes/head.jsp" %>
 
-
-<h1>Listado Candidatos</h1>
+      <div class="panel panel-success">
+        <div class="panel-heading"><h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Listado Candidatos <span class="glyphicon glyphicon-user" aria-hidden="true"></span></h1></div>
+        <div class="panel-body">
 
 <%
 		
@@ -27,6 +28,9 @@
 	
 	<% } //final del for %>
 </ol>
+
+</div>
+</div>
 
 
 <%@ include file="../includes/footer.jsp" %>
