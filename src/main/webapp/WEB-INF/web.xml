@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>HelloWebMaven</display-name>
-  
-  <!-- Pagina inicial o de BienVenida -->
-  <welcome-file-list>    
-    <welcome-file>index.jsp</welcome-file>    
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
+  <servlet>
+    <description>primer ejemplo para pintar hola mundo por pantalla</description>
+    <display-name>MiPrimerServlet</display-name>
+    <servlet-name>MiPrimerServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.MiPrimerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MiPrimerServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CandidatoServlet</display-name>
+    <servlet-name>CandidatoServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.CandidatoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CandidatoServlet</servlet-name>
+    <url-pattern>/candidato</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LibroServlet</display-name>
+    <servlet-name>LibroServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.LibroServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LibroServlet</servlet-name>
+    <url-pattern>/libro</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
 </web-app>

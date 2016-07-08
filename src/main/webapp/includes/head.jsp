@@ -29,7 +29,8 @@
 	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
 	crossorigin="anonymous">
 
-
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+ integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
 
 	<!-- Enlaces a las hojas de Estilos propia -->
@@ -60,7 +61,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="candidato/list.jsp">ListaCandidatos</a></li>
+                    
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -78,7 +80,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Default</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="Login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
