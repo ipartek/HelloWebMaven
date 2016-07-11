@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!doctype html>
@@ -64,9 +65,24 @@
             <li><a href="<%=Constantes.WEB_HOME%>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-          	<li class="active"><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a></li>
-          </ul>
+          <ul class="nav navbar-nav navbar-right">            
+          	<li>
+          		<a href="usuario/info.jsp">
+	          		<i class="fa fa-user" aria-hidden="true"></i>
+	          		<span class="label label-info">
+	          		<%
+	            		Persona p = (Persona)session.getAttribute("usuario_logeado");
+	            		if ( p != null ){
+	            			out.print( p.getNombre() );
+	            		}	
+	            	%>
+	            	</span>
+            	</a>
+          	</li>
+            <li class="active">
+            	<a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a>            	
+            </li>
+		</ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
