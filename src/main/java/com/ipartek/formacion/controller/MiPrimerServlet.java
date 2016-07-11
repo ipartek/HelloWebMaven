@@ -43,7 +43,7 @@ public class MiPrimerServlet extends HttpServlet {
 			out.print("<html>");
 			out.print("<head>");
 			out.print("<body>");
-			out.print("<h1>Hello Worlrd</h1>");
+			out.print("<h1>Hello World</h1>");
 			out.print("</body>");
 			out.print("</head>");
 			out.print("</html>");

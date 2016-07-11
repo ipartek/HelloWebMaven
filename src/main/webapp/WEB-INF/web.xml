@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>HelloWebMaven</display-name>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description>primer ejemplo paraa pintar hola mundo por pantalla</description>
@@ -33,5 +33,15 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SaludoServlet</display-name>
+    <servlet-name>SaludoServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.SaludoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SaludoServlet</servlet-name>
+    <url-pattern>/saludo</url-pattern>
   </servlet-mapping>
 </web-app>
