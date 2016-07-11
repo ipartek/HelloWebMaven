@@ -1,7 +1,7 @@
 <%@ include file="../includes/head.jsp"%>
 
 <%
-	String msg = (String)request.getAttribute("msg");
+	String msg = (String)request.getAttribute("mesg");
 	if(msg != null){
 		out.print(msg);
 	}
@@ -28,9 +28,14 @@
 		</select>
 		<br>
 		<br>
-		
+		<%
+			String resultado = String.valueOf(request.getAttribute("res"));
+				if( resultado != null){
+				out.print(resultado);
+				} 		
+		%>
 	<button class="btn btn-lg btn-primary btn-block" name="Submit"
-		value="" type="Submit">Calcular</button>
+		value="" type="submit">Calcular</button>
 </form>
 
 <%@ include file="../includes/footer.jsp"%>
