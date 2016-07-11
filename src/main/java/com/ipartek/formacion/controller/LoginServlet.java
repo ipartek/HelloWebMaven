@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 			//comprobar usuario valido
 			if (USUARIO_NAME_ADMIN.equals(pUsuario) && USUARIO_PASS_ADMIN.equals(pPassword)){
 				//Ir a BackOffice
-				dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
+				dispatcher = request.getRequestDispatcher("index.jsp");
 			}else{
 				//Guardar mensaje como atributo
 				request.setAttribute("msg", "Credenciales incorrectas");
