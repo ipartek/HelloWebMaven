@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && 
 				 USUARIO_PASS_ADMIN.equals(pPass)	){
 				//Ir a Backoffice
-				dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
+				dispatcher = request.getRequestDispatcher("index.jsp");
 			}else{				
 				//guardar mensaje como attributo
 				request.setAttribute("msg", "Credenciales incorrectas");
