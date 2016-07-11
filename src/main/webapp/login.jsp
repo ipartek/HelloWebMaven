@@ -11,7 +11,11 @@
 <form method="post" action="<%=Constantes.WEB_HOME%>login">
 
 	<label for="usuario">Usuario:</label>
-	<input type="text" name="usuario" required>
+	<input type="text" name="usuario" required placeholder="Tu nombre">
+
+	<br>
+	<label for="pass">Contraseña:</label>
+	<input type="password" name="pass" required>
 
 	<br>
 	<br>
