@@ -4,6 +4,7 @@
 <%@page import="com.ipartek.formacion.controller.CalculadoraServlet"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<h1>Calculadora</h1>
 
 <form method="post" action="<%=Constantes.WEB_HOME%>calculadora">
 
@@ -13,10 +14,10 @@
 
 
 	<label for="op1">Operador 1:&nbsp;&nbsp;&nbsp; </label>
-		<input type="text" name="op1" required /> <br>
+		<input type="text"  name="op1" required /> <br>
 	
 	<label for="op2">Operador 2:&nbsp;&nbsp;&nbsp; </label> 
-		<input type="text" name="op2" required /><br>
+		<input type="text"  name="op2" required /><br>
 
 
 	<!-- COMBO: El valor Sumar sera seleccionado inicialmente -->
