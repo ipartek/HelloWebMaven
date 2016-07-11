@@ -44,11 +44,11 @@ public class LoginServlet extends HttpServlet {
 			//comprobar usuario valido
 			if(USUARIO_NAME_ADMIN.equals(pUsuario) && USUARIO_PASS_ADMIN.equals(pPass)){
 				//ir a Backoffice
-				dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
+				dispatcher = request.getRequestDispatcher("index.jsp");
 				
 			}else{
 				//guardar mensaje como atributo
-				request.setAttribute("msg", "<h2>Credenciales incorrectas</h2>");
+				request.setAttribute("msg", "<h5>Credenciales incorrectas</h5>");
 				
 				//Volver a login
 				dispatcher = request.getRequestDispatcher("login.jsp");
