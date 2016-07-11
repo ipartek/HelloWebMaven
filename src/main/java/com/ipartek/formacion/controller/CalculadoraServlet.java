@@ -53,7 +53,10 @@ public class CalculadoraServlet extends HttpServlet {
 				
 			}
 			
-			request.setAttribute("resultado", resul);				
+			request.setAttribute("resultado", resul);
+			request.setAttribute("operando1", oper1);
+			request.setAttribute("operando2", oper2);
+			request.setAttribute("operacion", operacion);
 			dispatcher = request.getRequestDispatcher("calculadora/calculadora.jsp");
 			
 			dispatcher.forward(request, response);
