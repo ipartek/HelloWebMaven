@@ -75,6 +75,11 @@ h1 {
 	height: 90px;
 }
 
+.error{
+	color: red;
+	font-style: italic;
+}
+
 .main-container{
 	display: flex;
 	flex-direction: column;
@@ -84,8 +89,30 @@ h1 {
 	align-self: center;
 	background: #EEE;
 	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	min-width: 310px;
 	padding: 50px;
 	width:90%;
+}
+
+.navbar-example form{
+	align-self: center;
+	border: 5px solid #367BB5;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	min-width: 300px;
+	padding: 20px;
+	width: 30%;
+}
+
+.navbar-example form h1, .navbar-example form h3{
+	color: #367BB5; 
+}
+
+.navbar-example form input{
+	margin: 5px;
 }
 
 .btn a{
@@ -99,6 +126,7 @@ h1 {
 	border: #367BB5 solid 3px !important;
 	color: white !important;
 	font-weight: bolder !important;
+	max-width: 300px;
 	padding: 10px;
 }
 

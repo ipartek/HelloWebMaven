@@ -1,18 +1,17 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
-
-<!doctype html>
-<!-- tipo documento es HTML5 -->
-<html lang="es">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8"> <!-- juego de caracteres -->
-	
-	<title>Hello Web</title> <!-- titulo de la pagina-pestaña -->
-	 
+	<meta charset="UTF-8">
+	<title>Hello Web</title>
 	<base href="<%=Constantes.WEB_HOME%>">
 	<meta name="description" content="App Web con JEE">
 	<meta name="author" content="Ipartek Formacion SL">
-  <!-- Enlaces a las hojas de Estilos -->
+  	<!-- fontawesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  	<!-- css -->
   	<link rel="stylesheet" href="css/styles.css?v=2.0">
+  	<!-- bootstrap -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
   						integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
   						crossorigin="anonymous">
@@ -22,9 +21,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" 
 						integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" 
 						crossorigin="anonymous"></script>
-  <!--[if lt IE 9]>
+ <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+ <![endif]-->
 </head>
 <body>
 	   <!-- Fixed navbar -->
@@ -41,8 +40,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<%= Constantes.WEB_HOME %>">Inicio</a></li>
-            <li><a href="#about">About</a></li>
+            <li class="active"><a href="<%= Constantes.WEB_HOME %>"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a></li>
+            <li><a href="calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -60,7 +59,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="../navbar/">Default</a></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i> Login<span class="sr-only">(current)</span></a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

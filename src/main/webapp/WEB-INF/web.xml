@@ -25,4 +25,24 @@
     <servlet-name>CandidatoServlet</servlet-name>
     <url-pattern>/candidato</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controlador.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CalculadoraServlet</display-name>
+    <servlet-name>CalculadoraServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controlador.CalculadoraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalculadoraServlet</servlet-name>
+    <url-pattern>/calculadora</url-pattern>
+  </servlet-mapping>
 </web-app>
