@@ -62,8 +62,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+            <li><a href="#contact">Calculadora</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -79,7 +79,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">            
           	<li>
-          		<a href="usuario/info.jsp">
+          		<a href="<%=Constantes.WEB_HOME%>usuario/info.jsp">
 	          		<i class="fa fa-user" aria-hidden="true"></i>
 	          		<span class="label label-info">
 	          		<%
@@ -92,7 +92,7 @@
             	</a>
           	</li>
             <li class="active">
-            	<a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a>            	
+            	<a href="<%=Constantes.WEB_HOME%>login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a>            	
             </li>
           </ul>
         </div><!--/.nav-collapse -->
