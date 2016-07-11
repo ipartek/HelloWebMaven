@@ -48,7 +48,7 @@ public class CalculadoraServlet extends HttpServlet {
 	}
 
 	private void doProcces(HttpServletRequest request, HttpServletResponse response) {
-		float resultado;
+		float resultado = 0;
 
 		try {
 

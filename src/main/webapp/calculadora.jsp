@@ -33,7 +33,7 @@
 		
 	<%
 		//recoger resultado
-		request.getAttribute("resultado");
+		request.getAttribute("resul");
 	%>
 		
 	<br><br>

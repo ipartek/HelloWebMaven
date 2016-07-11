@@ -14,13 +14,13 @@ if ( msg != null ){
 	  por lo que  action=http://localhost:8080/HelloWebMaven/login/ -->
 
 	<label for="usuario">Usuario:&nbsp;&nbsp;&nbsp;  </label>
-	<input type="text" name="usuario" required />
+	<input type="text" name="usuario" required placeholder="Tu nombre"/>
 	
 	<br>
 	<br>
 	
-	<label for="password">Password:</label>
-	<input type="text" name="password" required />
+	<label for="pass">Password:</label>
+	<input type="text" name="pass" required />
 	
 	<br>
 	
