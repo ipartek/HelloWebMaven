@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ipartek.formacion.pojo.Persona;
 
 /**
  * Servlet implementation class LoginServlet
@@ -39,7 +42,11 @@ public class LoginServlet extends HttpServlet {
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
 	
 		try {
+			
+			HttpSession session=request.getSession(true);
 			//recoger parametros
+			//TODO recuperar de la BBDD
+		
 			String pUsuario = request.getParameter("usuario"); 
 			
 			String pUsuario2 = request.getParameter("password");
@@ -47,6 +54,8 @@ public class LoginServlet extends HttpServlet {
 			//comprobar usuario valido
 			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && USUARIO_PASS_ADMIN.equals(pUsuario2)){
 				//Ir a Backoffice
+				Persona p=new Persona("Admin","Gorriti","Urrutia","111111", "hola");
+				session.setAttribute("usuario logueado", p);
 				dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
 			}else{				
 				//guardar mensaje como attributo

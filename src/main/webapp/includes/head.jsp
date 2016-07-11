@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!doctype html>
@@ -78,6 +79,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">            
             <li class="active"><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a></li>
+           <%
+           Persona p= (Persona)session.getAttribute("usuario_logueado");
+           if(p!=null){
+           out.print(p.getNombre());
+           }
+           %> 
           </ul>
         </div><!--/.nav-collapse -->
       </div>
