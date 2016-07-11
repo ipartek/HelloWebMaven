@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!doctype html>
@@ -13,6 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="css/styles.css?v=2.0">
+	
 	<base href="<%=Constantes.WEB_HOME%>">
 	
 	<meta name="description" content="App Web con JEE">
@@ -45,6 +47,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
 						<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+						<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Libros</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -65,7 +68,15 @@
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Link</a></li>
+						<li><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true">Login</i></a>
+							<%
+								Persona p =(Persona)session.getAttribute("usuario");
+								if(p != null){
+									out.print(p.getNombre() );
+								}
+								
+							%>
+							</li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -82,4 +93,5 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
+	
 		<div class="container">

@@ -10,8 +10,10 @@
 %>
 
 Nombre:<%=c.getNombre()%><br>
-Apellido1:
-Apellido2:
-etc...
+Apellido1:<%=c.getApellido1()%><br>
+Apellido2:<%=c.getApellido2() %><br>
+Dni:<%=c.getDni()%><br>
+Nota:<%=c.getNota()%><br>
+
 
 <%@ include file="../includes/footer.jsp" %>
