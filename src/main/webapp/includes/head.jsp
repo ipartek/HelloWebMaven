@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!doctype html>
@@ -12,6 +13,7 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/styles.css?v=2.0">
 	<base href="<%=Constantes.WEB_HOME%>">
 	
@@ -45,6 +47,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio <span class="sr-only">(current)</span></a></li>
 						<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+						<li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -64,18 +67,24 @@
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Link</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Dropdown <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">Separated link</a></li>
-							</ul></li>
+					
+					<ul class="nav navbar-nav navbar-right">            
+			          	<li>
+			          		<a href="usuario/info.jsp">
+				          		<i class="fa fa-user" aria-hidden="true"></i>
+				          		<span class="label label-info">
+				          		<%
+				            		Persona p = (Persona)session.getAttribute("userLog");
+				            		if ( p != null ){
+				            			out.print( p.getNombre());
+				            		}	
+				            	%>
+				            	</span>
+			            	</a>
+			          	</li>
+			            <li class="active">
+			            	<a href="<%=Constantes.WEB_HOME%>logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar sesion</a>            	
+			            </li>
 					</ul>
 				</div>
 				<!-- /.navbar-collapse -->
