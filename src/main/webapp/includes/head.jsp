@@ -56,7 +56,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand">Hello Web Maven</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -80,7 +80,7 @@
             	</a>
           	</li>
             <li class="active">
-            	<a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a>            	
+            	<a href="<%=Constantes.WEB_HOME%>logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar</a>            	
             </li>
 		</ul>
         </div><!--/.nav-collapse -->
