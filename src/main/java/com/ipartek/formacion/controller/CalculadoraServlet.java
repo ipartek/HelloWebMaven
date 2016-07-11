@@ -31,6 +31,8 @@ public class CalculadoraServlet extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
 		
+		String calculo = "No se ha podido realizar la operacion"; 
+		
 		try{			
 			//recoger parametros
 			float oper1 = Float.valueOf(request.getParameter("op1"));
@@ -62,8 +64,11 @@ public class CalculadoraServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			
 		}catch (Exception e){
+			calculo = "El formato de los operadores no es correcto";
 			e.printStackTrace();			
 		}
+		
+		request.setAttribute("calculo", calculo);
 	}
 
 }
