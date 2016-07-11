@@ -92,7 +92,7 @@
             	</a>
           	</li>
             <li class="active">
-            	<a href="<%=Constantes.WEB_HOME%>login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logéate</a>            	
+            	<a href="<%=Constantes.WEB_HOME%>logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar</a>            	
             </li>
           </ul>
         </div><!--/.nav-collapse -->
