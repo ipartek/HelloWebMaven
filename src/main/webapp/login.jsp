@@ -12,9 +12,9 @@
 		<h1>Login</h1>
 	</div>
 	<form method="post" action="<%=Constantes.WEB_HOME%>login">
-	Usuario:<input type="text" name="usuario" required>
-	Contrase&nacute;a:<input type="text" name="password" required>
-	<input type="submit" value="Enviar"/>
+		Usuario:<input type="text" name="usuario" required>
+		Contrase&nacute;a:<input type="text" name="password" required>
+		<input type="submit" value="Enviar" />
 	</form>
 </div>
 
@@ -30,7 +30,9 @@
 		</button>
 	</div>
 </h1>
-<%} %>
+<%
+	}
+%>
 
 
 <%@ include file="includes/footer.jsp"%>
@@ -39,14 +41,3 @@
 
 
 
-
-<!--   <form method="post" action="<%=Constantes.WEB_HOME%>login">
-
-	Usuario:<input type="text" name="usuario" required><br><br>
-	Contraseña:<input type="text" name="contraseña" required>
-	<input type="submit" value="enviar"/>
-	
-
-
-
-</form>-->
