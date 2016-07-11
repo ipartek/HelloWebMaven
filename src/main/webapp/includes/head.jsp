@@ -63,7 +63,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
-            <li><a href="#contact">Calculadora</a></li>
+            <li><a href="<%=Constantes.WEB_HOME%>/ejercicios/calculadora.jsp">Calculadora</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
