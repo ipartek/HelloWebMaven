@@ -25,31 +25,26 @@
     <![endif]-->
 
 <%
-	String msg = (String)request.getAttribute("msg");
-	if (msg!=null){
-		out.print(msg);
+	Double resultado = (Double)request.getAttribute("resul");
+	if (resultado==null){
+		resultado = 0.0;
 	}
 %>
 
-<!--  <form method="post" action="<%=Constantes.WEB_HOME%>login">
-	<h1>Identifiquese para continuar</h1><br />
-	<label for="usuario">Usuario:</label> 
-	<input type="text" name="usuario" required><br /><br />
-	
-	<label for="password">Contraseña:</label> 
-	<input type="text" name="password" required><br /><br />
-	
-	<input type="submit" value="Enviar" />
-</form> -->
-
 <div class="wrapper">
-    <form class="form-signin" method="post" action="<%=Constantes.WEB_HOME%>login">       
-      <h2 class="form-signin-heading">Identifiquese para continuar</h2>
-      <input type="text" class="form-control" name=usuario placeholder="Nombre" required="" autofocus="" />
-      <input type="password" class="form-control" name="password" placeholder="Contraseña" required=""/>      
-      <label class="checkbox">
-        <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Recuerdame
-      </label>
-      <button class="btn btn-lg btn-primary btn-block" type="submit" value="">Enviar</button>
+    <form class="form-signin" method="post" action="<%=Constantes.WEB_HOME%>calculadora">       
+      <h2 class="form-signin-heading">Calculadora</h2>
+      <input type="number" step="0.01" class="form-control" name=operador1 placeholder="operador1" required=""  autofocus="" />
+      <input type="number" step="0.01" class="form-control" name="operador2" placeholder="operador2" required=""/>
+      <select name="opcion">
+	  	<option value="sumar">Sumar</option>
+	  	<option value="restar">Restar</option>
+	  	<option value="multiplicar">Multiplicar</option>
+	  	<option value="dividir">Dividir</option>
+	  </select><br />
+	  <label name="resultado">Resultado:
+	  <input type="number" step="0.01" class="form-control" name="resultado" value=<%=resultado%> disabled/>
+	  </label>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" value="">Calcular</button>
     </form>
   </div>
