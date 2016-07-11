@@ -18,9 +18,9 @@
 	
 	
 	<label for="ape1">Apellido1:</label>
-	<input type="text" name="ap1" value="<%=p.getApellido1() %>" ><br>
+	<input type="text" name="ape1" value="<%=p.getApellido1() %>" ><br>
 		
-	<label for="ape2">Nombre:</label>
+	<label for="ape2">Apellido2:</label>
 	<input type="text" name="ape2" value="<%=p.getApellido2() %>" ><br>
 	
 	<label for="dni">DNI:       </label>

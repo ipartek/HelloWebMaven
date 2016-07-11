@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class CalculadoraServlet
  */
 public class CalculadoraServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
 	private RequestDispatcher dispatcher;
@@ -21,22 +22,9 @@ public class CalculadoraServlet extends HttpServlet {
 	public static final int MULTIPLICA = 2;
 	public static final int DIVIDE = 3;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public CalculadoraServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private float pOp1, pOp2;
+	private int pOperacion = -1;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doProcces(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -44,58 +32,56 @@ public class CalculadoraServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doProcces(request, response);
-	}
 
-	private void doProcces(HttpServletRequest request, HttpServletResponse response) {
-		float resultado = 0;
-		float pOp1, pOp2;
-		int pOperacion = -1;
+		String resultado = "No se ha podido realizar la operacion";
 
-		String calculo ="No se jha podido realizar la operacion";
+		// RECOGER PARAMETROS El formato en el que llegan es String y hay
+		// que pasarlos a FLOAT
 		try {
-
-			// RECOGER PARAMETROS El formato en el que llegan es String y hay
-			// que pasarlos a FLOAT
-			pOp1 = Float.parseFloat((String)request.getParameter("op1"));
-			pOp2 = Float.parseFloat((String)request.getParameter("op2"));
-			pOperacion = Integer.parseInt((String)request.getParameter("operacion"));
-
-			// Obtener resultado en funcion de la operacion
-
-			switch (pOperacion) {
-
-			case SUMA:
-				resultado = (pOp1 + pOp2);
-				break;
-			case RESTA:
-				resultado = (pOp1 - pOp2);
-				break;
-			case MULTIPLICA:
-				resultado = (pOp1 * pOp2);
-				break;
-			case DIVIDE:
-				if( pOp2 == 0){
-					System.out.println("No se puede dividir por 0");
-				}else {
-					resultado = (pOp1 / pOp2);
-				}
-				break;
-			}
-
-			// guardar mensaje como atributo
-			request.setAttribute("resul", resultado);
-			
+			pOp1 = Float.parseFloat((String) request.getParameter("op1"));
+			pOp2 = Float.parseFloat((String) request.getParameter("op2"));
+			pOperacion = Integer.parseInt((String) request.getParameter("operacion"));
 
 		} catch (Exception e) {
-			calculo =" El foramto de los operadores no es corrrect0";
+			resultado = " El foramto de los operadores no es corrrect0";
 			e.printStackTrace();
-		}finally{
-			// Volver a Calculadora
-			dispatcher = request.getRequestDispatcher("calculadora.jsp");
-			dispatcher.forward(request, response);
-			
 		}
-	}
 
+		// Obtener resultado en funcion de la operacion
+
+		switch (pOperacion) {
+
+		case SUMA:
+			resultado = "Resultado: " + (pOp1 + pOp2);
+			break;
+		case RESTA:
+			resultado = "Resultado: " + (pOp1 - pOp2);
+			break;
+		case MULTIPLICA:
+			resultado = "Resultado: " + (pOp1 * pOp2);
+			break;
+		case DIVIDE:
+			if (pOp2 == 0) {
+				System.out.println("No se puede dividir por 0");
+			} else {
+				resultado = "Resultado: " + (pOp1 / pOp2);
+			}
+			break;
+		default:
+			resultado = "Operacion no soportada";
+			break;
+		}
+
+		// guardar mensaje como atributo
+
+		request.setAttribute("resul", resultado);
+
+		dispatcher = request.getRequestDispatcher("calculadora.jsp");
+		dispatcher.forward(request, response);
+
+		// estas dos ultimas lineas se podian haber puesto como:
+		// request.getRequestDispatcher("ejercicios/calculadora.jsp").forward(request,
+		// response);
+
+	}
 }
