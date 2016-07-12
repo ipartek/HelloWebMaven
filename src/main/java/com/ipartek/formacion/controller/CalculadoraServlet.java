@@ -27,8 +27,7 @@ public class CalculadoraServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String calculo = "No se ha podido realizar la operacion";
-		
-		
+				
 		try{
 		
 			//recoger parametros
@@ -42,30 +41,35 @@ public class CalculadoraServlet extends HttpServlet {
 			op1 = Float.parseFloat(pop1);
 			op2 = Float.parseFloat(pop2);
 			op = Integer.parseInt((String)request.getParameter("op"));
-		}catch(Exception e){
+				
+			switch (op) {
+				case SUMA:
+					calculo = "Resultado: " + (op1 + op2);
+					break;
+				case DIVIDE:
+					calculo = "Resultado: " + (op1 / op2);
+					break;
+				case RESTA:
+					calculo = "Resultado: " + (op1 - op2);
+					break;
+				case MULTIPLICA:
+					calculo = "Resultado: " + (op1 * op2);
+					break;	
+		
+				default:
+					calculo = "Operacion no soportada";
+					break;
+			}
+		
+		}catch(NumberFormatException e){
 			calculo = "El formato de los operadores no es correcto";
 			e.printStackTrace();
-		}	
-		
-		switch (op) {
-		case SUMA:
-			calculo = "Resultado: " + (op1 + op2);
-			break;
-		case DIVIDE:
-			calculo = "Resultado: " + (op1 / op2);
-			break;
-		case RESTA:
-			calculo = "Resultado: " + (op1 - op2);
-			break;
-		case MULTIPLICA:
-			calculo = "Resultado: " + (op1 * op2);
-			break;	
-
-		default:
-			calculo = "Operacion no soportada";
-			break;
-		}
-		
+			
+		}catch (Exception e) {
+			calculo = "Fallo al operar con la Calculadora";
+			e.printStackTrace();
+		}		
+			
 		request.setAttribute("calculo", calculo.replace(".", ",") );
 		request.getRequestDispatcher("ejercicios/calculadora.jsp").forward(request, response);
 				
