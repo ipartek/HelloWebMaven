@@ -19,14 +19,7 @@
 	<br>
 	<br>
 	
-	<div class="resultado">
-	<%
-		String calculo = (String)request.getAttribute("calculo");
-		if ( calculo!=null){
-			out.print(calculo);
-		}
-	%>
-	</div>
+	<div class="resultado">${requestScope.calculo}</div>
 
 	<input type="submit" value="calcular">
 </form>
