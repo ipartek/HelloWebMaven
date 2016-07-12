@@ -1,4 +1,5 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
+<%@page errorPage="error.jsp" %>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,18 +41,13 @@
 
 <body>
 
-
-
-
-
-
-
-
 <div class="container">
 
-
-
-
+	<%
+	Object o =null;
+	o.toString();
+		
+	%>
 
 	<div class="row">
 
