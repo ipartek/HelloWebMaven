@@ -28,10 +28,19 @@ public class CalculadoraServlet extends HttpServlet {
 
 		String calculo = "No se ha podido realizar la operacion";
 		
-		//recoger parametros
+		
 		try{
-			op1 = Float.parseFloat((String)request.getParameter("op1"));
-			op2 = Float.parseFloat((String)request.getParameter("op2"));
+		
+			//recoger parametros
+			String pop1 = (String)request.getParameter("op1").trim();
+			String pop2 = (String)request.getParameter("op2").trim();
+			
+			//reemplazar "," por "."
+			pop1 = pop1.replace(",", ".");
+			pop2 = pop2.replace(",", ".");
+			
+			op1 = Float.parseFloat(pop1);
+			op2 = Float.parseFloat(pop2);
 			op = Integer.parseInt((String)request.getParameter("op"));
 		}catch(Exception e){
 			calculo = "El formato de los operadores no es correcto";
@@ -57,13 +66,9 @@ public class CalculadoraServlet extends HttpServlet {
 			break;
 		}
 		
-		
-		
-		request.setAttribute("calculo", calculo );
+		request.setAttribute("calculo", calculo.replace(".", ",") );
 		request.getRequestDispatcher("ejercicios/calculadora.jsp").forward(request, response);
-		
-		
-		
+				
 	}
 
 }
