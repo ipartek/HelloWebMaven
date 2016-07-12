@@ -1,11 +1,7 @@
+<%@page import="com.ipartek.formacion.controlador.CalculadoraServlet"%>
 <%@ include file="../includes/head.jsp"%>
 
-<%
-	String msg = (String)request.getAttribute("mesg");
-	if(msg != null){
-		out.print(msg);
-	}
-%>
+
 
 
 <form action="<%=Constantes.WEB_HOME%>calculadora" method="post"
@@ -14,27 +10,32 @@
 	<hr class="colorgraph">
 	<br> 
 		<label for="numero1">Opción 1</label>
-		<input type="text" class="form-control" name="numero1" placeholder="Number1" required="" autofocus="" /> 
+		<input type="text" step=0.1 class="form-control" name="numero1" placeholder="0,0" required="" autofocus="" /> 
 		<br>
 		<label for="numero2">Opción 2</label>
-		<input	type="text" class="form-control" name="numero2" placeholder="Number2" required="" />
+		<input	type="text" step=0.1 class="form-control" name="numero2" placeholder="0,0" required="" />
 		<br>
 		<label for="operadores">Operador</label> 
-		<select name="operadores" >
-			<option value="sumar">Sumar</option>
-			<option value="restar">Restar</option>
-			<option value="multiplicar">Multiplicar</option>
-			<option value="dividir">Dividir</option>
+		<select id="operadores" name="operadores" >
+			<option value="<%=CalculadoraServlet.SUMA%>">Sumar</option>
+			<option value="<%=CalculadoraServlet.RESTA%>">Restar</option>
+			<option value="<%=CalculadoraServlet.MULTIPLICA%>">Multiplicar</option>
+			<option value="<%=CalculadoraServlet.DIVIDE%>">Dividir</option>
 		</select>
 		<br>
 		<br>
 		<%
-			String resultado = String.valueOf(request.getAttribute("res"));
-				if( resultado != null){
-				out.print(resultado);
-				} 		
+				String resultado = String.valueOf(request.getAttribute("res"));
+				if( resultado != null && resultado!="null"){
+					out.print(resultado);
+				}
+				
+						
 		%>
-	<button class="btn btn-lg btn-primary btn-block" name="Submit"
+		<!--<div class="resultado">${requestScope.res}</div> -->
+		<br>
+		<br>
+	<button class="btn btn-lg btn-primary btn-block" name="Submit" action="calculadora"
 		value="" type="submit">Calcular</button>
 </form>
 

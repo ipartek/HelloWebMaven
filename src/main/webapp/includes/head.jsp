@@ -83,12 +83,13 @@
             		<a href="usuario/info.jsp">
             		<i class="fa fa-user" aria-hidden="true"></i>
 					<span class="label label-info">
-            			<%
+            			  <%
             				Persona p = (Persona)session.getAttribute("usuario_logeado");
             				if( p != null ){
             				out.print(p.getNombre());	
             				}
            				%>
+           				<!-- ${sessionScope.usuario_logeado.nombre}  hace lo mismo que lo de arriba. Está protegido por si es null-->
            			</span>
            			</a>
             </li>  

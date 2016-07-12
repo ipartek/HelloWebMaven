@@ -13,7 +13,8 @@
 	<hr class="colorgraph">
 	<br> 
 		<label for="nombre">Nombre</label>
-		<input type="text" class="form-control" name="nombre" value="<%=p.getNombre() %>" required="" autofocus="" /> 
+		<input type="text" class="form-control" name="nombre" value="<%=p.getNombre() %>" required="" autofocus="" />
+		<!-- ${sessionScope.usuario_logeado.nombre} es lo mismo que p.getNombre()%> --> 
 		<br>
 		<label for="apellido1">Apellido1</label>
 		<input	type="text" class="form-control" name="apellido1" placeholder="<%=p.getApellido1() %>" required="" />

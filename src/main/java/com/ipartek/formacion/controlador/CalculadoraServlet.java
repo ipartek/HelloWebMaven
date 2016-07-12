@@ -14,65 +14,74 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CalculadoraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String FORMATO_NUM_ERROR = "Formato de números incorrecto.";
-	private static final String OPERACION_SUMAR = "sumar";
-	private static final String OPERACION_RESTAR = "restar";
-	private static final String OPERACION_MULTIPLICAR = "multiplicar";
-	private static final String OPERACION_DIVIDIR = "dividir";
-	public static ArrayList<String> aOperaciones = new ArrayList<String> ();
+	public static final int SUMA = 0;
+	public static final int RESTA = 1;
+	public static final int MULTIPLICA = 2;
+	public static final int DIVIDE = 3;
+	private Float op1,op2;
+	private int iOperador = 0;
 	
-	private RequestDispatcher dispatcher;
+
 	
 	
 	
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		
+		String calculo = "no se ha podido realizar la operacion";
+		
+		
+		try{
+			//Recoger parametros
+			String pop1 = (String)request.getParameter("numero1").trim();
+			String pop2 = (String)request.getParameter("numero2").trim();
+		
+			//reemplazar comas por puntos
+			pop1.replace(",", ".");
+			pop2.replace(",", ".");
+			op1 = Float.parseFloat(pop1);
+			op2 = Float.parseFloat(pop2);
+			iOperador = Integer.parseInt((String)request.getParameter("operadores"));
+		
+		
+		if (Float.isNaN(op1)||Float.isNaN(op2)){
+			
+			calculo = "El formato de los operadores no es correcto";
+			
+		}else{
+			switch(iOperador){
+			case (SUMA):
+				calculo = "Resultado: "+op1+" + "+op2+" = " + (op1+op2); 
+				break;
+			case (RESTA):
+				calculo = "Resultado: "+op1+" - "+op2+" = " + (op1-op2);
+				break;
+			case (MULTIPLICA):
+				calculo = "Resultado: "+op1+" * "+op2+" = " + (op1*op2);
+				break;
+			case (DIVIDE):
+				calculo = "Resultado: "+op1+" / "+op2+" = " + (op1/op2);
+				break;
+			}
+		}
+		
+		}catch(NumberFormatException e){
+			calculo = "El formato de los operadores no es correcto";
+			e.printStackTrace();
+		}catch (Exception e) {
+			calculo = "Fallo sin controlar en la calculadora";
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("res", calculo );
+		request.getRequestDispatcher("calculadora/calcu.jsp").forward(request, response);
 	}
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
-		float pNum1 = Float.parseFloat(request.getParameter("numero1")); 
-		float pNum2 = Float.parseFloat(request.getParameter("numero2"));
-		String sOperador = request.getParameter("operadores");
-		aOperaciones.add(OPERACION_SUMAR);
-		aOperaciones.add(OPERACION_RESTAR);
-		aOperaciones.add(OPERACION_MULTIPLICAR);
-		aOperaciones.add(OPERACION_DIVIDIR);
-		int iOperacion = aOperaciones.indexOf(sOperador);
-		float resultado = 0;
-		if(!Float.isNaN(pNum1) && !Float.isNaN(pNum2)){
-			switch (iOperacion){
-			case (0): resultado = pNum1 + pNum2;
-			case (1): resultado = pNum1 - pNum2;
-			case (2): resultado = pNum1 * pNum2;
-			case (3): resultado = pNum1 / pNum2;
-			}
-			
-		request.setAttribute("res", resultado);
-		dispatcher = request.getRequestDispatcher("calcu.jsp");
-		}
-		
-		
-		}catch (Exception e){
-			
-			
-		}
-		
-		dispatcher.forward(request, response);
-		
-		
-		
-	}
+	
 
 }
