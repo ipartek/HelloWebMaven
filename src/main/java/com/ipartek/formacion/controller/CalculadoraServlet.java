@@ -33,8 +33,10 @@ public class CalculadoraServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
+		Double resultado = 0.0;
+		//String resultado ="No se ha podido realizar la operación";
 		try{
-			Double resultado = 0.0;
+			
 			//recoger parametros
 			//double pOperador1 = Double.parseDouble(request.getParameter("operador1"));
 			double pOperador1 = Double.valueOf(request.getParameter("operador1"));
@@ -44,19 +46,27 @@ public class CalculadoraServlet extends HttpServlet {
 			//Calcular
 			if (pOpcion.equals("sumar")){
 				resultado=Calculadora.sumar(pOperador1, pOperador2);
+				//resultado=""+Calculadora.sumar(pOperador1, pOperador2);
 			}else if (pOpcion.equals("restar")){
 				resultado=Calculadora.restar(pOperador1, pOperador2);
+				//resultado=""+Calculadora.restar(pOperador1, pOperador2);
 			}else if (pOpcion.equals("multiplicar")){
 				resultado=Calculadora.multiplicar(pOperador1, pOperador2);
+				//resultado=""+Calculadora.multiplicar(pOperador1, pOperador2);
 			}else if (pOpcion.equals("dividir")){
 				resultado=Calculadora.dividir(pOperador1, pOperador2);
+				//resultado=""+Calculadora.dividir(pOperador1, pOperador2);
+			}else{
+				//resultado = "Operación no soportada";
 			}
 			//Guardar resultado como atributo
 			request.setAttribute("resul", resultado);
+			
 			//Volver a la página calculadora
 			dispatcher = request.getRequestDispatcher("calculadora/calculadora.jsp");
 			dispatcher.forward(request, response);
 		}catch (Exception e){
+			//resultado = "El formato de los operadores no es correcto";
 			e.printStackTrace();
 		}
 	}
