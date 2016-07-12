@@ -1,7 +1,6 @@
 
 <%@page import="com.ipartek.formacion.Constantes"%>
 <%@ include file="../includes/head.jsp" %>
-<%@page errorPage="error.jsp" %>
 
 <!--  <form method="post" action="<%=Constantes.WEB_HOME%>login">
 	<h1>Identifiquese para continuar</h1><br />
@@ -25,6 +24,13 @@
 
 
 <div class="wrapper">
+	<!-- Codigo para que de un error a posta -->
+	<%
+		//Object o =null;
+		//o.toString();
+		
+	%>
+	<!-- Fin de codigo erroneo -->
     <form class="form-signin" method="post" action="<%=Constantes.WEB_HOME%>login">       
       <h2 class="form-signin-heading">Identifiquese para continuar</h2>
       <%

@@ -64,6 +64,13 @@
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp"><i class="fa fa-user" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%=Constantes.WEB_HOME%>ejercicios/puntuaciones.jsp">Puntuaciones</a></li>
+                <li><a href="#">Otro Ejercicio</a></li>
+              </ul>
+			</li>
           </ul>
           <ul class="nav navbar-nav navbar-right">            
           	<li>

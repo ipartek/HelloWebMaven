@@ -1,13 +1,13 @@
 <%@ page isErrorPage="true"%>
 
-Soy una pagina de Error
 
-Excepcion:<br />
+<h1>Soy una pagina de Error</h1>
+
+
+Excepcion:<br>
 <%=exception%>
+<br>
 
-Mensaje:<br />
+Mensaje:<br>
 <%=exception.getMessage()%>
-<br />
-
-Traza:
-<%=exception.printStackTrace()%>
+<br>

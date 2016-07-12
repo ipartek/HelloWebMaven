@@ -67,6 +67,7 @@ h1 {
 	text-transform: capitalize;
 }
 
+
 @import "bourbon";
 
 body {
@@ -119,8 +120,20 @@ body {
 	}
 }
 
+/*
+*********CODIGO PARA LA PÁGINA DE ERROR
+*/
+body#error{
+	background: black !important;	
+}
 
+h1#error{
+	text-transform: capitalize;
+	color: red;
+	text-align: center;
+}
 
-
-
-
+span#error{
+	text-transform: capitalize;
+	color: red;
+}
