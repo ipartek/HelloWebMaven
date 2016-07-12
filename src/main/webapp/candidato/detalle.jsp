@@ -5,8 +5,7 @@
 
 <%
 	//recoger parametro
-	Candidato c = (Candidato)request.getAttribute("candidato");
-
+	Candidato c = (Candidato)request.getAttribute("candidato");	
 %>
 
 <h1>Candidato: <%=c.getNombre()%></h1>

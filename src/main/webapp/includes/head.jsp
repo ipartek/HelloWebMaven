@@ -1,6 +1,7 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+
 <!doctype html>
 <!-- tipo documento es HTML5 -->
 
