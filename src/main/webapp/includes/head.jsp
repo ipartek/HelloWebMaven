@@ -54,7 +54,8 @@
             <li><a href="<%=Constantes.WEB_HOME %>index.jsp"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Inicio</a></li>
             <li><a href="<%=Constantes.WEB_HOME %>candidato/list.jsp"><i class="fa fa-users" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME %>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
-            <li><a href="<%=Constantes.WEB_HOME %>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
+            <li><a href="<%=Constantes.WEB_HOME %>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>            
+            <li><a href="<%=Constantes.WEB_HOME %>ejercicios/puntuaciones.jsp"><i class="fa fa-info" aria-hidden="true"></i> Ranking</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="dropdown">
