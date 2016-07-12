@@ -65,4 +65,4 @@
       </div>
     </nav>
     <div class="container main-container">
-    <div class="blanco"></div>
+    	<div class="blanco"></div>

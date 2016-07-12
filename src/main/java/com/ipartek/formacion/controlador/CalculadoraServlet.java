@@ -40,19 +40,19 @@ public class CalculadoraServlet extends HttpServlet {
     	try{
     		double op1 = Double.parseDouble(request.getParameter("operador1"));
         	double op2 = Double.parseDouble(request.getParameter("operador2"));
-        	String operacion = request.getParameter("operacion");
+        	int operacion = Integer.parseInt(request.getParameter("operacion"));
         	double resultado = 0;
         	switch(operacion){
-    	    	case "SUMAR":
+    	    	case 1:
     	    		resultado = op1 + op2;
     	    		break;
-    	    	case "RESTAR":
+    	    	case 2:
     	    		resultado = op1 - op2;
     	    		break;
-    	    	case "MULTIPLICAR":
+    	    	case 3:
     	    		resultado = op1 * op2;
     	    		break;
-    	    	case "DIVIDIR":
+    	    	case 4:
     	    		resultado = op1 / op2;
     	    		break;
         	}
