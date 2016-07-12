@@ -1,8 +1,6 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,62 +11,70 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CalculadoraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	public static final int SUMA       = 0;
+	public static final int RESTA      = 1;
+	public static final int MULTIPLICA = 2;
+	public static final int DIVIDE = 3;
 
-	private RequestDispatcher dispatcher;
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-
+	private Float oper1, oper2;
+	private int operacion=-1;
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
-
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
 		
 		String calculo = "No se ha podido realizar la operacion"; 
-		
-		try{			
-			//recoger parametros
-			float oper1 = Float.valueOf(request.getParameter("op1"));
-			float oper2 = Float.valueOf(request.getParameter("op2"));
-			String operacion = request.getParameter("operacion");
-			float resul = 0;
+
+		try{
+			//recoger parametros				
+			String pop1 = (String)request.getParameter("op1").trim();
+			String pop2 = (String)request.getParameter("op2").trim();
+
+			//reemplazar ',' por '.'
+			pop1 = pop1.replace(',', '.');
+			pop2 = pop2.replace(',', '.');
+			
+			oper1 = Float.parseFloat(pop1);
+			oper2 = Float.parseFloat(pop2);
+			operacion = Integer.parseInt((String)request.getParameter("operacion"));			
+
 			
 			//comprobar el tipo de operacion a realizar
-			if("suma".equals(operacion)){
-				resul = oper1 + oper2;								
-				
-			}else if("resta".equals(operacion)){
-				resul = oper1 - oper2;		
-				
-			}else if("multiplicacion".equals(operacion)){
-				resul = oper1 * oper2;		
-				
-			}else if("division".equals(operacion)){
-				resul = oper1 / oper2;		
-				
+			switch (operacion) {
+			case SUMA:
+				calculo = String.valueOf((oper1 + oper2));
+				break;
+			case DIVIDE:
+				calculo = String.valueOf((oper1 / oper2));
+				break;
+			case RESTA:
+				calculo = String.valueOf((oper1 - oper2));
+				break;
+			case MULTIPLICA:
+				calculo = String.valueOf((oper1 * oper2));
+				break;	
+
+			default:
+				calculo = "Operacion no soportada";
+				break;
 			}
 			
-			request.setAttribute("resultado", resul);
-			request.setAttribute("operando1", oper1);
-			request.setAttribute("operando2", oper2);
-			request.setAttribute("operacion", operacion);
-			dispatcher = request.getRequestDispatcher("calculadora/calculadora.jsp");
-			
-			dispatcher.forward(request, response);
-			
-		}catch (Exception e){
-			calculo = "El formato de los operadores no es correcto";
+		}catch (NumberFormatException e){
+			calculo = "Formato de operadores no valido";
 			e.printStackTrace();			
+		}catch (Exception e){
+			calculo = "Fallo sin controlar en la calculadora";
+			e.printStackTrace();
+			
 		}
 		
-		request.setAttribute("calculo", calculo);
+		request.setAttribute("resultado", calculo.replace(".", ",") );
+		request.setAttribute("operando1", oper1);
+		request.setAttribute("operando2", oper2);
+		request.setAttribute("operacion", operacion);
+		request.getRequestDispatcher("calculadora/calculadora.jsp").forward(request, response);
+		
 	}
-
 }

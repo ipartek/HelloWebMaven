@@ -10,19 +10,19 @@
 	%>
 			
 	<label for="nombre" >Nombre: </label>
-	<input type="text" name="ape1" class="form-control" placeholder="Apellido 1" value="<%=usuario.getNombre() %>"><br>
+	<input type="text" name="ape1" class="form-control" placeholder="Apellido 1" value="${sessionScope.usuario_logeado.nombre}"><br>
 	
 	<label for="ape1">Apellido 1:</label>
-	<input type="text" name="ape1" class="form-control" placeholder="Apellido 1" value="<%=usuario.getApellido1() %>"><br>
+	<input type="text" name="ape1" class="form-control" placeholder="Apellido 1" value="${sessionScope.usuario_logeado.apellido1}"><br>
 	
 	<label for="ape2">Apellido 2:</label>
-	<input type="text" name="ape2" class="form-control" placeholder="Apellido 2" value="<%=usuario.getApellido2() %>"><br>
+	<input type="text" name="ape2" class="form-control" placeholder="Apellido 2" value="${sessionScope.usuario_logeado.apellido2}"><br>
 	
 	<label for="dni">DNI:</label>
-	<input type="text" name="dni" class="form-control" placeholder="DNI" value="<%=usuario.getDni() %>"><br>
+	<input type="text" name="dni" class="form-control" placeholder="DNI" value="${sessionScope.usuario_logeado.dni}"><br>
 	
 	<label for="email">Email:</label>
-	<input type="text" name="email" class="form-control" placeholder="email" value="<%=usuario.getEmail() %>">
+	<input type="text" name="email" class="form-control" placeholder="email" value="${sessionScope.usuario_logeado.email}">
 	
 
 
