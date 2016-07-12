@@ -15,8 +15,8 @@
 <body>
 
 <div class="error">
-        <div class="error-code m-b-10 m-t-20">¡Error 500! <i class="fa fa-warning"></i></div>
-        <h3 class="font-bold"><%=exception%></h3>
+        <div class="error-code m-b-10 m-t-20">¡Error 404! <i class="fa fa-warning"></i></div>
+        <h3 class="font-bold">Recurso No existe</h3>
 
         <div class="error-desc">
             Perdón, pero la página a la que quieres acceder no se ha podido cargar.<br/>

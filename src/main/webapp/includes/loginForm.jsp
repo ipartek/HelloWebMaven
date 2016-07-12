@@ -1,5 +1,5 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
-<%@page errorPage="error.jsp" %>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -7,7 +7,8 @@
 <meta charset="utf-8">
 <!-- juego de caracteres -->
 <title>Login</title>
-<!-- titulo de la pagina-pesta�a -->
+<!-- titulo de la pagina-pestaña -->
+
 <%
 		String msg = (String) request.getAttribute("msg");
 		if (msg != null) {
@@ -53,14 +54,11 @@
 
 <div class="container">
 
-	<%
-	Object o=null;
-	o.toString();
-	%>
+	
 		<div class="wrapper">
 			<form action="<%=Constantes.WEB_HOME%>login" method="post"
 				name="Login_Form" class="form-signin">
-				<h3 class="form-signin-heading">Bienvenido! Logéate</h3>
+				<h3 class="form-signin-heading">¡Bienvenido! Logéate</h3>
 				<hr class="colorgraph">
 				<br> <input type="text" class="form-control" name="usuario"
 					required placeholder="Tu nombre" autofocus="" /> <input

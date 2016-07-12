@@ -1,4 +1,5 @@
 <%@page import="com.ipartek.formacion.controlador.CalculadoraServlet"%>
+<%@page errorPage="error.jsp" %>
 <%@ include file="../includes/head.jsp"%>
 
 

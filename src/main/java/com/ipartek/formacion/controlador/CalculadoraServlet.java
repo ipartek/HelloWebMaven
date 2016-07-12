@@ -49,12 +49,7 @@ public class CalculadoraServlet extends HttpServlet {
 			iOperador = Integer.parseInt((String)request.getParameter("operadores"));
 		
 		
-		if (Float.isNaN(op1)||Float.isNaN(op2)){
-			
-			calculo = "El formato de los operadores no es correcto";
-			
-		}else{
-			switch(iOperador){
+		switch(iOperador){
 			case (SUMA):
 				calculo = "Resultado: "+op1+" + "+op2+" = " + (op1+op2); 
 				break;
@@ -68,7 +63,7 @@ public class CalculadoraServlet extends HttpServlet {
 				calculo = "Resultado: "+op1+" / "+op2+" = " + (op1/op2);
 				break;
 			}
-		}
+		
 		
 		}catch(NumberFormatException e){
 			calculo = "El formato de los operadores no es correcto";
