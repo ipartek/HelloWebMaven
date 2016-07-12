@@ -54,10 +54,7 @@
     <servlet-name>CalculadoraServlet</servlet-name>
     <url-pattern>/calculadora</url-pattern>
   </servlet-mapping>
-  <session-config>
-    <session-timeout>5</session-timeout>
-  </session-config>
-  <servlet>
+    <servlet>
     <description></description>
     <display-name>LogOutServlet</display-name>
     <servlet-name>LogOutServlet</servlet-name>
@@ -67,4 +64,17 @@
     <servlet-name>LogOutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/error-404.jsp</location>
+  </error-page>
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/error.jsp</location>
+  </error-page>
 </web-app>

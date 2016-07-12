@@ -72,16 +72,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-            <a href="usuario/info.jsp">
+            <a href="<%=Constantes.WEB_HOME %>usuario/info.jsp">
             <span class="label label-info">
             <i class="fa fa-user" aria-hidden="true"></i>
-            <% 
-              Persona p1 = (Persona)session.getAttribute("usuario_logeado");
-              if(p1 != null){
-               	out.print(p1.getNombre());	
-              }
-            
-            %>
+           
+           ${sessionScope.usuario_logeado.nombre}
+           
             </span></a></li>
             <li><a href="<%=Constantes.WEB_HOME %>logout"><i class="fa fa-lock" aria-hidden="true"></i> Salir</a>
             
