@@ -24,15 +24,12 @@
 		<%
 			String msg = (String) request.getAttribute("msg");
 			if (msg != null) {
-				out.print("<div class='alert alert-warning'><strong>Warning! </strong>"+ msg + "</div>");
+				out.print("<div class='alert alert-warning alert-dismissible'> <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button><strong>Warning! </strong>"+ msg + "</div>");
 				
 			}
 		%>
 
-		
-	
-	
-		
+			
 	
 		      <form class="form-signin" method="post" action="<%=Constantes.WEB_HOME%>login">
 		        
@@ -45,6 +42,12 @@
 	      </div>
 
     </div> <!-- /container -->
+    
+    <!--  Jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	
 	</body>  
 </html>

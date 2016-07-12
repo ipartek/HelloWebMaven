@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!doctype html>
@@ -7,7 +8,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8"> <!-- juego de caracteres -->
-  <title>Hello Web</title> <!-- titulo de la pagina-pestaña -->
+  <title>Hello Web</title> <!-- titulo de la pagina-pestaï¿½a -->
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,10 +25,12 @@
 
 
 
-  <!-- Enlaces a las hojas de Estilos -->
-  <link rel="stylesheet" href="css/styles.css?v=2.0">
+  
   <!-- Enlace a Font awesome -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+	<!-- Enlaces a las hojas de Estilos -->
+  <link rel="stylesheet" href="css/styles.css?v=3.0">
 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -55,6 +58,7 @@
             <li class="active"><a href="<%=Constantes.WEB_HOME%>">Inicio</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>libro/listLibro.jsp">Libros</a></li>
+            <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp">Calculadora</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -69,7 +73,23 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="login.jsp"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Logeate</a></li>
+          	<li>
+          		<a href="usuario/info.jsp">
+          		<i class="fa fa-user" aria-hidden="true"></i>
+          		<span class="label label-info">
+	          	<%
+		            	Persona p = (Persona) session.getAttribute("usuario_logeado");
+		            	if (p!=null){
+		            		out.print(p.getNombre());
+		            	}
+		           %>
+	            </span>
+	          	</a>	           
+	         </li>
+            <li class="active">
+	            <a href="<%=Constantes.WEB_HOME%>logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar</a>
+	            
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

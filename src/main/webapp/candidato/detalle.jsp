@@ -4,7 +4,7 @@
 
 
 <%
-	//recoger parámetro 
+	//recoger parï¿½metro 
 	Candidato c = (Candidato)request.getAttribute("candidato");
 
 %>

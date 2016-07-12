@@ -68,8 +68,10 @@ h1 {
 	text-transform: capitalize;
 }
 
+
 /*
 	Copiado para utilizar en form
+******************************************
 */
 @import "bourbon";
 
@@ -124,6 +126,27 @@ body {
 }
 
 
+/* CALCULADORA
+******************************************/
+
+#calculadora input[type = "text"]{
+	font-size: 3em;
+}
+
+#calculadora h1{
+	text-align: center;
+}
+
+#calculadora select{
+	font-size: 3em;
+}
+
+#calculadora .resultado{
+	margin-top: 10px;
+	padding:1em;
+	border:1px solid green;
+	font-size: 1.2em;
+}
 
 
 
