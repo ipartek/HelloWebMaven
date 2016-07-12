@@ -1,4 +1,6 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
+
+
 <!doctype html>
 <!-- tipo documento es HTML5 -->
 
@@ -20,6 +22,7 @@
 	</head>
 	<body>
 		<div class="container" >
+		
 			<div class="jumbotron" >
 		<%
 			String msg = (String) request.getAttribute("msg");

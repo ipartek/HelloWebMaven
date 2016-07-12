@@ -6,7 +6,6 @@
 	Persona lo recogemos en head.jsp
 --> 
 
-
 <form class="form-signin" method="post" action="<%=Constantes.WEB_HOME%>usuario/info.jsp">
 
 	<label for="nombre">Nombre: </label>

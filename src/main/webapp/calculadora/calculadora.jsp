@@ -23,15 +23,10 @@
         
      	</form>
      	<div class="resultado">
-     	<%
-			
-     		String calculo = (String) request.getAttribute("calculo");
-			
-			if (calculo!=null){
-				out.print("<div class='alert alert-info alert-dismissible'> <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>"+ calculo + "</div>");
-			}
-		
-		%>
+	
+				<div class='alert alert-info alert-dismissible'> <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>${requestScope.calculo}
+				</div>
+
 		</div>
 </div>
 <%@ include file="../includes/footer.jsp" %>

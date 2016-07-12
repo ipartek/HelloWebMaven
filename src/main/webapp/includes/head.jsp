@@ -22,10 +22,7 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-
-
-  
+ 
   <!-- Enlace a Font awesome -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
@@ -59,6 +56,7 @@
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>libro/listLibro.jsp">Libros</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp">Calculadora</a></li>
+            <li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -77,12 +75,16 @@
           		<a href="usuario/info.jsp">
           		<i class="fa fa-user" aria-hidden="true"></i>
           		<span class="label label-info">
+	            
 	          	<%
 		            	Persona p = (Persona) session.getAttribute("usuario_logeado");
 		            	if (p!=null){
 		            		out.print(p.getNombre());
 		            	}
 		           %>
+		           
+		           <!-- expresión por la que  ${sessionScope.usuario_logeado.nombre } se podría sustituir-->
+		         
 	            </span>
 	          	</a>	           
 	         </li>
