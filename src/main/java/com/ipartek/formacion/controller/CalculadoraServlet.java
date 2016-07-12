@@ -11,64 +11,77 @@ import javax.servlet.http.HttpServletResponse;
 import com.ipartek.formacion.pojo.Calculadora;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class CalculadoraServlet
  */
 public class CalculadoraServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 	
-	private RequestDispatcher dispatcher;
+	public static final int SUMA       = 0;
+	public static final int RESTA      = 1;
+	public static final int MULTIPLICA = 2;
+	public static final int DIVIDE     = 3;
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
+	private Float op1, op2;
+	private int op=-1;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		Double resultado = 0.0;
-		//String resultado ="No se ha podido realizar la operación";
+		String calculo = "No se ha podido realizar la operacion";
+		
+		
 		try{
-			
+		
 			//recoger parametros
-			//double pOperador1 = Double.parseDouble(request.getParameter("operador1"));
-			double pOperador1 = Double.valueOf(request.getParameter("operador1"));
-			//double pOperador2 = Double.parseDouble(request.getParameter("operador2"));
-			double pOperador2 = Double.valueOf(request.getParameter("operador2"));
-			String pOpcion = request.getParameter("opcion");
-			//Calcular
-			if (pOpcion.equals("sumar")){
-				resultado=Calculadora.sumar(pOperador1, pOperador2);
-				//resultado=""+Calculadora.sumar(pOperador1, pOperador2);
-			}else if (pOpcion.equals("restar")){
-				resultado=Calculadora.restar(pOperador1, pOperador2);
-				//resultado=""+Calculadora.restar(pOperador1, pOperador2);
-			}else if (pOpcion.equals("multiplicar")){
-				resultado=Calculadora.multiplicar(pOperador1, pOperador2);
-				//resultado=""+Calculadora.multiplicar(pOperador1, pOperador2);
-			}else if (pOpcion.equals("dividir")){
-				resultado=Calculadora.dividir(pOperador1, pOperador2);
-				//resultado=""+Calculadora.dividir(pOperador1, pOperador2);
-			}else{
-				//resultado = "Operación no soportada";
-			}
-			//Guardar resultado como atributo
-			request.setAttribute("resul", resultado);
+			String pop1 = (String)request.getParameter("op1").trim();
+			String pop2 = (String)request.getParameter("op2").trim();
 			
-			//Volver a la página calculadora
-			dispatcher = request.getRequestDispatcher("calculadora/calculadora.jsp");
-			dispatcher.forward(request, response);
-		}catch (Exception e){
-			//resultado = "El formato de los operadores no es correcto";
+			//reemplazar "," por "."
+			pop1 = pop1.replace(",", ".");
+			pop2 = pop2.replace(",", ".");
+			
+			op1 = Float.parseFloat(pop1);
+			op2 = Float.parseFloat(pop2);
+			op = Integer.parseInt((String)request.getParameter("operador"));
+			
+			switch (op) {
+			case SUMA:
+				calculo = "" + (op1 + op2);
+				break;
+			case DIVIDE:
+				if (op2==0){
+					calculo = "Infinito";
+				}else{
+					calculo = "" + (op1 / op2);
+				}
+				break;
+			case RESTA:
+				calculo = "" + (op1 - op2);
+				break;
+			case MULTIPLICA:
+				calculo = "" + (op1 * op2);
+				break;	
+	
+			default:
+				calculo = "Operacion no soportada";
+				break;
+			}
+		
+		}catch(NumberFormatException i){
+			calculo = "El formato de los operadores no es correcto";
+			i.printStackTrace();
+		}catch(Exception e){
+			calculo = "Fallo al operar con la calculadora";
 			e.printStackTrace();
-		}
+		}	
+		
+		request.setAttribute("calculo", calculo.replace(".", ",") );
+		request.getRequestDispatcher("calculadora/calculadora.jsp").forward(request, response);
+				
 	}
 
 }
+

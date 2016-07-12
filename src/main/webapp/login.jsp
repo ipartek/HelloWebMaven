@@ -1,6 +1,7 @@
 
 <%@page import="com.ipartek.formacion.Constantes"%>
 <%@ include file="../includes/head.jsp" %>
+<%@page errorPage="error.jsp" %>
 
 <!--  <form method="post" action="<%=Constantes.WEB_HOME%>login">
 	<h1>Identifiquese para continuar</h1><br />

@@ -1,11 +1,11 @@
 
-<%@page import="com.ipartek.formacion.Constantes"%>
+<%@page import="com.ipartek.formacion.controller.CalculadoraServlet"%>
 <%@ include file="../includes/head.jsp"%>
 
 <%
-	Double resultado = (Double) request.getAttribute("resul");
-	if (resultado == null) {
-		resultado = 0.0;
+	String calculo = (String)request.getAttribute("calculo");
+	if (calculo==null){
+		calculo="0,0";
 	}
 %>
 
@@ -13,19 +13,19 @@
 	<form class="form-signin" method="post"
 		action="<%=Constantes.WEB_HOME%>calculadora">
 		<h2 class="form-signin-heading">Calculadora</h2>
-		<input type="number" step="0.01" class="form-control" name=operador1
+		<input type="text" class="form-control" name=op1
 			placeholder="0,00" required="" autofocus="" />
-			<input type="number" step="0.01" class="form-control" name="operador2"
+		<input type="text" class="form-control" name="op2"
 			placeholder="0,0" required="" />
-		<select name="opcion">
-			<option value="sumar">Sumar</option>
-			<option value="restar">Restar</option>
-			<option value="multiplicar">Multiplicar</option>
-			<option value="dividir">Dividir</option>
+		<select name="operador">
+			<option value="0">Sumar</option>
+			<option value="1">Restar</option>
+			<option value="2">Multiplicar</option>
+			<option value="3">Dividir</option>
 		</select><br />
 		<label name="resultado">Resultado:
-		<input type="number" step="0.01" class="form-control"
-			name="resultado" value=<%=resultado%> disabled />
+		<input type="text" class="form-control"
+			name="resultado" value=<%=calculo%> disabled />
 		</label>
 		<button class="btn btn-lg btn-primary btn-block" type="submit"
 			value="">Calcular</button>
