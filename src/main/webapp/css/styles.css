@@ -70,6 +70,22 @@ h1 {
 
 
 
+/* CALCULADORA
+*********************************************/
+
+#calculadora input[type="text"]{        /*aplicamos estilo solo a los input de tipo tesxto que pertenezcan al id calculadora*/
+	font size: 2em;
+}
+
+#calculadora select {        /*aplicamos estilo solo a los select de tipo texto que pertenezcan al id calculadora*/
+	font size: 3em;
+}
+
+#calculadora .resultado{
+	padding:1em;
+	border:1px solid green;
+	font-size: 1.2em;
+}
 
 
 

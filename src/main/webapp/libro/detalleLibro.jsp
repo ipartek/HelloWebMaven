@@ -12,7 +12,7 @@
 <div style="background-color: rgb(200,200,200);color:black;padding:20px;">
 Titulo: <%=l.getTitulo() %><br>
 Autor:<br>
-Número Páginas:<br>
+NÃºmero PÃ¡ginas:<br>
 ISBN:<br>  
 </div>
 

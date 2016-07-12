@@ -5,7 +5,7 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description>primer ejemplo para pintar Hola MUndo por pantalla</description>
+    <description>primer ejemplo para pintar hola mundo por pantalla</description>
     <display-name>MiPrimerServlet</display-name>
     <servlet-name>MiPrimerServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.MiPrimerServlet</servlet-class>
@@ -25,7 +25,7 @@
     <url-pattern>/candidato</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description>Controlador de Libro</description>
+    <description></description>
     <display-name>LibroServlet</display-name>
     <servlet-name>LibroServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.LibroServlet</servlet-class>
@@ -35,7 +35,7 @@
     <url-pattern>/libro</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description>Login del Usuario</description>
+    <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.LoginServlet</servlet-class>
@@ -44,23 +44,8 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
-  
-   <session-config>
-    <session-timeout>5</session-timeout>
-   </session-config>
-   
   <servlet>
-    <description>Calculadora basica</description>
-    <display-name>CalculadoraServlet</display-name>
-    <servlet-name>CalculadoraServlet</servlet-name>
-    <servlet-class>com.ipartek.formacion.controller.CalculadoraServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CalculadoraServlet</servlet-name>
-    <url-pattern>/calculadora</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description>Salir de la aplicacion por logout</description>
+    <description></description>
     <display-name>LogOutServlet</display-name>
     <servlet-name>LogOutServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.LogOutServlet</servlet-class>
@@ -68,5 +53,36 @@
   <servlet-mapping>
     <servlet-name>LogOutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error-404.jsp</location>
+  </error-page>
+  <servlet>
+    <description></description>
+    <display-name>CalculadoraServlet</display-name>
+    <servlet-name>CalculadoraServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.CalculadoraServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CalculadoraServlet</servlet-name>
+    <url-pattern>/calcular</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>Ranking de puntuaciones</description>
+    <display-name>PuntuacionServlet</display-name>
+    <servlet-name>PuntuacionServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PuntuacionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PuntuacionServlet</servlet-name>
+    <url-pattern>/ranking</url-pattern>
   </servlet-mapping>
 </web-app>

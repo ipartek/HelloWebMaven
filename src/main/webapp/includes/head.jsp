@@ -1,5 +1,7 @@
+
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
+
 
 <!doctype html>
 <!-- tipo documento es HTML5 -->
@@ -65,10 +67,10 @@
             <li class="hover"><a href="candidato/list.jsp">Candidato</a></li>
             <li class="hover"><a href="libro/listaLibros.jsp">Libro</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilidades <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href=<%=Constantes.WEB_HOME%>/ejercicios/calculadora.jsp">Calculadora</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ejercicios/calculadora.jsp">Calculadora</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
@@ -82,11 +84,9 @@
             	<a href="usuario/info.jsp">
          		<i class="fa fa-user" aria-hidden="true"></i>
         		<span class="label label-info">
-        		<% Persona p = (Persona)session.getAttribute("usuario_logeado");
-          			if ( p != null ){
-          			out.print( p.getNombre() );
-          		}	
-           	%>
+        		           		
+           		${sessionScope.usuario_logeado.nombre}
+           		
             	</span></a>
           	</li>
           <li class="active">

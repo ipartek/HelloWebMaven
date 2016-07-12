@@ -1,5 +1,6 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,14 +42,7 @@
 <body>
 
 
-
-
-
-
-
-
 <div class="container">
-
 
 
 
