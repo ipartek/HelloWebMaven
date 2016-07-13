@@ -75,4 +75,13 @@
     <servlet-name>PuntuacionServlet</servlet-name>
     <url-pattern>/ranking</url-pattern>
   </servlet-mapping>
+  
+  <jsp-config> 
+        <taglib> 
+               <taglib-uri>com.ipartek.formacion.tag</taglib-uri> 
+               <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location> 
+        </taglib> 
+</jsp-config>
+  
+  
 </web-app>

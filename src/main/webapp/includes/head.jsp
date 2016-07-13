@@ -1,6 +1,7 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
-
+<!-- Importamos los TAG de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 	<!-- tipo documento es HTML5 -->
@@ -53,7 +54,7 @@
 							aria-expanded="false">Ejercicios <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
-								<li><a href="#">Another action</a></li>
+								<li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG propio</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Separated link</a></li>
