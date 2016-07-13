@@ -1,9 +1,9 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+
 <!doctype html>
 	<!-- tipo documento es HTML5 -->
-	
 	
 	<html lang="es">
 	
@@ -52,7 +52,7 @@
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">Dropdown <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
+								<li><a href="<%=Constantes.WEB_HOME%>ejercicios/puntuaciones.jsp">Puntuaciones</a></li>
 								<li><a href="#">Another action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li role="separator" class="divider"></li>
@@ -73,12 +73,7 @@
 			          		<a href="usuario/info.jsp">
 				          		<i class="fa fa-user" aria-hidden="true"></i>
 				          		<span class="label label-info">
-				          		<%
-				            		Persona p = (Persona)session.getAttribute("userLog");
-				            		if ( p != null ){
-				            			out.print( p.getNombre());
-				            		}	
-				            	%>
+				            		${sessionScope.userLog.nombre}
 				            	</span>
 			            	</a>
 			          	</li>

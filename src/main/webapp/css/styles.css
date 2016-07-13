@@ -129,6 +129,37 @@ body {
 	}
 }
 
+/* CALCULADORA
+********************************************/
+
+#calculadora input[type="text"]{
+	
+	font-size: 3em;
+}
+
+#calculadora select {
+	font-size: 3em;
+}
+
+
+#calculadora .resultado{
+	padding:1em;
+	border:1px solid green;
+	font-size: 1.2em;
+}
+
+
+/*	ERROR PAGE
+*********************************************/
+
+#errorPage{
+	  background-image: url("https://github.com/500");
+	
+	  height: 500px;
+	  background-repeat: no-repeat;
+}
+
+
 
 
 

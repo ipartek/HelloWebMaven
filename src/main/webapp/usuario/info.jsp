@@ -6,7 +6,7 @@
 	<form action = "#" method="post">
 	
 		<label for="nombre">Nombre:</label>
-		<input type="text" name="nombre"  value="<%=p.getNombre()%>">
+		<input type="text" name="nombre"  value=" ${sessionScope.userLog.nombre}">
 		<br><br>
 	
 	
@@ -14,11 +14,6 @@
 	
 	
 	</form>
-
-
-
-
-
 
 
 <%@ include file="../includes/footer.jsp"%>

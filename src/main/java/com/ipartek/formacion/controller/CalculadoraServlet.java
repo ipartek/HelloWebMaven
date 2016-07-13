@@ -11,36 +11,69 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CalculadoraServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
-	}
+
+	public static final int SUMA = 0;
+	public static final int RESTA = 1;
+	public static final int MULTIPLICA = 2;
+	public static final int DIVIDE = 3;
+
+	private Float op1, op2;
+	private int op = -1;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request,response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		int val1 = Integer.parseInt(request.getParameter("valor1"));
-		int val2 = Integer.parseInt(request.getParameter("valor2"));
-		String sum = request.getParameter("suma");
-		String rest = request.getParameter("resta");
-		String div = request.getParameter("division");
-		String mult = request.getParameter("multiplicacion");
-		String sel = request.getParameter("select");
+		String calculo = "No se ha podido realizar la operacion";
+
+		try {
+
+			// recoger parametros
+			String pop1 = (String) request.getParameter("op1").trim();
+			String pop2 = (String) request.getParameter("op2").trim();
+
+			// reemplazar "," por "."
+			pop1 = pop1.replace(",", ".");
+			pop2 = pop2.replace(",", ".");
+
+			op1 = Float.parseFloat(pop1);
+			op2 = Float.parseFloat(pop2);
+			op = Integer.parseInt((String) request.getParameter("op"));
+		} catch(NumberFormatException e){
+			calculo = "El formato de los operadores no es correcto";
+			e.printStackTrace();
+			
+		}catch (Exception e) {
+			calculo = "Fallo al operar con la Calculadora";
+			e.printStackTrace();
+		} 
+
+		switch (op) {
 		
-		
-		if(sel.equals(sum)){
-			int resul = val1 + val2;
+			case SUMA:
+				calculo = "Resultado: " + (op1 + op2);
+				break;
+			case DIVIDE:
+				calculo = "Resultado: " + (op1 / op2);
+				break;
+			case RESTA:
+				calculo = "Resultado: " + (op1 - op2);
+				break;
+			case MULTIPLICA:
+				calculo = "Resultado: " + (op1 * op2);
+				break;
+
+		default:
+			calculo = "Operacion no soportada";
+			break;
 		}
-		
+
+		request.setAttribute("calculo", calculo.replace(".", ","));
+		request.getRequestDispatcher("calculadora.jsp").forward(request, response);
+
 	}
 
 }

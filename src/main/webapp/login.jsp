@@ -1,7 +1,9 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+
 <%@ include file="includes/head.jsp"%>
 
+	
 
 	<%
 		String msg = (String)request.getAttribute("msg");
