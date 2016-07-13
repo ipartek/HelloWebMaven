@@ -23,25 +23,26 @@ public class PuntuacionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doProcess(request, response);
-	}
 	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArrayList listaUser = new ArrayList<Puntuacion>();
+		//Crear ArraList con 10 puntuaciones
+		ArrayList<Puntuacion> listaPuntuaciones = new ArrayList<Puntuacion>();
 		for (int i=0; i<10; i++){
-			listaUser.add(new Puntuacion(i, "usuario" + i, "memorion", Math.round (Math.random() * 10)));
+			listaPuntuaciones.add(new Puntuacion(i, "usuario" + i, "juego" + i, i));
 		}
 		
 		//guardar la tabla de Puntuaciones como atributo en request
-		request.setAttribute("tblPuntuaciones", listaUser);
+		request.setAttribute("puntuaciones", listaPuntuaciones);
+		
+		//forward  para ir a candidato/detalle.jsp
+		request.getRequestDispatcher("ejercicios/puntuaciones.jsp").forward(request, response);
+		
 		
 		
 	}

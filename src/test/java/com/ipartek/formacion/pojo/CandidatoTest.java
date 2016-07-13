@@ -46,7 +46,6 @@ public class CandidatoTest {
 
 	@Test	
 	public void testCandidato() {
-		fail("Not yet implemented");
 		//TODO probar test constructor		
 	}
 

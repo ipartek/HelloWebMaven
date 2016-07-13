@@ -1,6 +1,6 @@
 <%@ include file="../includes/head.jsp" %>
 
-<h1>InformaciÃ³n Usuario</h1>
+<h1>Informacónn Usuario</h1>
 
 <%
 	

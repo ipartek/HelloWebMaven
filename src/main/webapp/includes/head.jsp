@@ -2,6 +2,9 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<!-- Importamos los TAG de JSTL -->
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <!-- tipo documento es HTML5 -->
@@ -69,13 +72,12 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
+              	<li><a href="<%=Constantes.WEB_HOME%>hello">Servlet Hello</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>ejercicios/calculadora.jsp">Calculadora</a></li>
-                <li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ranking">JSTL-Puntuaciones</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG propio</a></li>
                 <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+               
               </ul>
             </li>
           </ul>

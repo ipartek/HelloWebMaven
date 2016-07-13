@@ -88,6 +88,18 @@ h1 {
 }
 
 
+/* TABLA
+**************************************************/  
+/* http://bootsnipp.com/snippets/featured/striped-table-30 */
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
 
-
+tr:hover {
+	background-color: #00FF99 !important;
+}
 
