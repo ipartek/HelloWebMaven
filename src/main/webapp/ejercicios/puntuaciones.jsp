@@ -4,28 +4,35 @@
 
 <%@ include file="../includes/head.jsp" %>
 
-     <div class="panel panel-success">
-        <div class="panel-heading"><h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Ranking de puntuaciones <span class="glyphicon glyphicon-info" aria-hidden="true"></span></h1></div>
+     <div class="panel panel-danger">
+        <div class="panel-heading"><h1><i class="fa fa-gamepad" aria-hidden="true"></i> Ranking de puntuaciones <i class="fa fa-gamepad" aria-hidden="true"></i>        </h1></div>
         <div class="panel-body">
 
 
 
 <!-- Tabla en HTML  -->
-<table>
-	<% int i= 0;
+<table class="table table-striped table-hover">
+	<thead class="thead-inverse">
+		<th style="width:40%">Usuario</th>
+		<th style="width:35%">Juego</th>
+		<th style="width:25%">Puntuacion</th>
+	</thead>
+	<tbody>
+	
+	<% 
 		ArrayList<Puntuacion> lista = (ArrayList<Puntuacion>)request.getAttribute("tblPuntuaciones");
 	   for ( Puntuacion p : lista ) {
-	   		i++;
+	   		
 	%>
-<tr>
-
-			<td>${requestScope.tblPuntuaciones.usuario}</td>
-			<td>${requestScope.tblPuntuaciones.juego}</td>
-			<td>${requestScope.tblPuntuaciones.puntuacion}</td>
-</tr>
+	<tr>
+		<td><%=p.getUsuario()%></td>
+		<td><%=p.getJuego()%></td>
+		<td><%=p.getPuntuacion()%></td>
+	</tr>
 	
 	<% } //final del for %>
-
+	
+</tbody>
 </table>
 
 </div>
@@ -33,14 +40,3 @@
 
 
 <%@ include file="../includes/footer.jsp" %>
-
-
-
-
-
-<form method="post" action="<%=Constantes.WEB_HOME %>ranking" class="form-signin">
-       	
-     <input type="text" name="op1" class="form-control" placeholder="Operando 1" value="${requestScope.puntos}">
-       
-        <button class="btn btn-lg btn-primary btn-block" type="submit">RANKING</button>
-      </form>

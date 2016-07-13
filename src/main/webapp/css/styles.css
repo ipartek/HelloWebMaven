@@ -126,5 +126,13 @@ body {
 }
 
 
+.thead-inverse th {
+  color: #fff;
+  background-color: #373a3c;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f2dede;
+}
 
 
