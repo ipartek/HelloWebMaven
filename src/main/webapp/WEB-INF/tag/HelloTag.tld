@@ -1,0 +1,18 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.2</jsp-version>
+	<short-name>hola</short-name>
+	<uri>com.ipartek.formacion.tag</uri>
+	<description>Ejemplo de Tag propio</description>
+	
+	<tag>
+		<name>holamundo</name>
+		<tag-class>com.ipartek.formacion.tag.HelloTag</tag-class>
+		<body-content>empty</body-content>
+		<info>Tag de prueba para aprender a hacer un HolaMundo</info>
+		<attribute>
+			<name>nombre</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+</taglib> 

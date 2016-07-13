@@ -58,16 +58,17 @@
             <li><a href="<%=Constantes.WEB_HOME %>candidato/list.jsp"><i class="fa fa-users" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME %>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>                      
             <li class="dropdown">
+            
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil" aria-hidden="true"></i>
                Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
-             	<li><a href="<%=Constantes.WEB_HOME %>hello"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Servlet Hello</a></li>
-                <li><a href="<%=Constantes.WEB_HOME %>ejercicios/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
+                <li class="dropdown-header">Ejercicios</li>
+             	<li><a href="<%=Constantes.WEB_HOME %>ejercicios/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
                 <li><a href="<%=Constantes.WEB_HOME %>ranking"><i class="fa fa-gamepad" aria-hidden="true"></i> JSTL-Puntuaciones</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li class="dropdown-header">Ejemplos</li>
+                <li><a href="<%=Constantes.WEB_HOME %>hello"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Servlet Hello</a></li>                
+                <li><a href="<%=Constantes.WEB_HOME %>ejercicios/ejemplo-tag.jsp"><i class="fa fa-tags" aria-hidden="true"></i> TAG propio</a></li>
               </ul>
             </li>
             <li><a href="#about">About</a></li>
