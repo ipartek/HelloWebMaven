@@ -40,10 +40,10 @@ public class PuntuacionServlet extends HttpServlet {
 			listaUser.add(new Puntuacion(i, "usuario" + i, "pokemon", Math.round(Math.random()*10)));
 		}
 		
-		//enviar el atributo resultado del cálculo
+		//enviar el atributo lista de puntuaciones
 		request.setAttribute("tablaPuntuaciones", listaUser);
 		
-		//ir a calculadora/calculadora.jsp		
+		//ir a ejercicios/puntuaciones.jsp	
 		request.getRequestDispatcher("ejercicios/puntuaciones.jsp").forward(request, response);
 			
 		

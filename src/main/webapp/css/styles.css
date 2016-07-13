@@ -184,3 +184,6 @@ body {
     transition: 0.5s;
     }
 
+tr:hover{
+	background-color: #00FF99 !important;
+}

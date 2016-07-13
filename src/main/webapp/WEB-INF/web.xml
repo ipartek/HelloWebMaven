@@ -64,17 +64,6 @@
     <servlet-name>LogOutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  <session-config>
-    <session-timeout>5</session-timeout>
-  </session-config>
-  <error-page>
-    <error-code>500</error-code>
-    <location>/error.jsp</location>
-  </error-page>
-  <error-page>
-    <error-code>404</error-code>
-    <location>/error-404.jsp</location>
-  </error-page>
   <servlet>
     <description></description>
     <display-name>PuntuacionServlet</display-name>
@@ -85,4 +74,26 @@
     <servlet-name>PuntuacionServlet</servlet-name>
     <url-pattern>/ranking</url-pattern>
   </servlet-mapping>
+  
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
+  
+  <error-page>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error-404.jsp</location>
+  </error-page>
+  
+  <jsp-config>
+	   <taglib> 
+		  <taglib-uri>com.ipartek.formacion.tag</taglib-uri> 
+		  <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location> 
+	  </taglib>
+  </jsp-config>
+ 
+  
 </web-app>
