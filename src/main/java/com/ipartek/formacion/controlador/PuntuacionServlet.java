@@ -35,20 +35,24 @@ public class PuntuacionServlet extends HttpServlet {
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
 		
-		
+		//crear ArrayList con 10 puntuaciones
 		ArrayList<Puntuacion> aPuntuaciones = new ArrayList<Puntuacion>();
-		for (int i=0;i<10;i++){
-			aPuntuaciones.add(new Puntuacion(i, "NombreUsuario"+i, "Juego"+i, 0.0));
+		for ( int i=0; i<10; i++ ){
+			aPuntuaciones.add(new Puntuacion(i, "NombreUsuario"+i, "Juego"+i, i));
 		}
+		
+		//guardar lista como atributo
 		request.setAttribute("puntuaciones", aPuntuaciones);
 		RequestDispatcher dispacher = this.getServletContext().getRequestDispatcher("/ejercicios/puntuaciones.jsp");
+		//se puede hacer request.getRequestDispatcher("/ejercicios/puntuaciones.jsp").forward(request,response);
+		//realizar el forward
 		try {
 			dispacher.forward(request, response);
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

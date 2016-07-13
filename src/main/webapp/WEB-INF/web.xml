@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>HelloWebMaven</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
@@ -75,6 +75,12 @@
     <error-code>404</error-code>
     <location>/error-404.jsp</location>
   </error-page>
+  <jsp-config>
+    <taglib>
+      <taglib-uri>com.ipartek.formacion.tag</taglib-uri>
+      <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location>
+    </taglib>
+  </jsp-config>
   <servlet>
     <description></description>
     <display-name>PuntuacionServlet</display-name>
@@ -84,5 +90,15 @@
   <servlet-mapping>
     <servlet-name>PuntuacionServlet</servlet-name>
     <url-pattern>/ranking</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlanetasServlet</display-name>
+    <servlet-name>PlanetasServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controlador.PlanetasServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlanetasServlet</servlet-name>
+    <url-pattern>/planetas</url-pattern>
   </servlet-mapping>
 </web-app>

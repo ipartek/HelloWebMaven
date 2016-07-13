@@ -1,6 +1,8 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<!-- Importamos los Tag de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <!-- tipo documento es HTML5 -->
@@ -37,6 +39,7 @@
 
 	<!-- Enlaces a las hojas de Estilos propia -->
 	<link rel="stylesheet" href="css/styles.css?v=2.0">
+	<link rel="stylesheet" href="css/tables.css?v=2.0">
 
  	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -65,16 +68,19 @@
             <li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>/candidato/list.jsp">Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>/libro/listLibros.jsp">Libros</a></li>
-            <li><a href="<%=Constantes.WEB_HOME%>/calculadora/calcu.jsp">Calculadora</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="ranking">JSTL</a></li>
-                <li><a href="#">Nada</a></li>
-                <li><a href="#">Nada</a></li>
+                <li><a href="hello">Servlet Hello</a></li>
                 <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Nada</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>/calculadora/calcu.jsp">Calculadora</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="ranking">JSTL-Puntuaciones</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<%=Constantes.WEB_HOME%>/ejercicios/ejemplo-tag.jsp">Ejemplo Tag</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="planetas">Planetas</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="#">Nada</a></li>
               </ul>
             </li>
