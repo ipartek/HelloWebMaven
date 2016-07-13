@@ -7,7 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.Dispatch;
+
+import com.ipartek.formacion.pojo.Persona;
 
 /**
  * Servlet implementation class LoginServlet
@@ -37,17 +40,28 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
+		
+	
 	
 				
 					try {
+						 //recogo la sesion para ese usuario
+						 HttpSession session = request.getSession(true);
 						//recoger parametros
 						String pUsuario = request.getParameter("usuario"); 
 						String pPassword = request.getParameter("password"); 
 						
 						//comprobar usuario valido
 						if ( USUARIO_NAME_ADMIN.equals(pUsuario)&& (USUARIO_PASS_ADMIN.equals(pPassword)) ){
+							
+						
+							//Todo recuperar de la BD
+							//guardar usuario en sesion
+							Persona p = new Persona("Admin", "Gorriti", "Urrutia", "111111H", "admin@ipartek.com");
+							session.setAttribute("usuario_logeado", p);
+							
 							//Ir a Backoffice
-							dispatcher = request.getRequestDispatcher("backoffice/index.jsp");
+							dispatcher = request.getRequestDispatcher("index.jsp");
 						}else{				
 							//guardar mensaje como attributo
 							request.setAttribute("msg", "Credenciales incorrectas");

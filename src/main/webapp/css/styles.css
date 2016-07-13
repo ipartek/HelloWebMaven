@@ -70,8 +70,36 @@ h1 {
 
 
 
+/* CALCULADORA
+********************************************/
+
+#calculadora input[type="text"]{
+	
+	font-size: 3em;
+}
+
+#calculadora select {
+	font-size: 3em;
+}
 
 
+#calculadora .resultado{
+	padding:1em;
+	border:1px solid green;
+	font-size: 1.2em;
+}
 
+
+/* TABLA
+********************************************/
+
+/* http://bootsnipp.com/snippets/featured/striped-table-30 */
+.custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
 
 
