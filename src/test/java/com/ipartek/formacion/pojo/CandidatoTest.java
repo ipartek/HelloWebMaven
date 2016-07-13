@@ -45,8 +45,7 @@ public class CandidatoTest {
 	}
 
 	@Test	
-	public void testCandidato() {
-		fail("Not yet implemented");
+	public void testCandidato() {		
 		//TODO probar test constructor		
 	}
 
@@ -72,7 +71,7 @@ public class CandidatoTest {
 		
 		try{
 			c.setNota(Candidato.NOTA_MINIMA - 1);  //asigno al Candidato una nota de -1 (MINIMA-1)
-			fail("No se lanz� CandidatoException"); //ponemos esta linea porque si no funciona la ejecutara
+			fail("No se lanza CandidatoException"); //ponemos esta linea porque si no funciona la ejecutara
 		}catch( CandidatoException e){
 			assertEquals(CandidatoException.EXCEPTION_RANGO_NOTA_MIN, e.getMessage());
 		}

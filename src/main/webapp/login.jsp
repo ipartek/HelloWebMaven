@@ -1,5 +1,7 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,6 +43,10 @@
 <body>
 
 <div class="container">
+
+	<c:if test="true">
+		Funciona TAGLIB
+	</c:if> 
 
 	<div class="row">
 

@@ -44,7 +44,6 @@
     <servlet-name>LogOutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <description></description>
     <display-name>CalculadoraServlet</display-name>
@@ -55,23 +54,30 @@
     <servlet-name>CalculadoraServlet</servlet-name>
     <url-pattern>/calcular</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PuntuacionesServlet</display-name>
+    <servlet-name>PuntuacionesServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PuntuacionesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PuntuacionesServlet</servlet-name>
+    <url-pattern>/ranking</url-pattern>
+  </servlet-mapping>
   
-  <!-- TimeOut Session -->
+  
   <session-config>
     <session-timeout>1</session-timeout>
   </session-config>
   
-  
-  <!-- Paginas de Errores -->
   <error-page>
-  	<error-code>500</error-code>  	
-  	<location>/error.jsp</location>
+    <error-code>500</error-code>
+    <location>/error.jsp</location>
   </error-page>
   
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/error-404.jsp</location>
+    <error-code>404</error-code>
+    <location>/error-404.jsp</location>
   </error-page>
-  
   
 </web-app>
