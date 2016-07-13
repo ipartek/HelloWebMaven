@@ -55,6 +55,7 @@
 
 				<table class="table table-striped custab">
 					<tbody>
+					
 						<c:forEach var="a" items="${requestScope.tblPuntuaciones}">
 
 							<tr>

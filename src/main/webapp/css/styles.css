@@ -102,4 +102,7 @@ h1 {
     transition: 0.5s;
     }
 
+#puntuaciones tr:hover {
+	background-color: #00FF99;
+}
 
