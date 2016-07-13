@@ -35,11 +35,11 @@ public class PlanetaServlet extends HttpServlet {
 		
 		ArrayList<Planeta> listaPlanetas = new ArrayList<Planeta>();
 		
-		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/1/1e/Kepler22b-artwork.jpg", "Kepler22b", "620"));
-		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/2/2a/Nh-pluto-in-true-color_2x_JPEG-edit-frame.jpg", "Pluto", "320"));
-		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/1/1e/Kepler22b-artwork.jpg", "c", "620"));
-		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/1/1e/Kepler22b-artwork.jpg", "d", "620"));
-		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/1/1e/Kepler22b-artwork.jpg", "ee", "620"));
+		listaPlanetas.add(new Planeta("http://1.bp.blogspot.com/-FYA_RI8Jz38/U53z0KW0HOI/AAAAAAAAAEY/v3t1soQjhAM/s1600/1.jpg", "Kepler-22 b", "620"));
+		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/1/19/Planet_around_HR_8799.jpg", "HR 8799 b", "129"));
+		listaPlanetas.add(new Planeta("https://upload.wikimedia.org/wikipedia/commons/a/a2/ESO_OGLE-2005-BLG-390Lb.jpg", "OGLE-05-390L b", "6500"));
+		listaPlanetas.add(new Planeta("http://astronaut.com/wp-content/uploads/2015/08/Screen-Shot-2015-08-01-at-9.29.50-AM.png", "Gliese 581 c", "6,21"));
+		listaPlanetas.add(new Planeta("https://s-media-cache-ak0.pinimg.com/564x/9e/03/6d/9e036dce0c76967940954b7a4a045930.jpg", "1SWASP J1407 b", "420"));
 			
 		
 		

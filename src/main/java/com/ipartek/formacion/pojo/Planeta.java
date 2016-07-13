@@ -9,7 +9,7 @@ public class Planeta {
 	 * Constructor de la clase Planeta. Atributos:
 	 * @param img {@code String}
 	 * @param nombre {@code String}
-	 * @param distancia {@code String}
+	 * @param distancia {@code String} en años luz
 	 */
 	public Planeta(String img, String nombre, String distancia) {
 		super();

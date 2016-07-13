@@ -16,9 +16,9 @@
 		<c:forEach var="p" items="${requestScope.Planetas }">
 
 			<tr>
-				<td><img src="${p.img}" height="250" width="250"> </td>
+				<td><img src="${p.img}" width="75%"> </td>
 				<td>${p.nombre}</td>
-				<td>${p.distancia}</td>
+				<td>${p.distancia} años luz</td>
 			</tr>
 	</c:forEach>
 	
