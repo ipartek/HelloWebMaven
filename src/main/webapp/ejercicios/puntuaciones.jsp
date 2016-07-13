@@ -6,7 +6,8 @@
 
 	<h1>Mejores Puntuaciones</h1>
 
-	<table>
+	<h2>JAVA</h2>
+	<table class="table table-striped custab">
 	<tbody>
 	<%
 		ArrayList<Puntuacion> lista =  (ArrayList<Puntuacion>)request.getAttribute("puntuaciones");
@@ -21,6 +22,21 @@
 	<% 		
 		}//end for
 	%>
+	</tbody>
+	</table>
+
+	<hr>
+
+	<h2>JSTL</h2>
+	<table class="table table-striped custab">
+	<tbody>
+		<c:forEach var="p" items="${requestScope.puntuaciones}">
+			<tr>
+				<td>${p.usuario}</td>
+				<td>${p.juego}</td>
+				<td>${p.puntuacion}</td>
+			</tr>
+		</c:forEach>				
 	</tbody>
 	</table>
 

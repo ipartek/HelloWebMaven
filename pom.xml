@@ -52,7 +52,7 @@
 			<version>${javax.servlet.version}</version>
 		</dependency>
 
-
+		<!-- JSTL Java Servlet Tag Library -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
