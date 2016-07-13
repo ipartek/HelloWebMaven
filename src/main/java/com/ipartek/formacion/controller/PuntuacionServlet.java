@@ -43,7 +43,6 @@ public class PuntuacionServlet extends HttpServlet {
 		}
 		
 		
-		
 		request.setAttribute("tablaPuntuaciones", userList);
 		request.getRequestDispatcher("ejercicios/puntuaciones.jsp").forward(request, response);
 	
