@@ -32,13 +32,12 @@ public class PuntuacionServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		ArrayList<Puntuacion> listaUser = new ArrayList<Puntuacion>();
+		ArrayList<Puntuacion> lista = new ArrayList<Puntuacion>();
 		for (int i = 0; i< 10; i++){
-			listaUser.add(new Puntuacion(i,"usuario"+i,"memorion",Math.round(Math.random()*10)));
+			lista.add(new Puntuacion(i,"usuario"+i,"memorion",Math.round(Math.random()*10)));
 		}
-		request.setAttribute("tblPuntuaciones", listaUser);
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("ejercicios/puntuaciones.jsp");
-		dispatcher.forward(request, response);
+		request.setAttribute("tblPuntuaciones", lista);
+		request.getRequestDispatcher("ejercicios/puntuaciones.jsp").forward(request, response);
 	}
 	
 }
