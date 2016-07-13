@@ -65,6 +65,7 @@
                 <li class="dropdown-header">Ejercicios</li>
              	<li><a href="<%=Constantes.WEB_HOME %>ejercicios/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
                 <li><a href="<%=Constantes.WEB_HOME %>ranking"><i class="fa fa-gamepad" aria-hidden="true"></i> JSTL-Puntuaciones</a></li>
+                <li><a href="<%=Constantes.WEB_HOME %>planetas"><i class="fa fa-star-o" aria-hidden="true"></i> Planetas</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Ejemplos</li>
                 <li><a href="<%=Constantes.WEB_HOME %>hello"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Servlet Hello</a></li>                
