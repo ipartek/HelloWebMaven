@@ -80,6 +80,12 @@
                
               </ul>
             </li>
+             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejemplos <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li><a href="<%=Constantes.WEB_HOME%>ejemplos/planetas">Planetas</a></li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -92,7 +98,7 @@
             	</span></a>
           	</li>
           <li class="active">
-            	<a href="<%=Constantes.WEB_HOME%>/logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar</a>            	
+            	<a href="<%=Constantes.WEB_HOME%>logout"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp;Cerrar</a>            	
             </li>
           </ul>
         </div><!--/.nav-collapse -->

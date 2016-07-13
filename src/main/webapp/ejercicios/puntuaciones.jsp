@@ -39,7 +39,7 @@
 	<thead>
 		<th style="width:33%; text-align:center"><strong>Nombre Usuario</strong></th>
 		<th style="width:33%; text-align:center"><strong>Juego</strong></th>
-		<th style="width:33%; text-align:center"><strong>PuntuaciÃ³n</strong></th>
+		<th style="width:33%; text-align:center"><strong>Puntuación</strong></th>
 	</thead>
 	<tbody>
 		<c:forEach var="p" items="${requestScope.puntuaciones}">

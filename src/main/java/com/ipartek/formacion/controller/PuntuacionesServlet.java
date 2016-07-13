@@ -14,7 +14,7 @@ import com.ipartek.formacion.pojo.Puntuacion;
 /**
  * Servlet implementation class PuntuacionServlet
  */
-public class PuntuacionServlet extends HttpServlet {
+public class PuntuacionesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
