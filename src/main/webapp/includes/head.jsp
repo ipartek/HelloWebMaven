@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/styles.css?v=2.0">
+	<link rel="stylesheet" href="css/styles.css">
 	<base href="<%=Constantes.WEB_HOME%>">
 	
 	<meta name="description" content="App Web con JEE">
@@ -50,9 +50,9 @@
 						<li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							aria-expanded="false">Ejercicios <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="<%=Constantes.WEB_HOME%>ejercicios/puntuaciones.jsp">Puntuaciones</a></li>
+								<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
 								<li><a href="#">Another action</a></li>
 								<li><a href="#">Something else here</a></li>
 								<li role="separator" class="divider"></li>

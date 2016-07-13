@@ -2,7 +2,6 @@
 
 
 <%@ include file="includes/head.jsp"%>
-
 	
 
 	<%

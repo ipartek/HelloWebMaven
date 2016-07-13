@@ -1,6 +1,7 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -34,15 +35,16 @@ public class PuntuacionServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		double puntuacionAleat =  Math.round(Math.random()*10);
 		
-		ArrayList<Puntuacion> userList = new ArrayList<Puntuacion>();
+		ArrayList<Puntuacion> userList = userList = new ArrayList<Puntuacion>();
 		
+			
 		for(int i=0;i<10;i++){
-			userList.add(new Puntuacion(i, "usuario"+i, "juego de puntuaciones", puntuacionAleat));
+			double puntuacionAleat =  Math.round(Math.random()*10);
+			userList.add(new Puntuacion(i, "usuario"+i, "juego de puntuaciones", puntuacionAleat+1));
+				
 		}
-		
-		
+			
 		request.setAttribute("tablaPuntuaciones", userList);
 		request.getRequestDispatcher("ejercicios/puntuaciones.jsp").forward(request, response);
 	
