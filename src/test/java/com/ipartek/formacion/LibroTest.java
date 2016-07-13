@@ -15,8 +15,8 @@ public class LibroTest {
 		Libro l1 = new Libro(titulo);
 		
 		assertTrue( titulo.equals( l1.getTitulo() ) );
-		assertTrue( l1.getTitulo().equals("anonimo"));
-		assertTrue( l1.getIsbn().equals(""));
+		assertTrue( l1.getAutor().equals("anonimo"));
+		assertTrue( l1.getIsbn().equals("Desconocido"));
 		assertTrue( l1.getPaginas() == 0);
 		
 		

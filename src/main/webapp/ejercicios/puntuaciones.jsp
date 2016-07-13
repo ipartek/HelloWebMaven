@@ -26,4 +26,24 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<h2 class="form-signin-heading">Puntuaciones JSTL</h2>
+		<table border="1">
+			<thead>
+				<th style="width:40%">Usuario</th>
+				<th style="width:35%">Juego</th>
+				<th style="width:25%">Puntuación</th>
+			</thead>
+			<tbody>
+				<c:forEach var="puntuacion" items="${requestScope.tblPuntuaciones}">
+				<tr>
+					<td>${puntuacion.usuario}</td>
+					<td>${puntuacion.juego}</td>
+					<td>${puntuacion.puntuacion}</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
+	
 <%@ include file="../includes/footer.jsp" %>

@@ -1,6 +1,8 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <!-- tipo documento es HTML5 -->
 
@@ -68,6 +70,7 @@
               <ul class="dropdown-menu">
                 <li><a href="<%=Constantes.WEB_HOME%>puntuacion"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Puntuaciones</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp"><i class="fa fa-tag" aria-hidden="true"></i> Tag Propio</a></li>
               </ul>
 			</li>
           </ul>

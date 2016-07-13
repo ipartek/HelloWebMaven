@@ -45,9 +45,8 @@ public class CandidatoTest {
 	}
 
 	@Test	
-	public void testCandidato() {
-		fail("Not yet implemented");
-		//TODO probar test constructor		
+	public void testCandidato() throws CandidatoException {
+		Candidato c1 = new Candidato("Prueba", "apellido1", "apellido2", "2211111H", "prueba@gorriti.com", Candidato.NOTA_MINIMA);
 	}
 
 	@Test
