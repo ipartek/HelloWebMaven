@@ -51,8 +51,15 @@
 			<artifactId>servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
 		</dependency>
+	
+	<!-- JSTL Java Servlet Tag Library -->
+	<dependency>
+	    <groupId>jstl</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
 
-	</dependencies>
+	</dependencies>	
 
 
 </project>

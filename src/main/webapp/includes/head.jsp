@@ -1,6 +1,9 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<!-- Importamos los tags de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <!-- tipo documento es HTML5 -->
 
@@ -60,7 +63,7 @@
               <ul class="dropdown-menu">
              	<li><a href="<%=Constantes.WEB_HOME %>hello"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Servlet Hello</a></li>
                 <li><a href="<%=Constantes.WEB_HOME %>ejercicios/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
-                <li><a href="<%=Constantes.WEB_HOME %>ranking"><i class="fa fa-info" aria-hidden="true"></i> JSTL-Puntuaciones</a></li>
+                <li><a href="<%=Constantes.WEB_HOME %>ranking"><i class="fa fa-gamepad" aria-hidden="true"></i> JSTL-Puntuaciones</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
