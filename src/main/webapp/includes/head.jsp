@@ -58,15 +58,13 @@
             <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp">Calculadora</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>hello">Servlet Hello</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+            	<li><a href="<%=Constantes.WEB_HOME%>libro/listLibro.jsp">Libros</a></li>
+            	<li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp">Calculadora</a></li>
+            	<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
               </ul>
             </li>
           </ul>

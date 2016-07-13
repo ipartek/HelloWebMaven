@@ -2,9 +2,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@ include file="../includes/head.jsp" %>
 
-<h1>Puntuaciones</h1>
 
-	<table border=1>
+
+<div class="row col-md-6 col-md-offset-2 custyle">
+<h1>Puntuaciones</h1>
+	<table class="table table-striped custab">
 		<thead>
 			<th style="width:40%">Usuario</th>
 			<th style="width:35%">Juego</th>
@@ -27,4 +29,5 @@
 		%>
 		</tbody>
 	</table>
+</div>
 <%@ include file="../includes/footer.jsp" %>
