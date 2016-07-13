@@ -17,9 +17,13 @@
 		</thead>
 		<tbody>
 			<!-- Escribimos una fila por cada objeto puntuación del ArrayList -->
-			<%ArrayList lista = (ArrayList)request.getAttribute("tblPuntuaciones");%>
+			<%
+				ArrayList<Puntuacion> lista = (ArrayList)request.getAttribute("tblPuntuaciones");
+				if (lista!=null){
+					
+			%>
 			<tr>
-				<%for ( Puntuacion p : lista ) { %>
+				<%for (Puntuacion p : lista ) { %>
 				<!-- Accedemos a las propiedades del objeto Puntuacion -->
 				<!-- Internamente se esta llamando al método getNombreUsuario -->
 				<td><%=p.getUsuario()%></td>
@@ -27,7 +31,9 @@
 				<td align="right"><%=p.getPuntuacion() %></td>
 				<% } %>
 			</tr>
-			
+			<%
+				}
+			%>
 		</tbody>
 	</table>
 	<br />

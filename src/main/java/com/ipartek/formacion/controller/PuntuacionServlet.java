@@ -32,7 +32,7 @@ public class PuntuacionServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		ArrayList listaUser = new ArrayList<Puntuacion>();
+		ArrayList<Puntuacion> listaUser = new ArrayList<Puntuacion>();
 		for (int i = 0; i< 10; i++){
 			listaUser.add(new Puntuacion(i,"usuario"+i,"memorion",Math.round(Math.random()*10)));
 		}
