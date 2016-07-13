@@ -73,6 +73,7 @@
                 <li><a href="<%=Constantes.WEB_HOME%>hello">Servlet Hello</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>ejercicios/calculadora.jsp">Calculadora</a></li>               
                 <li><a href="<%=Constantes.WEB_HOME%>ranking">JSTL-Puntuaciones</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG propio</a></li>
               </ul>
             </li>
           </ul>

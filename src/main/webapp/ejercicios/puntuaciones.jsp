@@ -29,7 +29,7 @@
 
 	<h2>JSTL</h2>
 	<table class="table table-striped custab">
-	<tbody>
+	<tbody>		
 		<c:forEach var="p" items="${requestScope.puntuaciones}">
 			<tr>
 				<td>${p.usuario}</td>
