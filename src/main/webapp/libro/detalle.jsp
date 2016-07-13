@@ -11,11 +11,6 @@
 
 %>
 
-<%
- Object o = null;
- o.toString();
-%>
-
 ISBN: <%=l.getIsbn() %><br>
 Titulo: <%=l.getTitulo() %><br>
 Autor: <%=l.getAutor() %><br>
