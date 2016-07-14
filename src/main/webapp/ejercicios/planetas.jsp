@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.ipartek.formacion.pojo.Puntuacion"%>
 <%@ include file="../includes/head.jsp" %>
 
 
@@ -9,20 +11,19 @@
 	<thead>
 	</thead>
 	<tbody>
-	
-	<%
-		ArrayList<Planeta> lista =  (ArrayList<Planeta>)request.getAttribute("planetas");
-		for( Puntuacion p : lista ){
+			
+		<c:forEach var="p" items="${requestScope.planetas}">
+		<tr>
+			<td align="center"><a href="${p.img}">${p.nombre}</a></td>
+			<td align="center">${p.nombre}<br> ${p.distancia} UA</td>
+			
+		</tr>	
+		</c:forEach>	
 		
-	%>
-	<tr>
-			<td aling="center"><%=p.getNombreUsuario()%></td>
-			<td><%=p.getJuego()%></td>
-			<td><%=p.getPuntuacion()%></td>
-		</tr>		
 	
 	
 	</tbody>
+</table>
 
 
 </div>

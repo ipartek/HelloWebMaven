@@ -28,12 +28,12 @@ public class PlanetasServlet extends HttpServlet {
 		Planeta saturno = new Planeta("http://casanchi.com/ast/anillos00.jpg", "saturno", 8.5f);
 	 
 		//crear ArrayList con planetas
-		ArrayList<Planeta> listaPlanetas =  ArrayList<Planeta>();
+		ArrayList<Planeta> listaPlanetas = new ArrayList<Planeta>();
 		listaPlanetas.add(jupiter);
 		listaPlanetas.add(marte);
 		listaPlanetas.add(saturno);
 		
-		//guardar la tabla de Puntuaciones como atributo en request
+		//guardar la tabla de Puntuaciones listaPlanetas como atributo en request con el id=planetas
 		request.setAttribute("planetas", listaPlanetas);
 		
 		//forward  para ir a planetas.jsp
