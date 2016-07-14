@@ -69,6 +69,7 @@
             	<li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp">Calculadora</a></li>
             	<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
             	<li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">Tag Propio</a></li>
+            	<li><a href="<%=Constantes.WEB_HOME%>planeta">Planetas</a></li>
               </ul>
             </li>
           </ul>
