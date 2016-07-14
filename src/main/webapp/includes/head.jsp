@@ -68,9 +68,10 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="<%=Constantes.WEB_HOME%>puntuacion"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Puntuaciones</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>calculadora/calculadora.jsp"><i class="fa fa-calculator" aria-hidden="true"></i> Calculadora</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>puntuacion"><i class="fa fa-hand-o-up" aria-hidden="true"></i> Puntuaciones</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp"><i class="fa fa-tag" aria-hidden="true"></i> Tag Propio</a></li>
+                <li><a href="<%=Constantes.WEB_HOME%>planetas"><i class="fa fa-globe" aria-hidden="true"></i> Planetas</a></li>
               </ul>
 			</li>
           </ul>

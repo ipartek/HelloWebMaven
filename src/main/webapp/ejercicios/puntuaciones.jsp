@@ -5,7 +5,7 @@
 <%@ include file="../includes/head.jsp" %>
 	<div class="wrapper">
 		<h2 class="form-signin-heading">Puntuaciones</h2>
-		<table border="1">
+		<table border="1" class="puntuaciones">
 			<thead>
 				<th style="width:40%">Usuario</th>
 				<th style="width:35%">Juego</th>
