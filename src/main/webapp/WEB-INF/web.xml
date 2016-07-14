@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>HelloWebMaven</display-name>
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
@@ -75,13 +75,20 @@
     <servlet-name>PuntuacionServlet</servlet-name>
     <url-pattern>/ranking</url-pattern>
   </servlet-mapping>
-  
-  <jsp-config> 
-        <taglib> 
-               <taglib-uri>com.ipartek.formacion.tag</taglib-uri> 
-               <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location> 
-        </taglib> 
-</jsp-config>
-  
-  
+  <jsp-config>
+    <taglib>
+      <taglib-uri>com.ipartek.formacion.tag</taglib-uri>
+      <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  <servlet>
+    <description></description>
+    <display-name>PlanetaServlet</display-name>
+    <servlet-name>PlanetaServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PlanetaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlanetaServlet</servlet-name>
+    <url-pattern>/planeta</url-pattern>
+  </servlet-mapping>
 </web-app>

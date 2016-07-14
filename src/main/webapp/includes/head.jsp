@@ -55,7 +55,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuaciones</a></li>
 								<li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG propio</a></li>
-								<li><a href="#">Something else here</a></li>
+								<li><a href="<%=Constantes.WEB_HOME%>planeta">Planetas</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="#">Separated link</a></li>
 								<li role="separator" class="divider"></li>
