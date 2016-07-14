@@ -62,6 +62,75 @@ table {
 
 /* NUESTROS ESTILOS
 ******************************************/
+
+.mejores{
+	background: #012B39;
+  border-radius: 0.25em;
+  margin: 1%;
+  width:70%;
+  font-family: arial;
+  color: white;
+  text-align: center;
+}
+
+.users {
+  background: #012B39;
+  border-radius: 0.25em;
+  border-collapse: collapse;
+  margin: 1%;
+  width:70%;
+  font-family: arial;
+  
+}
+.users th {
+  border-bottom: 1px solid #364043;
+  color: #E2B842;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+.users td {
+  color: #fff;
+  padding: 0.65em 1em;
+}
+
+.users tbody tr {
+  transition: background 0.25s ease;
+}
+.users tbody tr:hover {
+  background: #014055;
+}
+
+
+
+
+.calculadora{
+	 width:400px;
+  	height:400px;
+  background:#fdfdfd;
+padding:25px;
+margin-left:auto;
+margin-right:auto;
+  margin-top:50px;
+border:1px solid #cecece;
+-webkit-box-shadow: 0px 0px 13px rgba(50, 50, 50, .2);
+-moz-box-shadow:    0px 0px 13px rgba(50, 50, 50, .2);
+box-shadow:         0px 0px 13px rgba(50, 50, 50, .2);
+}
+
+.calculadora imput[type="number"]{
+	width: 40px;
+	heigth:60px;
+}
+
+.calculadora select{
+	width: 100px;
+	heigth:100px;
+}
+
+.calch1{
+	text-align: center;
+}
+
 .error{
 	text-align: center;
 	color: red;

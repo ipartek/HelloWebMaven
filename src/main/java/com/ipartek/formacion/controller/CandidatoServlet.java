@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.junit.runner.Request;
-
 import com.ipartek.formacion.pojo.Candidato;
 import com.ipartek.formacion.pojo.exception.CandidatoException;
 
@@ -15,33 +13,33 @@ import com.ipartek.formacion.pojo.exception.CandidatoException;
  * Servlet implementation class CandidatoServlet
  */
 public class CandidatoServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
+   
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// recoger parametro
-		String parametroId=request.getParameter("id");
 		
-		//TODO buscar en base de datos el candidato
+		//recoger parametro
+		String parametroId = request.getParameter("id");
 		
-		// crear candidato
-		Candidato c= null;
+		//TODO buscar en BBDD el Candidato
+		
+		//crear Candidato
+		Candidato c = null;
 		try{
-			 c = new Candidato("pepito"+ parametroId,"dos", "palotes", "dni", "email", 6);	
-		}catch(CandidatoException e){
+			 c = new Candidato("Pepito" + parametroId , "Tres", "Palotes", "dni", "email", 5 );
+		}catch( CandidatoException e){
 			//TODO enviar a pagina de error
 			e.printStackTrace();
 		}
-		
-		
-		//guardar atributo <candidato> en request
+		//guardar atributo<Candidato> en request
 		request.setAttribute("candidato", c);
-		
-		//ir a detalle.jsp
-		
+				
+		//ir a candidato/detalle.jsp
 		request.getRequestDispatcher("candidato/detalle.jsp").forward(request, response);
 	}
 
