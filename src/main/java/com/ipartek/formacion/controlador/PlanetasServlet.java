@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.pojo.Puntuacion;
 
@@ -17,6 +18,9 @@ import com.ipartek.formacion.pojo.Puntuacion;
 public class PlanetasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	public static final String IMG_MERCURIO = "/img/mercurio.png";
+	public static final String DIST_MERCURIO = "91.690.000";
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -24,10 +28,10 @@ public class PlanetasServlet extends HttpServlet {
 		
 		String s = "hola";
 		ArrayList<Planeta> aPuntuaciones = new ArrayList<Planeta>();
-		aPuntuaciones.add(new Planeta("https://es.wikipedia.org/wiki/Sistema_solar#/media/File:Mercury_in_color_-_Prockter07_centered.jpg", "Mercurio", "91.690.000"));
+		aPuntuaciones.add(new Planeta(IMG_MERCURIO, "Mercurio", "91.690.000"));
 		
 		
-		request.setAttribute("planetas", s);
+		request.setAttribute("planetas", aPuntuaciones);
 		
 		request.getRequestDispatcher("ejercicios/planetas.jsp").forward(request, response);
 	}
