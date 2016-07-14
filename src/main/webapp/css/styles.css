@@ -138,4 +138,13 @@ body {
   background-color: #f2dede;
 }
 
+#planetas tbody tr:hover {
+  background-color: #d9edf7;
+}
+
+#planetas tbody td{
+	font-size: x-large;
+	vertical-align: middle;
+}
+
 

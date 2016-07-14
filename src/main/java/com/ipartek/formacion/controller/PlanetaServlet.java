@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.pojo.Planeta;
-import com.ipartek.formacion.pojo.Puntuacion;
 
 /**
  * Servlet implementation class PlanetaServlet
@@ -21,6 +20,9 @@ public class PlanetaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String buscar = (String)request.getParameter("buscar");
+		
 		doProcess(request, response);
 	}
 
