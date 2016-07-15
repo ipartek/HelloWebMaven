@@ -14,7 +14,7 @@
 			
 		<c:forEach var="p" items="${requestScope.planetas}">
 		<tr>
-			<td align="center"><a href="${p.img}">${p.nombre}</a></td>
+			<td align="left"><IMG SRC="${p.img}"></td>
 			<td align="center">${p.nombre}<br> ${p.distancia} UA</td>
 			
 		</tr>	
