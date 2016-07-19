@@ -92,13 +92,13 @@
     </taglib>
   </jsp-config>
   <servlet>
-    <description>Ejercicio de Planetas</description>
-    <display-name>PlanetasServlet</display-name>
-    <servlet-name>PlanetasServlet</servlet-name>
-    <servlet-class>com.ipartek.formacion.controller.PlanetasServlet</servlet-class>
+    <description>EControlador para soportar operaciones CRUD para Planetas</description>
+    <display-name>PlanetServlet</display-name>
+    <servlet-name>PlanetServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PlanetServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PlanetasServlet</servlet-name>
-    <url-pattern>/planetas</url-pattern>
+    <servlet-name>PlanetServlet</servlet-name>
+    <url-pattern>/planets</url-pattern>
   </servlet-mapping>
 </web-app>
