@@ -14,6 +14,17 @@ public class Planeta {
 		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
 	}
 
+	public Planeta(String nombre) {
+	    this();
+		this.nombre = nombre;		
+	}
+
+	public Planeta(String nombre, int id) {
+	    this();
+	    this.id = id;
+		this.nombre = nombre;		
+	}
+	
 
 	public long getId() {
 		return id;
