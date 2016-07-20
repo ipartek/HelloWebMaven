@@ -2,5 +2,9 @@
 
 // Esto no es JAVA
 
-
-console.info("Esto es un comentario que saldra por consola");
+$(document).ready(function() {
+	console.info("Documento READY");
+	
+	//ligamos plugin de DataTables a todas las tablas que tengan clas="tabla"
+    $('.tabla').DataTable();
+} );

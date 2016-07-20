@@ -9,9 +9,9 @@
 	ArrayList<Planeta> lPlanetas = (ArrayList<Planeta>) request.getAttribute("planetas");
 	if (lPlanetas != null){
 		for(Planeta l: lPlanetas){
-			l.getImg();
+			l.getImagen();
 			l.getNombre();
-			l.getDistancia();
+			
 		}
 	}
 %>

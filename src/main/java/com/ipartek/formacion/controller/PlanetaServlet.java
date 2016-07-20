@@ -24,7 +24,7 @@ public class PlanetaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		listaPlanetas.add(new Planeta("img", "planeta", "muuuuuy lejos"));
+		listaPlanetas.add(new Planeta());
 		
 		
 		//enviar el atributo lista de planetas

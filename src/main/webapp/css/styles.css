@@ -187,3 +187,9 @@ body {
 tr:hover{
 	background-color: #00FF99 !important;
 }
+
+
+table tr td img{
+	width: 50px;
+	high: 50px;
+}
