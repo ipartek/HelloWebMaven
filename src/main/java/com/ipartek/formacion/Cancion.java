@@ -12,6 +12,7 @@ public class Cancion {
 		this.nombre = nombre;
 		this.duracion = "00:00";
 		this.genero = "";
+		
 	}
 
 	public String getNombre() {

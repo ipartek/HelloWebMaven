@@ -11,7 +11,7 @@ public class Planeta {
 	
 	
 	public Planeta() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 
@@ -20,6 +20,12 @@ public class Planeta {
 		this.img = img;
 		this.setNombre(nombre);
 		this.distancia = distancia;
+	}
+
+
+	public Planeta(String nombre) {
+		this();
+		this.setNombre(nombre);
 	}
 
 

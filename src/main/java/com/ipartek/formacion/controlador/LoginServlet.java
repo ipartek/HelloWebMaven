@@ -22,7 +22,6 @@ public class LoginServlet extends HttpServlet {
 	// credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
-	private static final String PASSWORD_ADMIN = "administrador";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -56,7 +55,7 @@ public class LoginServlet extends HttpServlet {
 		
 			//comprobar usuario valido
 			if (USUARIO_NAME_ADMIN.equals(pUsuario) &&
-				PASSWORD_ADMIN.equals(pPassword)){
+					USUARIO_PASS_ADMIN.equals(pPassword)){
 				
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
