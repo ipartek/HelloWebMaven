@@ -2,13 +2,28 @@ package com.ipartek.formacion.pojo;
 
 public class Planeta {
 	
-	public String nombre,img,distancia;
+	private int id;
+	private String nombre,img,distancia;
 
-	public Planeta(String nombre, String img, String distancia) {
+	public Planeta() {
 		super();
+		this.id = -1;
+		this.nombre = "";
+		this.img = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+		this.distancia = "";
+	}
+
+	public Planeta(String nombre) {
+		this();
 		this.nombre = nombre;
-		this.img = img;
-		this.distancia = distancia;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -33,6 +48,12 @@ public class Planeta {
 
 	public void setDistancia(String distancia) {
 		this.distancia = distancia;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Planeta [id=" + id + ", nombre=" + nombre + ", img=" + img + ", distancia=" + distancia + "]";
 	}
 	
 	
