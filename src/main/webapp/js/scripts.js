@@ -2,5 +2,13 @@
 
 // Esto no es JAVA
 
-
-console.info("Esto es un comentario que saldra por consola");
+$(document).ready(function() {
+	
+	console.info("Documento READY");
+	
+	// Activamos plugin de Datables
+	// a todas las tablas que tengan class="tabla"
+	 $('.tabla').DataTable();
+	 console.info("DataTable activado");
+	
+});

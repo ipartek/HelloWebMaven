@@ -10,7 +10,7 @@ public class Planeta {
 
 	//Atributos  
 		private long id;
-		private String img;
+		private String imagen;
 		private String nombre;
 ;
 	
@@ -20,15 +20,24 @@ public class Planeta {
 	 * @param nombre {@code String}  nombre del planeta
 	 * @param distancia {@code Float}  distancia al planeta desde la Tierra en UA (Unidades Astronomicas 1UA=150.000.000 km)
 	 */
-	public Planeta(String img, String nombre, Float distancia) {
-		
+//constructor vacio
+	public Planeta() {
 		super();
 		this.id = -1;   //lo inicializo con un valor que nunca va a tener un planeta
-		this.img = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
 		this.nombre = "";
 
-		
 	}
+	
+	//constructor con un parametro
+	public Planeta(String nombre, int id) {
+		this();               //llama al constructor vacio por temas de herencia 
+							//asi no necesitamos añadir en el código del constructor con un pàrametro 
+							//los this.id, this.img
+		this.id = id;		//identificador del planeta
+		this.nombre = nombre;  
+	}
+	
 	
 	public long getId() {
 		return id;
@@ -36,11 +45,11 @@ public class Planeta {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getImg() {
-		return img;
+	public String getImagen (){
+		return imagen;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	public String getNombre() {
 		return nombre;
@@ -52,7 +61,7 @@ public class Planeta {
 	
 	@Override
 	public String toString() {
-		return "Planeta [id=" + id + ", img=" + img + ", nombre=" + nombre + "]";
+		return "Planeta [id=" + id + ", nombre=" + nombre + ", imagen=" + imagen + "]";
 	}
 
 	
