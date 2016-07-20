@@ -143,8 +143,14 @@ body {
 }
 
 #planetas tbody td{
-	font-size: x-large;
 	vertical-align: middle;
 }
 
+table tr td img{
+	width: 25%; 
+}
+
+#urlimagen input{
+    width: 390px;
+}
 

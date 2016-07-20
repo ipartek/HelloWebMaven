@@ -8,7 +8,7 @@
         <div id="planetas">
         
         <form method="post" action="planetas">
-			<input type="text" name="buscar" placeholder="Buscar planeta" value="${requestScope.planetas}">
+			<input type="text" name="buscar" placeholder="Buscar planeta" value="${requestScope.planeta}">
 			<button type="submit">Buscar</button>
 		</form>
 		
@@ -26,7 +26,7 @@
 			<tr>
 				<td><img src="${p.img}" width="75%"> </td>
 				<td>${p.nombre}</td>
-				<td>${p.distancia} aÃ±os luz</td>
+				<td>${p.distancia} años luz</td>
 			</tr>
 	</c:forEach>
 	
