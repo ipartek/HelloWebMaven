@@ -4,7 +4,7 @@
 
 
 
-<table>
+<table class="tabla">
 	<thead>
 		<tr>
 			<th>Imagen</th>
@@ -19,7 +19,7 @@
 			<tr>
 				<td><img src="${p.imagen}" alt="${p.nombre}"/></td>
 				<td>${p.nombre}</td>
-				<td><i class="fa fa-eye" aria-hidden="true"></i></td>
+				<td><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_DETAIL%>&id=${p.id}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
 				<td><i class="fa fa-trash" aria-hidden="true"></i></td>
 			</tr>
 		</c:forEach>		

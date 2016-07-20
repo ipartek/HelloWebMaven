@@ -86,7 +86,11 @@ public class PlanetServlet extends HttpServlet {
 	}
 
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
+		int id = Integer.parseInt(request.getParameter("id"));
+		Planeta p = planetas.get(id);
+		request.setAttribute("detail", p);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
 		
 	}
 
