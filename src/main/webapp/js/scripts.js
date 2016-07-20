@@ -2,5 +2,8 @@
 
 // Esto no es JAVA
 
-
-console.info("Esto es un comentario que saldra por consola");
+$(document).ready(function() {
+	console.info("Documento cargado");
+	//Activamos Plugin de Datatables a todas las tablas cuya clase sea igual a tabla
+    $('.tabla').DataTable();
+});
