@@ -73,6 +73,9 @@ public class PlanetServlet extends HttpServlet {
 			break;			
 		case Constantes.OP_SEARCH:
 			buscar(request, response);
+			break;
+		case Constantes.OP_DELETE:
+			eliminar(request, response);
 			break;			
 		default:
 			listar(request, response);
@@ -85,19 +88,24 @@ public class PlanetServlet extends HttpServlet {
 		
 	}
 
+
+
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		Planeta p = planetas.get(id);
+		Planeta p = null;
+		for( int i=0; i < planetas.size() ; i++ ){			
+			if ( id == planetas.get(i).getId() ){
+				p = planetas.get(i);
+				break;
+			}
+		}		
 		request.setAttribute("detail", p);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
 		
 	}
 
-	private void buscar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -111,12 +119,66 @@ public class PlanetServlet extends HttpServlet {
 		
 		
 	}
+	
+	
+	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
+	
+		int id = Integer.parseInt(request.getParameter("id"));
+		String msg = "Planeta No Elimnado";
+		for( int i=0; i < planetas.size() ; i++ ){			
+			if ( id == planetas.get(i).getId() ){
+				planetas.remove(i);
+				msg = "Planeta["+id+"] Elimado Correctamente";
+				break;
+			}
+		}
+		request.setAttribute("msg", msg);		
+		listar(request,response);				
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int op = Integer.parseInt(request.getParameter("op"));
+		
+		switch (op) {
+		case Constantes.OP_SEARCH:
+			buscar(request, response);
+			break;
+			
+		default:
+			listar(request, response);
+			break;
+		}
+		
+		
+		dispatch.forward(request, response);
+		
 	}
 
+	
+	private void buscar(HttpServletRequest request, HttpServletResponse response) {
+		
+		String busqueda = request.getParameter("s");
+		
+		ArrayList<Planeta> planetasBusqueda = new ArrayList<Planeta>();
+		for (int i=0; i < planetas.size();i++){		
+			if ( planetas.get(i).getNombre().contains(busqueda) ){
+				planetasBusqueda.add( planetas.get(i) );
+			}
+		}		
+		request.setAttribute("list", planetasBusqueda);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		
+		String msg = "Busqueda [" + busqueda+ "] 0 coincidencias";
+		if ( !planetasBusqueda.isEmpty() ){
+			msg = "Busqueda [" + busqueda+ "] "+planetasBusqueda.size()+" coincidencias";
+		}
+		request.setAttribute("msg", msg);
+		
+		
+	}
+	
 }
