@@ -15,9 +15,14 @@
 %>
 
 <form action="<%=Constantes.CONTROLLER_PLANETS%>" method="post">
-	<input type="search" name="s" required placeholder="Busca tu planeta en el universo">
+	<input type="search" name="s" required placeholder="Busca tu planeta en el universo" size="30">
 	<input type="hidden" name="op" value="<%=Constantes.OP_SEARCH%>">
 	<input type="submit" value="Buscar">
+</form>
+
+<form action="<%=Constantes.CONTROLLER_PLANETS%>" method="get">
+	<input type="hidden" name="op" value="<%=Constantes.OP_NEW%>">
+	<input type="submit" value="Introducir un nuevo Planeta">
 </form>
 
 <table class="tabla">
