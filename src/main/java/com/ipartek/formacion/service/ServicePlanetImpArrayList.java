@@ -9,7 +9,7 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 
 	private static ServicePlanetImpArrayList INSTANCE = null;
 	private ArrayList<Planeta> planetas = null;
-	
+	private int indice = 0;
 	/**
 	 * Constructor privado para que no se llame desde fuera
 	 * No se puede realizar un "new"
@@ -19,6 +19,7 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 		for (int i = 0; i < 50; i++) {
 			planetas.add(new Planeta("planeta" + i, i));
 		}
+		this.indice=50;
 	}
 	
 	// creador sincronizado para protegerse de posibles problemas  multi-hilo
@@ -56,20 +57,46 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean dev=false;
+		for (int i = 0; i < planetas.size(); i++){
+			if (id == planetas.get(i).getId()){
+				planetas.remove(i);
+				dev=true;
+				break;
+			}
+		}
+		return dev;
 	}
 
 	@Override
 	public Planeta save(Planeta p) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (p.isNew()){
+			if (planetas.isEmpty()){
+				p.setId(1);
+			}else{
+				p.setId(planetas.get(planetas.size()-1).getId()+1);
+			}
+			planetas.add(p);
+		}else{
+			for (int i = 0; i < planetas.size(); i++){
+				if (p.getId() == planetas.get(i).getId()){
+					planetas.set(i, p);
+					break;
+				}
+			}
+		}
+		return p;
 	}
 
 	@Override
 	public List<Planeta> search(String criterio) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Planeta> planetasBusqueda = new ArrayList<Planeta>();
+		for (int i=0; i<planetas.size(); i++){
+			if (planetas.get(i).getNombre().contains(criterio)){
+				planetasBusqueda.add(planetas.get(i));
+			}
+		}
+		return planetasBusqueda;
 	}
 
 }

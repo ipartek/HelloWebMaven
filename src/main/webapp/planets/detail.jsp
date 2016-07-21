@@ -3,6 +3,12 @@
 
 <%
 	Planeta pl = (Planeta)request.getAttribute("detail");
+
+	if (request.getAttribute("msg")!=null){
+		out.print("<hr>");
+		out.print(request.getAttribute("msg"));
+		out.print("<hr>");
+	}
 %>
 
 <h1>Detalle de <%=pl.getNombre()%></h1>

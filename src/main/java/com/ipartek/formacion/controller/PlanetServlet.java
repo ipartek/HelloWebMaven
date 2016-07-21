@@ -24,7 +24,7 @@ public class PlanetServlet extends HttpServlet {
 
 	// TODO cargar de BaseDatos
 	private ArrayList<Planeta> planetas = null;
-	private ServicePlanetImpArrayList servicioPlaneta;
+	private ServicePlanet servicioPlaneta = ServicePlanetImpArrayList.getInstance();
 
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -84,7 +84,7 @@ public class PlanetServlet extends HttpServlet {
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
-		request.setAttribute("detail", servicioPlaneta.getInstance().getById(id));
+		request.setAttribute("detail", servicioPlaneta.getById(id));
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 
@@ -95,20 +95,16 @@ public class PlanetServlet extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("list", servicioPlaneta.getInstance().getAll());
+		request.setAttribute("list", servicioPlaneta.getAll());
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 	}
 
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
 		String mensaje = "Planeta no eliminado";
-		int id = Integer.parseInt(request.getParameter("id"));
+		long id = Long.parseLong(request.getParameter("id"));
 
-		for (int i = 0; i < planetas.size(); i++){
-			if (id == planetas.get(i).getId()){
-				planetas.remove(i);
-				mensaje = "El planeta[" + id + "] ha sido eliminado correctamente";
-				break;
-			}
+		if (servicioPlaneta.delete(id)==true){
+			mensaje = "El planeta[" + id + "] ha sido eliminado correctamente";
 		}
 
 		request.setAttribute("msg", mensaje);
@@ -141,12 +137,7 @@ public class PlanetServlet extends HttpServlet {
 
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		String busqueda = request.getParameter("s");
-		ArrayList<Planeta> planetasBusqueda = new ArrayList<Planeta>();
-		for (int i=0; i<planetas.size(); i++){
-			if (planetas.get(i).getNombre().contains(busqueda)){
-				planetasBusqueda.add(planetas.get(i));
-			}
-		}
+		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) servicioPlaneta.search(busqueda);
 		
 		request.setAttribute("list", planetasBusqueda);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
@@ -165,6 +156,9 @@ public class PlanetServlet extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String imagen = request.getParameter("imagen");
 		
+		//Crear una variable mensaje que informe si el alta ha funcionado o ha fallado
+		String mensaje = "El planeta "+nombre+" ha sido dado de alta correctamente";
+		
 		//Crear Planeta
 		Planeta p = new Planeta();
 		p.setId(id);
@@ -172,22 +166,15 @@ public class PlanetServlet extends HttpServlet {
 		p.setImg(imagen);
 		
 		//Guardar o modificar Planeta en ArrayList
-		if (p.isNew()){
-			if (planetas.isEmpty()){
-				p.setId(1);
-			}else{
-				p.setId(planetas.get(planetas.size()-1).getId()+1);
-			}
-			planetas.add(p);
-		}else{
-			for (int i = 0; i < planetas.size(); i++){
-				if (id == planetas.get(i).getId()){
-					planetas.set(i, p);
-					break;
-				}
-			}
+		try {
+			servicioPlaneta.save(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+			mensaje="Error en el alta";
 		}
+		
 		request.setAttribute("detail", p);
+		request.setAttribute("msg", mensaje);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 	
