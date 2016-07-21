@@ -39,7 +39,8 @@ public class CalculadoraServlet extends HttpServlet {
 			// reemplazar "," por "."
 			pop1 = pop1.replace(",", ".");
 			pop2 = pop2.replace(",", ".");
-
+			
+			// parseamos las variables a float
 			op1 = Float.parseFloat(pop1);
 			op2 = Float.parseFloat(pop2);
 			op = Integer.parseInt((String) request.getParameter("op"));
@@ -74,9 +75,6 @@ public class CalculadoraServlet extends HttpServlet {
 		request.setAttribute("calculo", calculo.replace(".", ","));
 		request.getRequestDispatcher("ejercicios/calculadora.jsp").forward(request, response);
 
-		// estas dos ultimas lineas se podian haber puesto como:
-		// request.getRequestDispatcher("ejercicios/calculadora.jsp").forward(request,
-		// response);
-
+		
 	}
 }

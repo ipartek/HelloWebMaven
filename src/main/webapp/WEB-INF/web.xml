@@ -102,7 +102,7 @@
     <url-pattern>/planets</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description>Ejercicio para practicar GET y POST</description>
     <display-name>EjercicioServlet</display-name>
     <servlet-name>EjercicioServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.EjercicioServlet</servlet-class>
