@@ -157,7 +157,7 @@ public class PlanetServlet extends HttpServlet {
 		String imagen = request.getParameter("imagen");
 		
 		//Crear una variable mensaje que informe si el alta ha funcionado o ha fallado
-		String mensaje = "El planeta "+nombre+" ha sido dado de alta correctamente";
+		String mensaje = "El planeta "+nombre+" ha sido guardado correctamente";
 		
 		//Crear Planeta
 		Planeta p = new Planeta();
@@ -170,7 +170,7 @@ public class PlanetServlet extends HttpServlet {
 			servicioPlaneta.save(p);
 		} catch (Exception e) {
 			e.printStackTrace();
-			mensaje="Error en el alta";
+			mensaje="Error al guardar el planeta";
 		}
 		
 		request.setAttribute("detail", p);
