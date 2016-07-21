@@ -1,3 +1,4 @@
+<%@page import="com.ipartek.formacion.pojo.Planet"%>
 <%@ include file="../includes/head.jsp" %>
 
 <h1>Lista Planetas</h1>
@@ -19,8 +20,14 @@
 	<input type="search" name="s" required placeholder="Busca tu Planeta en el Universo">
 	<input type="hidden"name="op" value="<%=Constantes.OP_SEARCH%>">
 	<input type="submit" value="Buscar">
-</form>	
+</form>
 	
+<br>
+
+<a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_NEW%>" class="btn btn-default">Crear Nuevo</a>
+<br>
+<br>
+
 <table id=planetas class="tabla">
 
 	<thead>
