@@ -7,6 +7,8 @@ public class Planeta {
 	private String nombre;
 	private String distancia;
 	
+	private static final int NEW = -1;
+	
 	/**
 	 * Constructor de la clase Planeta sin atributos. Atributos:
 	 * @param id {@code long}
@@ -16,9 +18,9 @@ public class Planeta {
 	 */
 	public Planeta() {
 		super();
-		this.id = -1;
+		this.id = NEW;
 		this.img = "https://cms-assets.tutsplus.com/uploads/users/107/posts/22984/image/25a-space-flat-icons-photoshop-saturn.jpg";
-		this.nombre = "";
+		this.nombre = "Nuevo Planeta";
 		this.distancia = "0";
 	}
 	
@@ -81,6 +83,11 @@ public class Planeta {
 	public void setDistancia(String distancia) {
 		this.distancia = distancia;
 	}
+	
+	public boolean isNew(){
+		return (this.id==NEW)?true: false;
+	}
+	
 	
 	
 }

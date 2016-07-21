@@ -15,7 +15,7 @@ $(document).ready(function() {
 	        infoPostFix:    "",
 	        loadingRecords: "Cargando...",
 	        zeroRecords:    "No se encontr&oacute; ning&uacute;n resultado",
-	        emptyTable:     "Tabla vac&iacute;",
+	        emptyTable:     "Tabla vac&iacute;a",
 	        paginate: {
 	            first:      "Primero",
 	            previous:   "Anterior",

@@ -1,4 +1,11 @@
+<%@page import="com.ipartek.formacion.pojo.Planeta"%>
 <%@ include file="../includes/head.jsp" %>
+
+<%
+
+	Planeta p = (Planeta)request.getAttribute("detail");
+
+%>
 
 <div class="panel panel-info">
 	<div class="panel-heading">
@@ -6,34 +13,39 @@
 			<i class="fa fa-star" aria-hidden="true"></i> Detalle ${requestScope.detail.nombre} <i class="fa fa-star" aria-hidden="true"></i>
 		</h1>
 	</div>
+	
 	<div class="panel-body">
-		<div id="planetas">
+		<div class="imgdetalle" id="planetas">
 
-			<form method="post" action="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_UPDATE %>">
 
-			<br>
-
-			<table class="table table-striped table-hover">
-				<thead class="thead-inverse">
-					<tr>
-						<th>Imagen</th>
-						<th>Nombre</th>
-						<th>Distancia</th>
-					</tr>
-				</thead>
-				<tbody>
-
-						<tr>
-							<td id="urlimagen" ><img src="${requestScope.detail.img}" alt="${requestScope.detail.nombre}">
-								<input type="url" name="img" placeholder="Url imagen" value="${requestScope.detail.img}"></td>
-							<td><input type="text" name="nombre" placeholder="Nombre" value="${requestScope.detail.nombre}"></td>
-							<td><input type="text" name="distancia" placeholder="Distancia" value="${requestScope.detail.distancia}"></td>
-						</tr>
-
-				</tbody>
-			</table>
-			<button type="submit">Modificar</button>
+<img src="<%=p.getImg()%>" alt="<%=p.getNombre()%>" />
+			
+			<form method="post" action="<%=Constantes.CONTROLLER_PLANET %>">
+				<table>
+				<tr><td>
+				<label for="iddisabled">Id:</label>
+				<input type="text" name="iddisabled" disabled value="<%=p.getId()%>">
+				</td></tr>
+			
+				<tr><td>
+				<label for="nombre">Nombre:</label>
+				<input type="text" name="nombre" required value="<%=p.getNombre()%>">
+				</td></tr>
+				
+				<tr><td>
+				<label for="img">URL Imagen:</label>
+				<input id="urlimg" type="text" name="img" required value="<%=p.getImg()%>">
+				</td></tr>
+				
+				<tr><td>
+				<input type="hidden" name="id" value="<%=p.getId()%>">
+				<input type="hidden" name="op" value="<%=Constantes.OP_SAVE%>">
+				<input type="submit" class="btn btn-success" value="Guardar">
+				</td></tr>
+				</table>
 			</form>
+			
+			<a href="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_LIST  %>"><input type="button" class="btn btn-danger" value="Cancelar"></a> 
 		</div>
 	</div>
 </div>

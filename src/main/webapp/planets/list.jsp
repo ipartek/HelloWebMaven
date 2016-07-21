@@ -8,21 +8,33 @@
 		</h1>
 	</div>
 	<div class="panel-body">
-		<div id="planetas">
 
-			<form method="post" action="<%=Constantes.CONTROLLER_PLANET %>">
-				<input type="search" name="s" placeholder="Buscar planeta">
-				<input type="hidden" name="op" value="<%=Constantes.OP_SEARCH%>">
-				<input type="submit" value="Buscar">
+			
+				<table>
+					<tr><td align="left">
+					<form method="post" action="<%=Constantes.CONTROLLER_PLANET %>">
+						<input type="search" name="s" placeholder="Buscar planeta">
+						<input type="hidden" name="op" value="<%=Constantes.OP_SEARCH%>">
+						<input type="submit" value="Buscar">
+					</form>
+					</td>
+					<td align="right">
+					<form method="get" action="<%=Constantes.CONTROLLER_PLANET %>">				
+						<input type="hidden" name="op" value="<%=Constantes.OP_NEW %>">
+						<input type="submit" value="Nuevo planeta">
+					</form>
+					</td></tr>
+				</table>
 			</form>
+		<div id="planetas">
 
 			<br>
 
 <%
 	if (request.getAttribute("msg") != null){
-		out.print("<hr>");
+		out.print("<div class='alert alert-warning' role='alert'>");
 		out.print(request.getAttribute("msg"));
-		out.print("<hr>");
+		out.print("</div>");
 	}
 %>
 
