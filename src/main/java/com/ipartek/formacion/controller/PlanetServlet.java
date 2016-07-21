@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
+import com.ipartek.formacion.service.ServicePlanet;
+import com.ipartek.formacion.service.ServicePlanetImpArrayList;
 
 /**
  * Servlet implementation class PlanetasServlet
@@ -23,6 +25,8 @@ public class PlanetServlet extends HttpServlet {
 	
 	//TODO cargar de BaseDatos
 	private ArrayList<Planeta> planetas = null;
+	private ServicePlanetImpArrayList servicioPlaneta;
+	
 	
    /**
     * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -30,17 +34,6 @@ public class PlanetServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		
-		planetas = new ArrayList<Planeta>();
-		Planeta p = null;
-		for (int i=0; i<50; i++){
-			/*p= new Planeta();
-			  p.setNombre("planeta" + i);
-			  planetas.add(p);
-			  
-			  todo lo anterior se puede hacer con la siguiente linea*/
-			planetas.add(new Planeta("planet"+i, i) );
-		}
 				
 	}
 	
@@ -93,56 +86,38 @@ public class PlanetServlet extends HttpServlet {
 		
 		dispatch.forward(request, response);
 
-	}
-
-	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
-		int id = Integer.parseInt(request.getParameter("id"));  //recoger el id
-		String msg ="Planeta no eliminado";
-		for (int i=0; i<planetas.size(); i++){
-				
-			if (id == planetas.get(i).getId() ) {
-				
-				planetas.remove(id);
-				msg="Planeta["+id+"] Eliminado corrrectamente";
-				break;
-				
-			}
-		}
-		
-		
-		
-		request.setAttribute("msg", msg);
-		listar(request, response); //esta linea es lo mismo que escribir
-		//dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST );
-		
+	
 	}
 
 	
+	
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		Planeta p = null;
-		for (int i=0; i<planetas.size(); i++){
 			
-			if (id == planetas.get(i).getId() ) {
-				p= planetas.get(i);
-				break;
-			}
+			int id = Integer.parseInt(request.getParameter("id"));			
+			request.setAttribute("detail", servicioPlaneta.getInstance().getById(id));
+			dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
+			
 		}
-		request.setAttribute("detail", p);
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
-		
-	}
 
+
+	
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+		request.setAttribute("detail", new Planeta() );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);		
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("list", planetas);
+		request.setAttribute("list", servicioPlaneta.getInstance().getAll() );
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 		
+	}
+	
+	
+	
+	
+	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
+		request.setAttribute("msg", servicioPlaneta.getInstance().delete(id) );		
+		listar(request,response);				
 	}
 
 	/**
@@ -157,12 +132,19 @@ public class PlanetServlet extends HttpServlet {
 				case Constantes.OP_SEARCH:
 					buscar(request, response);
 					break;
+				case Constantes.OP_SAVE:
+					guardar(request, response);
+					break;
+				default:
+					listar(request, response);
+					break;
 				
 				}
 				
 				dispatch.forward(request, response);
 		
 	}
+	
 	
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -185,6 +167,51 @@ public class PlanetServlet extends HttpServlet {
 		
 		
 	}
+	
+	private void guardar(HttpServletRequest request, HttpServletResponse response) {
+		
+		//recoger parametros del formulario
+		
+		long id		  = Long.parseLong(request.getParameter("id") );
+		String imagen = request.getParameter("imagen");
+		String nombre = request.getParameter("nombre");
+		
+		//Crear Planeta
+		Planeta p = new Planeta();     //creamos un planeta vacio
+		p.setId(id);					//le añadimos los datos que recogimos en el paso anterior
+		p.setImagen(imagen);
+		p.setNombre(nombre);
+		
+		//guardar o modificar planeta en ArraList
+		if ( p.isNew()){   //si el planeta es nuevo
+			
+			if ( planetas.isEmpty()){    //si está vacio el array
+				p.setId(1);				 // le asigno el id=1
+			}else{						 //si no está vacio
+				p.setId( (planetas.get(planetas.size()-1).getId()+1) );
+			}
+			planetas.add(p);
+			
+		}else{
+			
+		
+			for (int i=0; i < planetas.size(); i++){
+				
+				if (id == planetas.get(i).getId() ) {
+					planetas.set(i, p);
+					break;
+				}
+			}
+		}
+		
+		
+		
+		request.setAttribute("detail", p);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
+		
+		
+	}
+
 
 
 }

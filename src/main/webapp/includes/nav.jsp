@@ -31,6 +31,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejemplos <span class="caret"></span></a>
               <ul class="dropdown-menu">
               	<li><a href="<%=Constantes.WEB_HOME%>planetas">Planetas</a></li>
+              	<li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejercicio.jsp">Ejercicio de repaso</a></li>
               </ul>
             </li>
           </ul>

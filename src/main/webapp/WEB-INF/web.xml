@@ -101,4 +101,14 @@
     <servlet-name>PlanetServlet</servlet-name>
     <url-pattern>/planets</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EjercicioServlet</display-name>
+    <servlet-name>EjercicioServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.EjercicioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EjercicioServlet</servlet-name>
+    <url-pattern>/ejercicio</url-pattern>
+  </servlet-mapping>
 </web-app>

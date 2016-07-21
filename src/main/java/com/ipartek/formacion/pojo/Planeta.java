@@ -12,7 +12,8 @@ public class Planeta {
 		private long id;
 		private String imagen;
 		private String nombre;
-;
+
+		private static final int NEW = -1;
 	
 	/**
 	 * Constructor de la clase Planeta
@@ -25,11 +26,11 @@ public class Planeta {
 		super();
 		this.id = -1;   //lo inicializo con un valor que nunca va a tener un planeta
 		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
-		this.nombre = "";
+		this.nombre = "Nuevo Planeta";
 
 	}
 	
-	//constructor con un parametro
+	//constructor con dos parametros: el nombre y el identificador
 	public Planeta(String nombre, int id) {
 		this();               //llama al constructor vacio por temas de herencia 
 							//asi no necesitamos añadir en el código del constructor con un pàrametro 
@@ -59,11 +60,15 @@ public class Planeta {
 	}
 	
 	
+	public boolean isNew() {
+		return (this.id==NEW)?true:false;  
+		
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Planeta [id=" + id + ", nombre=" + nombre + ", imagen=" + imagen + "]";
 	}
-
-	
 
 }
