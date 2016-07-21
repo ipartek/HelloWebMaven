@@ -8,6 +8,10 @@
 
 } %>
 
+<a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_NEW%>"><i class="fa fa-plus-square" aria-hidden="true"></i> Añadir Planeta</a>
+<br>
+<br>
+
 <form method="post" action="<%=Constantes.WEB_HOME%><%=Constantes.CONTROLLER_PLANETS%>">
 
 	<input type="search" name="s" required placeholder="Buscar tu planeta en el universo">
@@ -28,16 +32,20 @@
 	
 	<tbody>
 	
+
+	
 		<c:forEach var="p" items="${requestScope.list}">
 	
 			<tr>
 				<td><img src="${p.imagen}" alt="${p.nombre}" /> </td>
 				<td>${p.nombre} </td>
 				<td><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_DETAIL%>&id=${p.id}" ><i class="fa fa-eye" aria-hidden="true"> </i></a></td>
-				<td><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_DELETE%>&id=${p.id}" ><i class="fa fa-trash" aria-hidden="true"> </i></a></td>
+				<td><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_DELETE%>&id=${p.id}" onclick ="return confirmarEliminar('¿Está seguro que desea eliminar el registro?') "  ><i class="fa fa-trash" aria-hidden="true"> </i></a></td>
 			</tr>
 		
 		</c:forEach>
+		
+		
 		
 	</tbody>
 

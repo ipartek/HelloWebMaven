@@ -8,3 +8,8 @@ $(document).ready(function() {
 	//ligamos plugin de DataTables a todas las tablas que tengan clas="tabla"
     $('.tabla').DataTable();
 } );
+
+
+function confirmarEliminar( mensaje ) { 
+	return confirm( mensaje ); 
+} 

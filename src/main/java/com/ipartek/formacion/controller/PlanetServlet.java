@@ -136,8 +136,10 @@ public class PlanetServlet extends HttpServlet {
 
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		
+		Planeta p = new Planeta();
+		request.setAttribute("planeta", p);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 
 
@@ -161,12 +163,16 @@ public class PlanetServlet extends HttpServlet {
 				
 				switch (op) {
 				
-				case Constantes.OP_NEW:
-					nuevo(request,response);
-					break;			
+		
 				case Constantes.OP_SEARCH:
 					buscar(request,response);
 					break;
+				case Constantes.OP_SAVE:
+					guardar(request,response);
+					break;
+				/*case Constantes.OP_UPDATE:
+					modificar(request,response);
+					break;*/
 				
 				default:
 					listar(request,response);
@@ -175,6 +181,50 @@ public class PlanetServlet extends HttpServlet {
 				
 				dispatch.forward(request, response);
 			
+		
+	}
+
+	private void guardar(HttpServletRequest request, HttpServletResponse response) {
+		
+		//recoger parámetros formulario
+		long id = Long.parseLong(request.getParameter("id"));
+		String imagen = request.getParameter("imagen");
+		String nombre = request.getParameter("nombre");
+		
+		//crear Planeta
+		Planeta p = new Planeta();
+		p.setId(id);
+		p.setImagen(imagen);
+		p.setNombre(nombre);
+		
+		//guardar o modificar planeta en ArrayList
+		if (p.isNew()){
+			
+			if(planetas.isEmpty()){
+				p.setId(1);
+			}else{
+				p.setId((planetas.get(planetas.size()-1).getId()+1));
+			}
+			
+			planetas.add(p);
+		}else{
+			
+			for (int i = 0; i< planetas.size(); i++) {
+				if(id == planetas.get(i).getId()){
+					planetas.set(i, p);					
+					break;
+				}
+			}
+			
+		}
+		
+		request.setAttribute("planeta", p);		
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
+		
+	}
+
+	private void modificar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		
 	}
 
