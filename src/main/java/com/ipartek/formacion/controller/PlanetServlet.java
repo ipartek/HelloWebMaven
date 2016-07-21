@@ -201,6 +201,7 @@ public class PlanetServlet extends HttpServlet {
 		
 		//guardar o modificar planeta en ArrayList
 		if ( p.isNew() ){
+			
 			if ( planetas.isEmpty()){
 				p.setId(1);
 			}else{

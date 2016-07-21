@@ -6,11 +6,12 @@ public class Planeta {
 	private String nombre;
 	private String imagen;
 	
+	private static final int NEW = -1;
 	
 	public Planeta() {
 		super();
-		this.id = -1;
-		this.nombre = "";
+		this.id = NEW;
+		this.nombre = "Nuevo Planeta";
 		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
 	}
 
@@ -55,7 +56,10 @@ public class Planeta {
 		this.imagen = imagen;
 	}
 
-
+	public boolean isNew(){
+		return (this.id==NEW)?true:false;
+	}
+	
 	@Override
 	public String toString() {
 		return "Planeta [id=" + id + ", nombre=" + nombre + ", imagen=" + imagen + "]";
