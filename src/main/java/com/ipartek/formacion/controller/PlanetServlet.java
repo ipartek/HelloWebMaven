@@ -65,11 +65,9 @@ public class PlanetServlet extends HttpServlet {
 		case Constantes.OP_LIST:
 			listar(request, response);
 			break;
-		/*
-		  case Constantes.OP_NEW:
+		case Constantes.OP_NEW:
 			nuevo(request, response);
-			break;
-		*/		
+			break;				
 		case Constantes.OP_DETAIL:
 			detalle(request, response);
 			break;			
@@ -109,9 +107,9 @@ public class PlanetServlet extends HttpServlet {
 
 	
 
-	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		
+	private void nuevo(HttpServletRequest request, HttpServletResponse response) {		
+		request.setAttribute("detail", new Planeta() );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);		
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
