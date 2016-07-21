@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
+import com.ipartek.formacion.service.ServicePlanet;
+import com.ipartek.formacion.service.ServicePlanetImpArrayList;
 
 /**
  * Servlet implementation class PlanetServlet
@@ -22,6 +24,7 @@ public class PlanetServlet extends HttpServlet {
 
 	// TODO cargar de BaseDatos
 	private ArrayList<Planeta> planetas = null;
+	private ServicePlanetImpArrayList servicioPlaneta;
 
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -29,11 +32,7 @@ public class PlanetServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-
-		planetas = new ArrayList<Planeta>();
-		for (int i = 0; i < 50; i++) {
-			planetas.add(new Planeta("planeta" + i, i));
-		}
+		
 	}
 
 	/**
@@ -84,26 +83,19 @@ public class PlanetServlet extends HttpServlet {
 
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Planeta p = null;
-		for (int i = 0; i < planetas.size(); i++){
-			if (id == planetas.get(i).getId()){
-				p = planetas.get(i);
-				break;
-			}
-		}
-		request.setAttribute("detail", p);
+		
+		request.setAttribute("detail", servicioPlaneta.getInstance().getById(id));
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
-		Planeta p = new Planeta();
 		
-		request.setAttribute("detail", p);
+		request.setAttribute("detail", new Planeta());
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("list", planetas);
+		request.setAttribute("list", servicioPlaneta.getInstance().getAll());
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 	}
 
