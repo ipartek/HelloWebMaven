@@ -16,7 +16,7 @@ public class Planet {
 		super();
 		this.id = NEW;
 		this.nombre = "Nuevo Planeta";
-		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+		this.imagen = "http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png";
 	}
 	
 	

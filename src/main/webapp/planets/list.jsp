@@ -4,12 +4,22 @@
 <h1>Lista Planetas</h1>
 <%
 		
-		if (request.getAttribute("msg") != null) {
+		if (request.getAttribute("msgMalo") != null) {
 			%>
-			<div class="alert alert-danger alert-dismissible" role="alert">
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<%
-			out.print(request.getAttribute("msg"));
+			out.print(request.getAttribute("msgMalo"));
+			 %>
+			 </div>
+			 <%
+		}else if(request.getAttribute("msgBueno") != null){
+			
+			%>
+			<div class="alert alert-success fade in" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<%
+			out.print(request.getAttribute("msgBueno"));
 			 %>
 			 </div>
 			 <%
@@ -49,8 +59,8 @@
 					
 			</tr>	
 		</c:forEach>
-		
 	</tbody>
+	
 </table>
 
 <%@ include file="../includes/footer.jsp" %>

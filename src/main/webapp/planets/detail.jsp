@@ -1,6 +1,28 @@
 <%@page import="com.ipartek.formacion.pojo.Planet"%>
 <%@ include file="../includes/head.jsp" %>
-
+<%
+		
+		if (request.getAttribute("msgMalo") != null) {
+			%>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<%
+			out.print(request.getAttribute("msgMalo"));
+			 %>
+			 </div>
+			 <%
+		}else if(request.getAttribute("msgBueno") != null){
+			
+			%>
+			<div class="alert alert-success fade in" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<%
+			out.print(request.getAttribute("msgBueno"));
+			 %>
+			 </div>
+			 <%
+		}
+	%>
 <%
 	Planet pl = (Planet)request.getAttribute("detail");
 	

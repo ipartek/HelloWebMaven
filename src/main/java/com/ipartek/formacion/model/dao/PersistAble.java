@@ -1,4 +1,4 @@
-package com.ipartek.formacion.model;
+package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Curso
  *
  */
-public interface CrudAble<P> {
+public interface PersistAble<P> {
 	
 	boolean create(P pojo);
 	

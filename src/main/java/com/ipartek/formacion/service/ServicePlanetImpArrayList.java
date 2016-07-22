@@ -10,6 +10,7 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 	private static ServicePlanetImpArrayList INSTANCE = null;
 	private ArrayList<Planet> planetas = null;
 	private int indice = 0;
+	private static final int MOCKS_SIZE = 50;
 	
 	/**
 	 * Constructor Privado para que no se llame desde fuera
@@ -22,7 +23,7 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 
 			planetas.add(new Planet("planet " + i, i));
 		}
-		this.indice=50;
+		this.indice=MOCKS_SIZE;
 	}
 	
 	// creador sincronizado para protegerse de posibles problemas  multi-hilo
@@ -81,11 +82,8 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 		Planet pl = new Planet(p.getNombre(), p.getId());
 		pl.setImagen(p.getImagen());
 		if (pl.isNew()) {
-			if (planetas.isEmpty()) {
-				pl.setId(1);
-			} else {
-				pl.setId((planetas.get(planetas.size() - 1).getId() + 1));
-			}
+			this.indice++;
+			pl.setId(this.indice);
 			planetas.add(pl);
 		} else {
 			for (int i = 0; i < planetas.size(); i++) {

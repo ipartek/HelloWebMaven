@@ -128,9 +128,12 @@ public class PlanetServlet extends HttpServlet {
 		String msg = "Planeta con id: "+id+" no ha sido eliminado";
 		if (servicioPlaneta.delete(id)){
 			msg = "Planeta con id: "+id+" ha sido eliminado";
+			request.setAttribute("msgBueno",msg);
+		}else{
+			request.setAttribute("msgMalo", msg);
 		}
 		
-		request.setAttribute("msg", msg);
+		
 		listar(request, response);
 
 	}
@@ -171,7 +174,7 @@ public class PlanetServlet extends HttpServlet {
 
 			msg = "Busqueda [" + busqueda + "] " + planetasBusqueda.size() + " coincidencias";
 		}
-		request.setAttribute("msg", msg);
+		request.setAttribute("msgBueno", msg);
 
 	}
 
@@ -189,14 +192,16 @@ public class PlanetServlet extends HttpServlet {
 		p.setNombre(nombre);
 
 		// guardar o modificar planeta en ArrayList
-		
+		String msg = "No se ha podido guardar el Planeta";
 
 	
 		try {
 			request.setAttribute("detail", servicioPlaneta.save(p));
+			msg = "El Planeta se ha guardado";
+			request.setAttribute("msgBueno", msg);
 		} catch (Exception e) {
-			String msg = "No se ha podido guardar el Planeta";
-			request.setAttribute("msg", msg);
+			
+			request.setAttribute("msgMalo", msg);
 			
 		}
 	
