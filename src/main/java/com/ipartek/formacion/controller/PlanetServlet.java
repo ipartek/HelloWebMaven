@@ -22,12 +22,8 @@ public class PlanetServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
-	
-	//TODO cargar de BaseDatos
-	private ArrayList<Planeta> planetas = null;
-	private ServicePlanetImpArrayList servicioPlaneta;
-	
-	
+		
+	private ServicePlanet serviceP = ServicePlanetImpArrayList.getInstance();
 	
 	/**
 	 * Se ejecurta solo la primera vez que alguien llama al servlet
@@ -43,8 +39,7 @@ public class PlanetServlet extends HttpServlet {
 	 */
 	@Override
 	public void destroy() {		
-		super.destroy();
-		planetas = null;
+		super.destroy();		
 	}
 	
 	@Override
@@ -94,7 +89,7 @@ public class PlanetServlet extends HttpServlet {
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
 		
 		int id = Integer.parseInt(request.getParameter("id"));			
-		request.setAttribute("detail", servicioPlaneta.getInstance().getById(id));
+		request.setAttribute("detail", serviceP.getById(id));
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
 		
 	}
@@ -108,7 +103,7 @@ public class PlanetServlet extends HttpServlet {
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		
-		request.setAttribute("list", servicioPlaneta.getInstance().getAll() );
+		request.setAttribute("list", serviceP.getAll() );
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 		
 		
@@ -116,16 +111,11 @@ public class PlanetServlet extends HttpServlet {
 	
 	
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
-	
-		int id = Integer.parseInt(request.getParameter("id"));
-		String msg = "Planeta No Elimnado";
-		for( int i=0; i < planetas.size() ; i++ ){			
-			if ( id == planetas.get(i).getId() ){
-				planetas.remove(i);
-				msg = "Planeta["+id+"] Elimado Correctamente";
-				break;
-			}
-		}
+		String msg = "Planeta No Elimnado";		
+		int id = Integer.parseInt(request.getParameter("id"));		
+		if ( serviceP.delete(id)){
+			msg = "Planeta["+id+"] Elimado Correctamente";	
+		}		
 		request.setAttribute("msg", msg);		
 		listar(request,response);				
 	}
@@ -159,13 +149,8 @@ public class PlanetServlet extends HttpServlet {
 		
 		String busqueda = request.getParameter("s");
 		
-		ArrayList<Planeta> planetasBusqueda = new ArrayList<Planeta>();
-		for (int i=0; i < planetas.size();i++){		
-			if ( planetas.get(i).getNombre().contains(busqueda) ){
-				planetasBusqueda.add( planetas.get(i) );
-			}
-		}		
-		request.setAttribute("list", planetasBusqueda);
+		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) serviceP.search(busqueda);
+		request.setAttribute("list", planetasBusqueda );
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 		
 		String msg = "Busqueda [" + busqueda+ "] 0 coincidencias";
@@ -191,27 +176,13 @@ public class PlanetServlet extends HttpServlet {
 		p.setImagen(imagen);
 		p.setNombre(nombre);
 		
-		//guardar o modificar planeta en ArrayList
-		if ( p.isNew() ){
-			
-			if ( planetas.isEmpty()){
-				p.setId(1);
-			}else{
-				p.setId( (planetas.get(planetas.size()-1).getId()+1) );
-			}	
-			planetas.add(p);
-			
-		}else{
-			
-			for( int i=0; i < planetas.size() ; i++ ){			
-				if ( id == planetas.get(i).getId() ){
-					planetas.set(i, p);					
-					break;
-				}
-			}
+		String msg = null;
+		try {
+			serviceP.save(p);			
+		} catch (Exception e) {
+			msg = "Error al salvar planeta " + p.toString() ;
 		}
-		
-		
+		request.setAttribute("msg", msg );
 		request.setAttribute("detail", p);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
 	}
