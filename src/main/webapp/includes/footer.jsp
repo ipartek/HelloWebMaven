@@ -1,4 +1,4 @@
-	 </div>
+ </div>
 	 <!-- end: <div class="jumbotron"> -->
 	
 </div> 
@@ -7,6 +7,8 @@
 	 
 	<!-- Jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- DataTables -->
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	
 	<!-- Boostrap Latest compiled and minified JavaScript -->
 	<script

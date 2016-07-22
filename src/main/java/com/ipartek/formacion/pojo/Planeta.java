@@ -2,25 +2,52 @@ package com.ipartek.formacion.pojo;
 
 public class Planeta {
 	
+	 private long id;
      private String imagen;
      private String nombre;
-     private String distancia;
+ 
+     private static final int NEW = -1;
+       
      
-     
-          
-     
-     
-	public Planeta(String imagen, String nombre, String distancia) {
-		super();
+     public Planeta(){
+    	 super();
+ 		this.id = -1;
+ 		this.nombre = "nuevo planeta";
+ 		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+     }
+	
+	
+	public Planeta(long id, String imagen, String nombre) {
+		this();
+		this.id= id;
 		this.imagen = imagen;
-		this.nombre = nombre;
-		this.distancia = distancia;
+		this.nombre = nombre;		
 	}
 	
 	
+	public Planeta( String nombre) {
+		this();
+		this.nombre = nombre;
+	}
 	
 	
+	public Planeta( String nombre, int id) {
+		this();
+		this.nombre = nombre;
+		this.id = id;
+		
+		
+	}
 	
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	public String getImagen() {
 		return imagen;
 	}
@@ -33,11 +60,26 @@ public class Planeta {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getDistancia() {
-		return distancia;
+
+
+    public boolean isNew(){
+    	return(this.id==NEW);
+    }
+
+
+	@Override
+	public String toString() {
+		return "Planeta [id=" + id + ", imagen=" + imagen + ", nombre=" + nombre + "]";
 	}
-	public void setDistancia(String distancia) {
-		this.distancia = distancia;
+	
+	
+	public static void main(String[] args) {
+		
+		
+		Planeta pVacio = new Planeta();
+		
+		Planeta pConImagwen = new Planeta(2, "sdsdsdsdsdsdsd", "Jupiter");		
+		
 	}
      
 

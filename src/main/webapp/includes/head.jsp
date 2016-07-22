@@ -38,6 +38,13 @@
 	rel="stylesheet"
 	integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
 	crossorigin="anonymous">
+	
+	<!-- fontawesome -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+	<!-- DataTable -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
 
 
 <!-- Enlaces a las hojas de Estilos propia -->
@@ -68,9 +75,10 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio</a></li>
+					<li class="active"><a href="<%=Constantes.CONTROLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>/calculadora.jsp">Calculadora</a></li>
+					<li><a href="<%=Constantes.WEB_HOME%>/ejercicios.jsp">Ejercicios</a></li>
 
 					<li><a href="#contact">Contact</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -78,7 +86,8 @@
 						aria-expanded="false">Dropdown <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 						 <li><a href="<%=Constantes.WEB_HOME%>hello">Servlet Hello</a></li>
-                         <li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>               
+                         <li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
+                          <li><a href="<%=Constantes.WEB_HOME%>ejercicios">Ejercicios</a></li>                
                         <li><a href="<%=Constantes.WEB_HOME%>ranking">JSTL-Puntuaciones</a></li>
                         <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG Propio</a></li>
 						</ul>
