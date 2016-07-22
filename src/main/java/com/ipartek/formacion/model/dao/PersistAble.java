@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.ipartek.formacion.model;
+package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * </ul>
  *
  */
-public interface CrudAble<P> {   
+public interface PersistAble<P> {   
 	
 	//sin <P> utilizariamos el siguiente codigo y solo seria valido para el objeto Persona
 	//boolean create(Persona p);    

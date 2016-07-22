@@ -25,7 +25,7 @@ public class Planeta {
 	public Planeta() {
 		super();
 		this.id = -1;   //lo inicializo con un valor que nunca va a tener un planeta
-		this.imagen = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+		this.imagen = "http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png";
 		this.nombre = "Nuevo Planeta";
 
 	}
