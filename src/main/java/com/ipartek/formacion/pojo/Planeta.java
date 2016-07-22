@@ -18,7 +18,7 @@ public class Planeta {
 	public Planeta() {
 		super();
 		this.id = NEW;
-		this.img = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
+		this.img = "http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png";
 		this.nombre = "Planeta Nuevo";
 		this.distancia = "";
 	}
