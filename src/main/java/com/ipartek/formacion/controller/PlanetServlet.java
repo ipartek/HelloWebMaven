@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
+import com.ipartek.formacion.service.ServicePlanetImpArrayList;
 
 /**
  * Servlet implementation class PlanetServlet
@@ -26,6 +27,7 @@ public class PlanetServlet extends HttpServlet {
 	
 	//TODO cargar de BBDD
 	private ArrayList<Planeta> planetas = null;
+	private ServicePlanetImpArrayList servicioPlaneta = ServicePlanetImpArrayList.getInstance();
 
 	/**
 	 * Se ejecuta sólo la primera vez que alguien llama al servlet
@@ -35,10 +37,7 @@ public class PlanetServlet extends HttpServlet {
 		
 		super.init(config);
 		
-		planetas = new ArrayList<Planeta>();		
-		for (int i = 0; i < 50 ; i++){		
-			planetas.add(new Planeta("planet" + i, i));
-		}
+		
 	}
 	
 	/**
@@ -96,15 +95,11 @@ public class PlanetServlet extends HttpServlet {
 	private void borrar(HttpServletRequest request, HttpServletResponse response) {
 		
 		String mensaje = "Planeta No Eliminado";
-		int pId = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
-		for (int i = 0; i< planetas.size(); i++) {
-			if(pId == planetas.get(i).getId()){
-				planetas.remove(i);
-				mensaje = "Planeta " + pId + " eliminado correctamente";
-				break;
-			}
-		}
+		if (servicioPlaneta.delete(id)){
+			mensaje = "Planeta " + id + " eliminado correctamente";
+		}	
 		
 		request.setAttribute("mensaje", mensaje);
 		listar(request,response);
@@ -117,17 +112,8 @@ public class PlanetServlet extends HttpServlet {
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
 		
 		int pId = Integer.parseInt(request.getParameter("id"));
-		
-		//TODO acceder a BBDD
-		Planeta p = null;
-		for (int i = 0; i< planetas.size(); i++) {
-			if(pId == planetas.get(i).getId()){
-				p = planetas.get(i);
-				break;
-			}
-		}
-		
-		request.setAttribute("planeta", p);
+	
+		request.setAttribute("planeta", servicioPlaneta.getById(pId));
 		
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 		
@@ -137,8 +123,7 @@ public class PlanetServlet extends HttpServlet {
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
 		
-		Planeta p = new Planeta();
-		request.setAttribute("planeta", p);
+		request.setAttribute("planeta", new Planeta());
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 	}
 
@@ -146,7 +131,7 @@ public class PlanetServlet extends HttpServlet {
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		
-		request.setAttribute("list", planetas);
+		request.setAttribute("list", servicioPlaneta.getAll());
 		
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 		
@@ -186,6 +171,8 @@ public class PlanetServlet extends HttpServlet {
 
 	private void guardar(HttpServletRequest request, HttpServletResponse response) {
 		
+		String mensaje = "Planeta guardado";
+		
 		//recoger parámetros formulario
 		long id = Long.parseLong(request.getParameter("id"));
 		String imagen = request.getParameter("imagen");
@@ -197,28 +184,15 @@ public class PlanetServlet extends HttpServlet {
 		p.setImagen(imagen);
 		p.setNombre(nombre);
 		
-		//guardar o modificar planeta en ArrayList
-		if (p.isNew()){
-			
-			if(planetas.isEmpty()){
-				p.setId(1);
-			}else{
-				p.setId((planetas.get(planetas.size()-1).getId()+1));
-			}
-			
-			planetas.add(p);
-		}else{
-			
-			for (int i = 0; i< planetas.size(); i++) {
-				if(id == planetas.get(i).getId()){
-					planetas.set(i, p);					
-					break;
-				}
-			}
-			
-		}
 		
-		request.setAttribute("planeta", p);		
+		try {
+			request.setAttribute("planeta", (Planeta)servicioPlaneta.save(p));
+		} catch (Exception e) {
+			mensaje = "No se ha podido guardar";
+			e.printStackTrace();
+		}		
+		
+		request.setAttribute("mensaje", mensaje);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 		
 	}
@@ -231,13 +205,8 @@ public class PlanetServlet extends HttpServlet {
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
 			String busqueda = request.getParameter("s");
-			ArrayList<Planeta> planetasBusqueda = new ArrayList<Planeta>();
-			for (int i = 0; i < planetas.size(); i++){
-				
-				if (planetas.get(i).getNombre().contains(busqueda)){
-					planetasBusqueda.add(planetas.get(i));
-				}
-			}
+		
+			ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>)servicioPlaneta.search(busqueda);
 			
 			request.setAttribute("list", planetasBusqueda);
 			String mensaje = "Busqueda [" + busqueda + "] 0 coincidencias";

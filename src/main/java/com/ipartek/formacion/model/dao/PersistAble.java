@@ -1,4 +1,4 @@
-package com.ipartek.formacion.model;
+package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  *
  */
 
-public interface CrudAble<P> {
+public interface PersistAble<P> {
 
 	//create
 	boolean create(P pojo);	

@@ -4,7 +4,12 @@
 <%
 	Planeta p = (Planeta)request.getAttribute("planeta");
 	
-	
+	if (request.getAttribute("mensaje") != null){ 
+		 out.print("<div class='alert alert-info alert-dismissible'> <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>");
+		 out.print(request.getAttribute("mensaje"));
+		 out.print("</div>");
+		
+	}
 %>
 	
 <h1><%=p.getNombre() %></h1>
