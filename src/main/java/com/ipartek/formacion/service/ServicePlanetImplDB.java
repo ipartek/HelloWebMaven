@@ -52,9 +52,8 @@ public class ServicePlanetImplDB implements ServicePlanet {
 	}
 
 	@Override
-	public List<Planeta> search(String criterio) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Planeta> search(String criterio) {		
+		return daoPlaneta.search(criterio);
 	}
 
 }

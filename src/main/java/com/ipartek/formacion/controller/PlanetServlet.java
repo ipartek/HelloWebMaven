@@ -148,8 +148,7 @@ public class PlanetServlet extends HttpServlet {
 	
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
-		String busqueda = request.getParameter("s");
-		
+		String busqueda = request.getParameter("s");		
 		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) serviceP.search(busqueda);
 		request.setAttribute("list", planetasBusqueda );
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);

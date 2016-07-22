@@ -86,8 +86,29 @@ public class PlanetDAOImpl implements PlanetDAO {
 
 	@Override
 	public List<Planeta> search(String criterio) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Planeta> listaResul = new ArrayList<Planeta>();
+		Planeta p = null;
+		try{
+			conexion = db.getConexion();
+			CallableStatement cst = conexion.prepareCall("{call buscarPlanetas(?)}");
+			cst.setString(1, criterio);
+			
+			ResultSet rs = cst.executeQuery();
+			
+			while( rs.next() ){
+				p = new Planeta();
+				p.setId( rs.getLong("id") );
+				p.setNombre( rs.getString("nombre") );
+				p.setImagen( rs.getString("imagen") );
+				listaResul.add(p);
+			}
+						
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			db.desconectar();
+		}			
+		return listaResul;
 	}
 
 }

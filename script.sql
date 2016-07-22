@@ -16,6 +16,21 @@ CREATE DATABASE IF NOT EXISTS `hwm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hwm`;
 
 
+-- Volcando estructura para procedimiento hwm.buscarPlanetas
+DROP PROCEDURE IF EXISTS `buscarPlanetas`;
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarPlanetas`(IN `pCriterio` VARCHAR(150))
+    COMMENT 'busca planetas por su nombre siempre que contenga el ''criterio'' de busqueda, limit 1000'
+BEGIN
+ 	SELECT id,nombre,imagen 
+	FROM `planet` 
+	WHERE nombre like BINARY  CONCAT('%',pCriterio,'%')
+	ORDER BY id 
+	DESC LIMIT 1000;
+END//
+DELIMITER ;
+
+
 -- Volcando estructura para procedimiento hwm.getAllPlanetas
 DROP PROCEDURE IF EXISTS `getAllPlanetas`;
 DELIMITER //
@@ -39,12 +54,12 @@ CREATE TABLE IF NOT EXISTS `planet` (
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Pl';
 
--- Volcando datos para la tabla hwm.planet: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla hwm.planet: ~2 rows (aproximadamente)
 DELETE FROM `planet`;
 /*!40000 ALTER TABLE `planet` DISABLE KEYS */;
 INSERT INTO `planet` (`id`, `nombre`, `imagen`) VALUES
 	(4, 'jupiter', 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png'),
-	(8, 'saturno', 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png');
+	(8, 'Saturno', 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png');
 /*!40000 ALTER TABLE `planet` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
