@@ -14,6 +14,7 @@ import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePlanet;
 import com.ipartek.formacion.service.ServicePlanetImpArrayList;
+import com.ipartek.formacion.service.ServicePlanetImplDB;
 
 /**
  * Servlet implementation class PlanetServlet
@@ -23,7 +24,7 @@ public class PlanetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
 		
-	private ServicePlanet serviceP = ServicePlanetImpArrayList.getInstance();
+	private ServicePlanet serviceP = ServicePlanetImplDB.getInstance();
 	
 	/**
 	 * Se ejecurta solo la primera vez que alguien llama al servlet
