@@ -9,7 +9,7 @@
 	} 
 	%>
 	
-	<a href="candidato/list.jsp">enlace para listar Candidatos</a>
+	<a href="candidato/list.jsp">enlace para listar Candidatosa</a>
 
 <%@ include file="includes/footer.jsp" %>
 
