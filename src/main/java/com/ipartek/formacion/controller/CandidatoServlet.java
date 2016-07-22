@@ -36,7 +36,7 @@ public class CandidatoServlet extends HttpServlet {
 		//guardar atributo<Candidato> en request
 		
 		//ir a candidato/detail.jsp
-		request.getRequestDispatcher("candidato/detalle.jsp").forward(request, response);;
+		 request.getRequestDispatcher("candidato/detalle.jsp").forward(request, response);;
 	}
 
 	/**

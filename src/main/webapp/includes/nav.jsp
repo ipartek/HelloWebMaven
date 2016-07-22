@@ -18,7 +18,7 @@
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="<%=Constantes.CONTROLLER_PLANET%>?op=<%=Constantes.OP_LIST %>">Planetas <span class="sr-only">(current)</span></a></li>
+						<li class="active"><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas</a></li>
 						<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
 						<li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"

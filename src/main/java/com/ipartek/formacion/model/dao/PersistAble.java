@@ -1,4 +1,4 @@
-package com.ipartek.formacion.model;
+package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
@@ -14,12 +14,13 @@ import com.ipartek.formacion.pojo.Persona;
  * 		<li>Delete</li>
  * 	</ul>
  */
-public interface CrudAble<P> {
+public interface PersistAble<P> {
 	//Create
 	boolean create(P pojo);
 	//Read
 	List<P> getAll();
-	P getById(long id);
+	
+	P getById(int id);
 	//Update
 	boolean update(P pojo);
 	//Delete

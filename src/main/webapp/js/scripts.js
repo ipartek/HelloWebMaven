@@ -3,4 +3,6 @@
 // Esto no es JAVA
 
 
-console.info("Esto es un comentario que saldra por consola");
+$(document).ready(function() {
+    $('.tabla').DataTable();
+} );

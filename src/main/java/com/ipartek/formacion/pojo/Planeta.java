@@ -4,18 +4,29 @@ public class Planeta {
 	
 	private int id;
 	private String nombre,img,distancia;
+	private static final int NEW = -1;
 
 	public Planeta() {
 		super();
-		this.id = -1;
-		this.nombre = "";
-		this.img = "http://www.freeiconspng.com/uploads/science-planet-icon-png-22.png";
-		this.distancia = "";
+		this.id = NEW;
+		this.nombre = "Nuevo planeta";
+		this.img = "https://cdn3.iconfinder.com/data/icons/solarsystem/PNG/128x128/mercury.png";
+		
 	}
 
 	public Planeta(String nombre) {
 		this();
 		this.nombre = nombre;
+	}
+	
+	public Planeta(String nombre,int id) {
+	    this();
+		this.nombre = nombre;
+		this.id = id;
+	}
+	
+	public boolean isNew(){
+		return (this.id == NEW)?true:false;
 	}
 
 	public int getId() {
