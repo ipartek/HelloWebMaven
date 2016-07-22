@@ -62,6 +62,19 @@ table {
 
 /* NUESTROS ESTILOS
 ******************************************/
+.users tr td img {
+	width:70px;
+	height:70px;
+	
+}
+.users tr{
+	width:100px;
+	height:50px;
+}
+
+.tm{
+	font-size: 30px;
+}
 
 .mejores{
 	background: #012B39;
@@ -78,7 +91,7 @@ table {
   border-radius: 0.25em;
   border-collapse: collapse;
   margin: 1%;
-  width:70%;
+  width:50%;
   font-family: arial;
   
 }
@@ -89,17 +102,21 @@ table {
   text-align: left;
 }
 .users td {
-  color: #fff;
+  color: black;
   padding: 0.65em 1em;
+  text-align: center;
+  
+}
+.users td:hover {
+  color:#08088A;
 }
 
 .users tbody tr {
   transition: background 0.25s ease;
 }
 .users tbody tr:hover {
-  background: #014055;
+  background: #A9D0F5;
 }
-
 
 
 

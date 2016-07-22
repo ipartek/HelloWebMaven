@@ -91,4 +91,24 @@
     <servlet-name>PlanetaServlet</servlet-name>
     <url-pattern>/planeta</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PlanetServlet</display-name>
+    <servlet-name>PlanetServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PlanetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PlanetServlet</servlet-name>
+    <url-pattern>/planets</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EjerServlet</display-name>
+    <servlet-name>EjerServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.EjerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EjerServlet</servlet-name>
+    <url-pattern>/ejercicio</url-pattern>
+  </servlet-mapping>
 </web-app>

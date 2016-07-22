@@ -1,7 +1,7 @@
 <%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!doctype html>
 <!-- tipo documento es HTML5 -->
@@ -17,6 +17,11 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<!--Data table  -->
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+
 <link rel="stylesheet" href="css/styles.css?v=2.0">
 
 <base href="<%=Constantes.WEB_HOME%>">
@@ -30,7 +35,6 @@
 </head>
 
 <body>
-
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -49,20 +53,23 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="<%=Constantes.WEB_HOME%>index.jsp">Inicio
+					<li class="active"><a
+						href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Libros</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
-					<li class="dropdown"><a href="<%=Constantes.WEB_HOME%>ejercicios" class="dropdown-toggle"
+					<li class="dropdown"><a
+						href="<%=Constantes.WEB_HOME%>ejercicios" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Ejercicios <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="<%=Constantes.WEB_HOME%>ranking">Puntuacion</a></li>
-							<li><a href="<%=Constantes.WEB_HOME%>hello">Servlet hello</a></li>
-							<li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">tag</a></li>
-							<li><a href="<%=Constantes.WEB_HOME%>planeta">Planetas</a></li>
+							<li><a href="<%=Constantes.WEB_HOME%>hello">Servlet
+									hello</a></li>
+							<li><a
+								href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">tag</a></li>
 							<li role="separator" class="divider"></li>
 						</ul></li>
 				</ul>
