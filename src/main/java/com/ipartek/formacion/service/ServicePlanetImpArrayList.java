@@ -79,11 +79,8 @@ public class ServicePlanetImpArrayList implements ServicePlanet {
 	public Planeta save(Planeta p) throws Exception {
 		//guardar o modificar planeta en ArrayList
 		if ( p.isNew() ){
-			if(planetas.isEmpty()){
-				p.setId(1);
-			}else{
-				p.setId( (planetas.get(planetas.size()-1).getId()+1) );
-			}
+			this.indice++;
+			p.setId(1);
 			planetas.add(p);
 			
 		}else{

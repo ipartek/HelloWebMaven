@@ -164,7 +164,8 @@ public class PlanetServlet extends HttpServlet {
 		
 		try {
 			request.setAttribute("detail", servicioPlaneta.save(p));
-			dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANETA_DETAIL);	
+			dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANETA_DETAIL);
+			request.setAttribute("msg", "Los datos de "+nombre+" se han guardado correctamente.");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

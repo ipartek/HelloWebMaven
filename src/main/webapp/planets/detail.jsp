@@ -17,6 +17,13 @@
 	<div class="panel-body">
 		<div class="imgdetalle" id="planetas">
 
+<%
+	if (request.getAttribute("msg") != null){
+		out.print("<div class='alert alert-warning' role='alert'>");
+		out.print(request.getAttribute("msg"));
+		out.print("</div>");
+	}
+%>
 
 <img src="<%=p.getImg()%>" alt="<%=p.getNombre()%>" />
 			
@@ -41,11 +48,11 @@
 				<input type="hidden" name="id" value="<%=p.getId()%>">
 				<input type="hidden" name="op" value="<%=Constantes.OP_SAVE%>">
 				<input type="submit" class="btn btn-success" value="Guardar">
-				</td></tr>
+				</td><td><a href="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_LIST  %>"><input type="button" class="btn btn-danger" value="Cancelar"></a></td></tr>
 				</table>
 			</form>
 			
-			<a href="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_LIST  %>"><input type="button" class="btn btn-danger" value="Cancelar"></a> 
+			 
 		</div>
 	</div>
 </div>

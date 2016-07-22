@@ -19,7 +19,7 @@ public class Planeta {
 	public Planeta() {
 		super();
 		this.id = NEW;
-		this.img = "https://cms-assets.tutsplus.com/uploads/users/107/posts/22984/image/25a-space-flat-icons-photoshop-saturn.jpg";
+		this.img = "https://d30y9cdsu7xlg0.cloudfront.net/png/792-200.png";
 		this.nombre = "Nuevo Planeta";
 		this.distancia = "0";
 	}
