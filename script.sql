@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `planet`;
 CREATE TABLE IF NOT EXISTS `planet` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(250) NOT NULL DEFAULT 'sin nombre',
-  `imagen` varchar(250) NOT NULL DEFAULT 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png',
+  `imagen` varchar(250) NOT NULL DEFAULT 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRD_jUumvN0FYgQd7kSi1jOJR2T2gnF3773ORCT6m_3YuR1pn6EwA',
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='Pl';
@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `planet` (
 DELETE FROM `planet`;
 /*!40000 ALTER TABLE `planet` DISABLE KEYS */;
 INSERT INTO `planet` (`id`, `nombre`, `imagen`) VALUES
-	(4, 'jupiter', 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png'),
-	(8, 'Saturno', 'http://icdn.pro/images/en/a/s/astroid-moon-planet-icone-5626-128.png');
+	(4, 'jupiter', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRD_jUumvN0FYgQd7kSi1jOJR2T2gnF3773ORCT6m_3YuR1pn6EwA'),
+	(8, 'Saturno', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRD_jUumvN0FYgQd7kSi1jOJR2T2gnF3773ORCT6m_3YuR1pn6EwA');
 /*!40000 ALTER TABLE `planet` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
