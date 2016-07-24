@@ -13,10 +13,10 @@ public class CalculadoraServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public static final int SUMA = 0;
-	public static final int RESTA = 1;
+	public static final int SUMA 	   = 0;
+	public static final int RESTA      = 1;
 	public static final int MULTIPLICA = 2;
-	public static final int DIVIDE = 3;
+	public static final int DIVIDE 	   = 3;
 
 	private Float op1, op2;
 	private int op = -1;
@@ -40,7 +40,7 @@ public class CalculadoraServlet extends HttpServlet {
 			pop1 = pop1.replace(",", ".");
 			pop2 = pop2.replace(",", ".");
 			
-			// parseamos las variables a float
+			// parseamos las variables a Float y a Integer
 			op1 = Float.parseFloat(pop1);
 			op2 = Float.parseFloat(pop2);
 			op = Integer.parseInt((String) request.getParameter("op"));

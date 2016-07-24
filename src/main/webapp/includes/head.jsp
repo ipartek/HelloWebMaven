@@ -12,8 +12,8 @@
 
 <html lang="es">
 <head>
-  <meta charset="utf-8"> <!-- juego de caracteres -->
-  <title>Hello Web</title> <!-- titulo de la pagina-pestaÃ±a -->
+  <meta charset="utf-8"> 		<!-- juego de caracteres -->
+  <title>Hello Web</title> 		<!-- titulo de la pagina-pestaña -->
   
   <base href="<%=Constantes.WEB_HOME%>">
   <meta name="description" content="App Web con JEE">
@@ -43,8 +43,8 @@
 <!-- DataTable -->
 <link rel="stylesheet"  href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
-  <!-- Enlaces a las hojas de Estilos propia-->
-  <link rel="stylesheet" href="css/styles.css?v=2.0">
+<!-- Enlaces a las hojas de Estilos propia-->
+<link rel="stylesheet" href="css/styles.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

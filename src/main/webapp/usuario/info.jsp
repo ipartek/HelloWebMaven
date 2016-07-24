@@ -1,6 +1,6 @@
 <%@ include file="../includes/head.jsp" %>
 
-<h1>Informacónn Usuario</h1>
+<h1>Información Usuario</h1>
 
 <%
 	
@@ -17,10 +17,10 @@
 	<input type="text" name="nombre" value="${sessionScope.usuario_logeado.nombre}" ><br>
 	
 	
-	<label for="ape1">Apellido1:</label>
+	<label for="ape1">1º Apellido:</label>
 	<input type="text" name="ape1" value="${sessionScope.usuario_logeado.apellido1}" ><br>
 		
-	<label for="ape2">Apellido2:</label>
+	<label for="ape2">2º Apellido:</label>
 	<input type="text" name="ape2" value="${sessionScope.usuario_logeado.apellido2}" ><br>
 	
 	<label for="dni">DNI:       </label>

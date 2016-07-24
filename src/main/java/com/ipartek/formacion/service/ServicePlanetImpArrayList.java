@@ -43,6 +43,9 @@ public class ServicePlanetImpArrayList implements ServicePlanet {
 		return INSTANCE;
 	}
 
+	
+	//Implementamos los metodos de la interface ServicePlanet.java
+	
 	@Override
 	public List<Planeta> getAll() {
 		return this.planetas;

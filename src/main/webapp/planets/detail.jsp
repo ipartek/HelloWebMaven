@@ -22,7 +22,7 @@
 	<input type="text" name="nombre" required value="<%=p.getNombre()%>">
 	<br>
 	
-	<label for="imagen">Imagen:</label>
+	<label for="imagen">URL Imagen:</label>
 	<input type="text" name="imagen" required value="<%=p.getImagen()%>">
 	<br>
 	

@@ -69,7 +69,7 @@ public class Candidato extends Persona {
 	}
 	
 	/**
-	 * M�todo estaAceptado nos indica si un Candidato2 est� aceptado
+	 * Método estaAceptado nos indica si un Candidato2 está aceptado
 	 * Para ello, su nota debe ser igual o mayor a NOTA_APOROBADO
 	 *
 	 * @return aceptado {@code boolean}
