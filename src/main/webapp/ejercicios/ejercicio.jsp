@@ -29,8 +29,11 @@
 		
 		<form action="<%=Constantes.WEB_HOME%>ejercicio" method="post">
 		
-			Nombre: <input type="text" name="post1" value="" required placeholder="Introduce tu nombre"><br>
-			Profesión:   <input type="text" name="post2" value="" required placeholder="Introduce tu profesión"> <br>
+			<label for="post1">Nombre: </label>
+			<input type="text" name="post1" value="" required placeholder="Introduce tu nombre"><br>
+			
+			<label for="post2">Profesión:</label>   
+			<input type="text" name="post2" value="" required placeholder="Introduce tu profesión"> <br>
 			
 			<input type="submit" class="btn btn-primary"  value="Enviar">
 			

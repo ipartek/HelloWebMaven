@@ -31,14 +31,18 @@
 	    <th>Valor Atributo</th>
 	  </tr>
 	  <tr>
+	  	<td>Nombre</td>
 	    <td><%out.print(request.getAttribute("resultadoPost1"));%></td>
+	  </tr>
+	  <tr>
+	  	<td>Profesión</td>
 	    <td><%out.print(request.getAttribute("resultadoPost2"));%></td>
 	  </tr>
 	</table>
 	
 	<!-- --------------------------------------------------------------------------- -->	
 	<!-- Presentar por pantalla los parÃ¡metros obtenidos por POST con scriptles -->
-	<h2>Parametros por POST con scriptles</h2>
+	<h2>Parametros por POST con expresiones EL</h2>
 
 
 	<table class="table table-striped custab">
@@ -47,7 +51,11 @@
 	    <th>Valor Atributo</th>
 	  </tr>
 	  <tr>
+	  	<td>Nombre</td>
 	    <td>${requestScope.resultadoPost1}</td>
+	    </tr>
+	  <tr>
+	  	<td>Profesión</td>
 	    <td>${requestScope.resultadoPost2}</td>
 	  </tr>
 	</table>
