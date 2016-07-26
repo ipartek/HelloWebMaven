@@ -15,6 +15,7 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
+	protected long id;
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;

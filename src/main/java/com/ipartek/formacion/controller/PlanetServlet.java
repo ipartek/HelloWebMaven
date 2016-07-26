@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
+import com.ipartek.formacion.service.ServicePlanet;
 import com.ipartek.formacion.service.ServicePlanetImpArrayList;
+import com.ipartek.formacion.service.ServicePlanetImplDB;
 
 /**
  * Servlet implementation class PlanetServlet
@@ -25,10 +27,12 @@ public class PlanetServlet extends HttpServlet {
        
 	private RequestDispatcher dispatch;
 	
-	//TODO cargar de BBDD
-	private ArrayList<Planeta> planetas = null;
-	private ServicePlanetImpArrayList servicioPlaneta = ServicePlanetImpArrayList.getInstance();
+	
+	//private ArrayList<Planeta> planetas = null;
+	//private ServicePlanetImpArrayList servicioPlaneta = ServicePlanetImpArrayList.getInstance();
 
+	private ServicePlanet servicioPlaneta = ServicePlanetImplDB.getInstance();
+	
 	/**
 	 * Se ejecuta sólo la primera vez que alguien llama al servlet
 	 */
@@ -48,15 +52,15 @@ public class PlanetServlet extends HttpServlet {
 	public void destroy() {
 		
 		super.destroy();
-		planetas = null;
+	//	planetas = null;
 	}
 	
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Antes de doGet o doPost");
+		
 		super.service(request, response);
-		System.out.println("Después de doGet o doPost");
+		
 	}
 	
 	/**
@@ -192,6 +196,7 @@ public class PlanetServlet extends HttpServlet {
 			e.printStackTrace();
 		}		
 		
+		request.setAttribute("planeta", p);
 		request.setAttribute("mensaje", mensaje);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
 		

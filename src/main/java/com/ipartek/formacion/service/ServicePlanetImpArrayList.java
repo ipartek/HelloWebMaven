@@ -9,40 +9,40 @@ public class ServicePlanetImpArrayList implements ServicePlanet{
 	
 	//Aplicamos el patrón Singleton
 	private static ServicePlanetImpArrayList INSTANCE = null;
-	
 	private ArrayList<Planeta> planetas = null;
 	private int indice = 0;
-
+	private static final int MOCKS_SIZE = 50;
+	
 	/**
-	 * Constructor para que no se pueda llamar desde fuera
-	 * No se puede realizar 
+	 * Constructor Privado para que no se llame desde fuera No se puede realizar
+	 * un "new"
 	 */
-	 private ServicePlanetImpArrayList() {
-		 
-		planetas = new ArrayList<Planeta>();		
-		for (int i = 0; i < 50 ; i++){		
+	private ServicePlanetImpArrayList() {
+		planetas = new ArrayList<Planeta>();
+		for (int i = 0; i < MOCKS_SIZE; i++) {
 			planetas.add(new Planeta("planet" + i, i));
 		}
-		this.indice = 50;
-	 }
-	 
-	 /**
-	  * 
-	  */
-	 private synchronized static void createInstance() {
-	        if (INSTANCE == null) { 
-	            INSTANCE = new ServicePlanetImpArrayList();
-	        }
-	    }
+		this.indice = MOCKS_SIZE;
+	}
 
-	 /**
-	  * Mátodo público que nos da acceso a la Clase
-	  * @return
-	  */
-	    public static ServicePlanetImpArrayList getInstance() {
-	        if (INSTANCE == null) createInstance();
-	        return INSTANCE;
-	    }
+	// creador sincronizado para protegerse de posibles problemas multi-hilo
+	// otra prueba para evitar instanciación múltiple
+	private synchronized static void createInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new ServicePlanetImpArrayList();
+		}
+	}
+
+	/**
+	 * Metodo Publico que nos da acceso a usar la Clase
+	 * 
+	 * @return
+	 */
+	public static ServicePlanetImpArrayList getInstance() {
+		if (INSTANCE == null)
+			createInstance();
+		return INSTANCE;
+	}
 	
 	@Override
 	public List<Planeta> getAll() {
