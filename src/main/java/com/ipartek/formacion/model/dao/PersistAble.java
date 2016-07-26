@@ -2,8 +2,6 @@ package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
-import com.ipartek.formacion.pojo.Persona;
-
 /**
  * Declara las operaciones basicas de CRUD
  * <ul>
