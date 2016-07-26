@@ -9,6 +9,14 @@
 
 <h1><%=planeta.getNombre()%></h1>
 
+<%	
+	if ( request.getAttribute("msg") != null ){
+		out.print("<hr>");
+		out.print(request.getAttribute("msg"));
+		out.print("<hr>");
+	}	
+%>
+
 <img src="<%=planeta.getImagen()%>" alt="<%=planeta.getNombre()%>" />
 
 

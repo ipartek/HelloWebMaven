@@ -14,6 +14,7 @@ import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePlanet;
 import com.ipartek.formacion.service.ServicePlanetImpArrayList;
+import com.ipartek.formacion.service.ServicePlanetImplDB;
 
 /**
  * Servlet implementation class PlanetServlet
@@ -26,7 +27,7 @@ public class PlanetServlet extends HttpServlet {
 	//TODO cargar de BaseDatos
 	private ArrayList<Planeta> planetas = null;
 	
-	private ServicePlanetImpArrayList servicioPlaneta= ServicePlanetImpArrayList.getInstance();
+	private ServicePlanet servicioPlaneta= ServicePlanetImplDB.getInstance();
 	
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -39,7 +40,7 @@ public class PlanetServlet extends HttpServlet {
 			planetas.add( new Planeta("planet"+i, i ) );
 		}
 	}
-	
+
 	/**
 	 * Este metodo se ejecuta al Destruirse el Servlet, 
 	 * por ejemplo cuando paramos el Servidor
@@ -155,18 +156,10 @@ public class PlanetServlet extends HttpServlet {
 	
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
-		String criterio = request.getParameter("s");
-		
-		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) servicioPlaneta.search(criterio);
-		request.setAttribute("list", planetasBusqueda);
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
-		
-		String msg = "Busqueda [" + criterio+ "] 0 coincidencias";
-		if ( !planetasBusqueda.isEmpty() ){
-			msg = "Busqueda [" + criterio+ "] "+planetasBusqueda.size()+" coincidencias";
-		}
-		request.setAttribute("msg", msg);
-		
+		String busqueda = request.getParameter("s");		
+ 		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) servicioPlaneta.search(busqueda);
+ 		request.setAttribute("list", planetasBusqueda );
+ 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
 		
 	}
 	
