@@ -15,11 +15,12 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
-	protected String nombre;
+	protected Long id;//
+	protected String nombre;//
 	protected String apellido1;
 	protected String apellido2;
 	protected String dni;
-	protected String email;
+	protected String email;//
 	
 	/**
 	 * Constructor de Persona que tiene como par�metros
