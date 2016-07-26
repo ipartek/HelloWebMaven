@@ -7,23 +7,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ipartek.formacion.model.DataBaseConnection;
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
-import com.ipartek.formacion.pojo.Planet;
+import com.ipartek.formacion.pojo.Person;
 
-public class PlanetDAOImpl implements PlanetDAO {
-	
-	private static PlanetDAOImpl INSTANCE = null;
+public class PersonDAOImpl implements PersonDAO{
+
+	private static PersonDAOImpl INSTANCE = null;
 	private static DataBaseConnectionImpl db;
 	private Connection conexion;
 
 	
 
-	private PlanetDAOImpl() {
+	private PersonDAOImpl() {
 		db = DataBaseConnectionImpl.getInstance();
 	}
 
-	public static PlanetDAOImpl getInstance() {
+	public static PersonDAOImpl getInstance() {
 		if (INSTANCE == null) {
 			createInstance();
 		}
@@ -32,21 +31,21 @@ public class PlanetDAOImpl implements PlanetDAO {
 
 	private synchronized static void createInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new PlanetDAOImpl();
+			INSTANCE = new PersonDAOImpl();
 		}
 	}
 
 	@Override
-	public boolean create(Planet pojo) {
+	public boolean create(Person pojo) {
 		boolean resul = false;
-		String sql = "{call insertPlaneta(?,?,?)}";
+		String sql = "{call insertPersona(?,?,?)}";
 		CallableStatement cst = null;
 		try{
 			conexion = db.getConexion();
 			cst = conexion.prepareCall(sql);
 			//parametros entrada
 			cst.setString(1, pojo.getNombre());
-			cst.setString(2, pojo.getImagen());
+			cst.setString(2, pojo.getEmail());
 			
 			if ( cst.executeUpdate() == 1 ){
 				resul = true;			
@@ -68,22 +67,22 @@ public class PlanetDAOImpl implements PlanetDAO {
 	}
 
 	@Override
-	public List<Planet> getAll() {
-		List<Planet> planetas = null;
-		String sql = "{call getAllPlanetas()}";
+	public List<Person> getAll() {
+		List<Person> personas = null;
+		String sql = "{call getAllPersonas()}";
 		try {
 			conexion = db.getConexion();		
-			Planet p = null;
+			Person p = null;
 			CallableStatement cSmt = conexion.prepareCall(sql);
 			ResultSet rs = cSmt.executeQuery();
-			planetas = new ArrayList<Planet>();
+			personas = new ArrayList<Person>();
 			while (rs.next()) {
-				p = new Planet();
+				p = new Person();
 				p.setId(rs.getLong("id"));
 				p.setNombre(rs.getString("nombre"));
-				p.setImagen(rs.getString("imagen"));
+				p.setEmail(rs.getString("email"));
 				// add en lista
-				planetas.add(p);
+				personas.add(p);
 			}
 
 		} catch (SQLException e) {
@@ -91,24 +90,24 @@ public class PlanetDAOImpl implements PlanetDAO {
 		} finally {
 			db.desconectar();
 		}
-		return planetas;
+		return personas;
 	}
 
 	@Override
-	public Planet getById(long id) {
-		Planet p = null;
+	public Person getById(long id) {
+		Person p = null;
 		CallableStatement cst = null;
-		String sql = "{call buscarPlaneta(?)}";
+		String sql = "{call buscarPersona(?)}";
 		try {
 			conexion = db.getConexion();			
 			cst = conexion.prepareCall(sql);
 			cst.setLong(1, id);
 			ResultSet rs = cst.executeQuery();			
 			while (rs.next()) {
-				p = new Planet();
+				p = new Person();
 				p.setId(rs.getLong("id"));
 				p.setNombre(rs.getString("nombre"));
-				p.setImagen(rs.getString("imagen"));				
+				p.setEmail(rs.getString("email"));				
 			}
 
 		} catch (SQLException e) {
@@ -126,16 +125,16 @@ public class PlanetDAOImpl implements PlanetDAO {
 	}
 
 	@Override
-	public boolean update(Planet pojo) {
+	public boolean update(Person pojo) {
 		boolean resul = false;
-		String sql = "{call updatePlaneta(?,?,?)}";
+		String sql = "{call updatePersona(?,?,?)}";
 		CallableStatement cst = null;
 		try{
 			conexion = db.getConexion();
 			cst = conexion.prepareCall(sql);
 			//parametros entrada
 			cst.setString(1, pojo.getNombre());
-			cst.setString(2, pojo.getImagen());
+			cst.setString(2, pojo.getEmail());
 			cst.setLong(3, pojo.getId());
 			
 			//ejecutar
@@ -159,7 +158,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 	@Override
 	public boolean delete(long id) {
 		boolean resul = false;
-		String sql = "{call deletePlaneta(?)}";
+		String sql = "{call deletePersona(?)}";
 		CallableStatement cst = null;
 		try{
 			conexion = db.getConexion();
@@ -182,21 +181,21 @@ public class PlanetDAOImpl implements PlanetDAO {
 	}
 
 	@Override
-	public List<Planet> search(String criterio) {
-		ArrayList<Planet> listaResul = new ArrayList<Planet>();
-		Planet p = null;
+	public List<Person> search(String criterio) {
+		ArrayList<Person> listaResul = new ArrayList<Person>();
+		Person p = null;
 		try{
 			conexion = db.getConexion();
-			CallableStatement cst = conexion.prepareCall("{call buscarPlanetas(?)}");
+			CallableStatement cst = conexion.prepareCall("{call buscarPersonas(?)}");
 			cst.setString(1, criterio);
 			
 			ResultSet rs = cst.executeQuery();
 			
 			while( rs.next() ){
-				p = new Planet();
+				p = new Person();
 				p.setId( rs.getLong("id") );
 				p.setNombre( rs.getString("nombre") );
-				p.setImagen( rs.getString("imagen") );
+				p.setEmail( rs.getString("email") );
 				listaResul.add(p);
 			}
 						

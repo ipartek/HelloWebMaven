@@ -11,19 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
-import com.ipartek.formacion.pojo.Planet;
-import com.ipartek.formacion.service.ServicePlanet;
-import com.ipartek.formacion.service.ServicePlanetImpArrayList;
-import com.ipartek.formacion.service.ServicePlanetImplDB;
+import com.ipartek.formacion.pojo.Person;
+import com.ipartek.formacion.service.ServicePerson;
+import com.ipartek.formacion.service.ServicePersonImplDB;
 
 /**
- * Servlet implementation class PlanetServlet
+ * Servlet implementation class PersonaServlet
  */
-public class PlanetServlet extends HttpServlet {
+public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
-	private ServicePlanet serviceP = ServicePlanetImplDB.getInstance();
-
+	private ServicePerson serviceP = ServicePersonImplDB.getInstance();
+       
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
 	 */
@@ -90,14 +89,14 @@ public class PlanetServlet extends HttpServlet {
 
 		long id = Long.parseLong(request.getParameter("id"));
 		request.setAttribute("detail", serviceP.getById(id));
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);
 
 	}
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
 
-		request.setAttribute("detail", new Planet());
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
+		request.setAttribute("detail", new Person());
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);
 
 	}
 
@@ -105,7 +104,7 @@ public class PlanetServlet extends HttpServlet {
 
 		request.setAttribute("list", serviceP.getAll());
 
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_LIST);
 
 	}
 
@@ -114,9 +113,9 @@ public class PlanetServlet extends HttpServlet {
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
 
 		long id = Long.parseLong(request.getParameter("id"));
-		String msg = "Planeta con id: " + id + " no ha sido eliminado";
+		String msg = "Persona con id: " + id + " no ha sido eliminado";
 		if (serviceP.delete(id)) {
-			msg = "Planeta con id: " + id + " ha sido eliminado";
+			msg = "Persona con id: " + id + " ha sido eliminado";
 			request.setAttribute("msgBueno", msg);
 		} else {
 			request.setAttribute("msgMalo", msg);
@@ -153,9 +152,9 @@ public class PlanetServlet extends HttpServlet {
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		String busqueda = request.getParameter("s");
 
-		ArrayList<Planet> planetasBusqueda = (ArrayList<Planet>) serviceP.search(busqueda);
+		ArrayList<Person> planetasBusqueda = (ArrayList<Person>) serviceP.search(busqueda);
 		request.setAttribute("list", planetasBusqueda);
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_LIST);
 
 		String msg = "Busqueda [" + busqueda + "] 0 coincidencias";
 		if (!planetasBusqueda.isEmpty()) {
@@ -170,21 +169,21 @@ public class PlanetServlet extends HttpServlet {
 
 		// recoger parametros formulario
 		long id = Long.parseLong(request.getParameter("id"));
-		String imagen = request.getParameter("imagen");
+		String email = request.getParameter("email");
 		String nombre = request.getParameter("nombre");
 
 		// crear Planeta
-		Planet p = new Planet();
+		Person p = new Person();
 		p.setId(id);
-		p.setImagen(imagen);
+		p.setEmail(email);
 		p.setNombre(nombre);
 
 		// guardar o modificar planeta en ArrayList
-		String msg = "No se ha podido guardar el Planeta";
+		String msg = "No se ha podido guardar la Persona";
 
 		try {
 			request.setAttribute("detail", serviceP.save(p));
-			msg = "El Planeta se ha guardado";
+			msg = "La Persona se ha guardado";
 			request.setAttribute("msgBueno", msg);
 		} catch (Exception e) {
 
@@ -192,7 +191,7 @@ public class PlanetServlet extends HttpServlet {
 
 		}
 
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);
 
 	}
 

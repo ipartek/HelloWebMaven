@@ -26,5 +26,11 @@ table tr td img{
 }
 .planets tr:hover{
 	background-color: #00ff99 !important;
+}
+#personas tr:hover{
 	
+	heigth:100 !important;
+	width:100 !important;
+	vertical-align:middle !important;
+	background-color: #00ff99 !important;
 }
