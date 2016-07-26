@@ -180,6 +180,7 @@ public class PlanetServlet extends HttpServlet {
 		try {
 			serviceP.save(p);			
 		} catch (Exception e) {
+			e.printStackTrace();
 			msg = "Error al salvar planeta " + p.toString() ;
 		}
 		request.setAttribute("msg", msg );
