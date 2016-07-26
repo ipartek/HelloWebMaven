@@ -10,6 +10,14 @@
 
 <h1><%=p.getNombre() %></h1>
 
+<%	
+	if ( request.getAttribute("msg") != null ){
+		out.print("<hr>");
+		out.print(request.getAttribute("msg"));
+		out.print("<hr>");
+	}	
+%>
+
 <img src="<%=p.getImagen()%>" alt="<%=p.getNombre()%>"/>
 
 <form action="<%=Constantes.CONTROLLER_PLANETS%>" method="post">

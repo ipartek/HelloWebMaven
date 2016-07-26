@@ -24,7 +24,7 @@ public class PlanetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
 		
-	private ServicePlanet serviceP = ServicePlanetImpArrayList.getInstance();
+	private ServicePlanet serviceP = ServicePlanetImplDB.getInstance();
 	
 	/**
 	 * Se ejecurta solo la primera vez que alguien llama al servlet
@@ -178,6 +178,7 @@ public class PlanetServlet extends HttpServlet {
 		try {
 			serviceP.save(p);			
 		} catch (Exception e) {
+			e.printStackTrace();
 			msg = "Error al salvar planeta " + p.toString() ;
 		}
 		request.setAttribute("msg", msg );

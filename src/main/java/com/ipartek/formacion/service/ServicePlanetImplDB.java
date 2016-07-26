@@ -30,29 +30,41 @@ public class ServicePlanetImplDB implements ServicePlanet {
 
 	@Override
 	public List<Planeta> getAll() {		
+		System.out.println("Buscado ultimos 1.000 planetas ");
 		return daoPlaneta.getAll();
 	}
 
 	@Override
 	public Planeta getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Buscado planeta [" + id + "]" );
+		return daoPlaneta.getById(id);
 	}
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Eliminado planeta [" + id + "]" );
+		return daoPlaneta.delete(id);
 	}
 
 	@Override
 	public Planeta save(Planeta p) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		boolean resul = false;
+		if (p.isNew() ) {
+			resul = daoPlaneta.create(p);
+		}else{
+			resul = daoPlaneta.update(p);
+		}
+		
+		if (resul ==false){
+			throw new  Exception("Excepcion salvando Planeta " + p.toString());
+		}
+		
+		return p;
 	}
 
 	@Override
-	public List<Planeta> search(String criterio) {		
+	public List<Planeta> search(String criterio) {	
+		System.out.println("Buscar planetas criterio " + criterio  );
 		return daoPlaneta.search(criterio);
 	}
 
