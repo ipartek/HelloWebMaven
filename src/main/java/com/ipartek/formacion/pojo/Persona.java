@@ -14,7 +14,7 @@ import com.ipartek.formacion.Utilidades;
  */
 
 public class Persona {
-
+	//mapear id nombre e email
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;

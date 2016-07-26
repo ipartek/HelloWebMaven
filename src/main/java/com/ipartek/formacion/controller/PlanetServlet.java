@@ -88,9 +88,12 @@ public class PlanetServlet extends HttpServlet {
 
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
-		request.setAttribute("msg", servicioPlaneta.delete(id));
+		String msg  = "Planeta no borrado";
+		if(servicioPlaneta.delete(id)== true){
+			msg = "Planeta deleteado";
+		}
+		request.setAttribute("msg", msg);
 		listar(request, response);
-		
 	}
 	
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {

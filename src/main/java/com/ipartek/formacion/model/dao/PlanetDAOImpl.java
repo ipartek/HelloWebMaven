@@ -13,7 +13,7 @@ import com.ipartek.formacion.pojo.Planeta;
 
 public class PlanetDAOImpl implements PlanetDAO {
 	
-	private static PlanetDAOImpl INSTANCE = null;
+		private static PlanetDAOImpl INSTANCE = null;
 		private static DataBaseHelperImpl db;
 		private Connection conexion;
 	
@@ -37,7 +37,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 		@Override
 		public boolean create(Planeta pojo) {
 			boolean resul = false;
-			String sql = "{call insertPlaneta(?,?)}";
+			String sql = "{call insertPlaneta(?,?,?)}";
 			CallableStatement cst = null;
 			try {
 				conexion = db.getConexion();
@@ -93,15 +93,22 @@ public class PlanetDAOImpl implements PlanetDAO {
 	
 		@Override
 		public Planeta getById(int id) {
-			Planeta p = null;
-			/*for(int i=0;i<planetas.size();i++){
-				if(id==planetas.get(i).getId()){
-					p= planetas.get(i);
-					break;
+			String sql = "{call getById()}";
+			try {
+				conexion = db.getConexion();
+				Planeta p = null;
+				CallableStatement cSmt = conexion.prepareCall(sql);
+				ResultSet rs = cSmt.executeQuery();
+				while (rs.next()) {
+					rs.getInt("id");
 				}
-			}	
-			return p;
-		*/
+	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				db.desconectar();
+			}
+			Planeta p = null;
 			return  p;
 		}
 	
@@ -142,7 +149,6 @@ public class PlanetDAOImpl implements PlanetDAO {
 				conexion = db.getConexion();
 				cst = conexion.prepareCall(sql);
 				cst.setLong(1,id);
-				
 				if(cst.executeUpdate() == 1){
 					resul = true;
 				}

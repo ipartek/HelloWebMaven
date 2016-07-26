@@ -41,8 +41,7 @@ public class ServicePlanetImplDB implements ServicePlanet {
 		
 			@Override
 			public boolean delete(long id) {
-				// TODO Auto-generated method stub
-				return false;
+				return daoPLaneta.delete(id);
 			}
 		
 			@Override
