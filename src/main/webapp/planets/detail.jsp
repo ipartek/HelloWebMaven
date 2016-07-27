@@ -30,7 +30,7 @@
 
 <h1><%=pl.getNombre() %></h1>
 
-<img src="<%=pl.getImagen()%>" alt="<%=pl.getNombre()%>"/>
+<img src="<%=pl.getImagen()%>" width="100" height="100" alt="<%=pl.getNombre()%>"/>
 
 <form action="<%=Constantes.CONTROLLER_PLANETS%>" method="post">
 

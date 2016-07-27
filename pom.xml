@@ -12,6 +12,7 @@
 		<jdk.version>1.6</jdk.version>		
 		<junit.version>4.11</junit.version>		
 		<javax.servlet.version>2.5</javax.servlet.version>
+		<javax.jsp.version>2.1</javax.jsp.version>
 	</properties>
 	
 	<build>		
@@ -28,36 +29,51 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
-	<!-- librerias y dependencias a otros proyectos maven -->
-	<dependencies>
 
+	
+	<!-- librerias y dependencias a otros projectos maven -->
+	<dependencies>
+	
 		<dependency>
-		<scope>test</scope>
+			<scope>test</scope>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 		</dependency>
 
 		<dependency>
+			<scope>provided</scope>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${javax.servlet.version}</version>
 		</dependency>
-		
-		<!-- JSTL Java Server Tag Library -->
+
 		<dependency>
-    		<groupId>jstl</groupId>
-    		<artifactId>jstl</artifactId>
-    		<version>1.2</version>
+			<scope>provided</scope>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>jsp-api</artifactId>
+		    <version>${javax.jsp.version}</version>
 		</dependency>
-		
+
+
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.6</version>
+		</dependency>
+
+		<!-- JSTL Java Servlet Tag Library -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 
 	</dependencies>
 

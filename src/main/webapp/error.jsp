@@ -26,6 +26,14 @@
                         <i class="fa fa-arrow-left"></i>
                         Homepage                        
                     </a>
+             <br>
+             <br>
+             O prueba volviendo a la página anterior, pero atento a lo que tecleas.
+             <br> 
+             No somos amigos ni de los duplicados ni de los índices fuera de rango.
+             <br>
+                 <a href="javascript:window.history.back();">&laquo; Volver atrás</a>
+                 
             </div>
         </div>
     </div>

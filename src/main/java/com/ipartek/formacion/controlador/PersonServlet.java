@@ -188,7 +188,6 @@ public class PersonServlet extends HttpServlet {
 		} catch (Exception e) {
 
 			request.setAttribute("msgMalo", msg);
-
 		}
 
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);

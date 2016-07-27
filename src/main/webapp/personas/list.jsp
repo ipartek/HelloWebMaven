@@ -26,7 +26,7 @@
 	%>
 	
 <form action="<%=Constantes.CONTROLLER_PERSONAS%>" method="post">
-	<input type="search" name="s" required placeholder="Busca una Persona">
+	<input type="search" name="s" required placeholder="Busca Persona(s)">
 	<input type="hidden"name="op" value="<%=Constantes.OP_SEARCH%>">
 	<input type="submit" value="Buscar">
 </form>
@@ -51,8 +51,8 @@
 	<tbody>
 		<c:forEach var="pu" items="${requestScope.list}">
 			<tr >
-					<td>${pu.email}</td>
 					<td>${pu.nombre}</td>
+					<td>${pu.email}</td>
 					<td><a href="<%=Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_DETAIL%>&id=${pu.id}"><i class="fa fa-eye" aria-hidden="true"></i></td>
 					<td><a href="<%=Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_DELETE%>&id=${pu.id}"><i class="fa fa-trash" aria-hidden="true"></i></td>
 					

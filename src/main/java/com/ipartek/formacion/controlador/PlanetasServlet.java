@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.Utilidades;
 import com.ipartek.formacion.pojo.Planeta;
-import com.ipartek.formacion.pojo.Puntuacion;
 
 /**
  * Servlet implementation class PlanetasServlet

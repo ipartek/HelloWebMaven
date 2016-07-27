@@ -1,5 +1,7 @@
 package com.ipartek.formacion.pojo;
 
+import com.ipartek.formacion.Utilidades;
+
 public class Person {
 
 	private long id;
@@ -18,7 +20,7 @@ public class Person {
 	public Person(long id, String nombre) {
 		super();
 		this.id = id;
-		this.nombre = nombre;
+		this.setNombre(nombre);
 	}
 
 	public long getId() {
@@ -34,7 +36,7 @@ public class Person {
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = Utilidades.capitalizar(nombre);
 	}
 
 	public String getEmail() {
