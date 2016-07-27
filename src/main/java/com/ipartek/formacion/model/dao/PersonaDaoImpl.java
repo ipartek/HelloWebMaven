@@ -183,7 +183,7 @@ public class PersonaDaoImpl implements PersonaDAO {
 		Persona p = null;
 		try{
 			conexion = db.getConexion();
-			CallableStatement cst = conexion.prepareCall("{call buscarPersona(?)}");
+			CallableStatement cst = conexion.prepareCall("{call buscarPersonas(?)}");
 			cst.setString(1, criterio);
 			
 			ResultSet rs = cst.executeQuery();

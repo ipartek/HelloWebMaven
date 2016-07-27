@@ -35,13 +35,13 @@ public class ServicePersonaImplDB implements ServicePersona{
 
 	@Override
 	public Persona getById(long id) {
-		System.out.println("Buscado planeta [" + id + "]" );
+		System.out.println("Buscado candidato [" + id + "]" );
 		return daoPersona.getById(id);
 	}
 
 	@Override
 	public boolean delete(long id) {	
-		System.out.println("Eliminado planeta [" + id + "]" );
+		System.out.println("Eliminado candidato [" + id + "]" );
 		return daoPersona.delete(id);
 	}
 
@@ -58,7 +58,7 @@ public class ServicePersonaImplDB implements ServicePersona{
 				
 		if (resul==false){
 			System.out.println("Excepcion " + p.toString()  );
-			throw new Exception("Excepcion salvando Planeta " + p.toString() );
+			throw new Exception("Excepcion salvando Persona " + p.toString() );
 		}
 		
 		return p;
@@ -66,7 +66,7 @@ public class ServicePersonaImplDB implements ServicePersona{
 
 	@Override
 	public List<Persona> search(String criterio) {
-		System.out.println("Buscar planetas criterio " + criterio  );
+		System.out.println("Buscar personas criterio " + criterio  );
 		return daoPersona.search(criterio);
 }
 }

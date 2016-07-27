@@ -66,6 +66,10 @@ public class Persona {
 	
 	public boolean isNew(){
 		return (this.id==NEW)?true:false;
-}
+	}
 	
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", email=" + email + "]";
+	}
 }
