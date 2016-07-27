@@ -53,7 +53,8 @@ public class PeopleDAOImpl implements PeopleDAO {
 			}	
 		
 			
-		} catch (SQLException e) {
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
