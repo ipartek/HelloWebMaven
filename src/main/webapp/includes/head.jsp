@@ -60,7 +60,7 @@
 					<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Libros</a></li>
 					<li><a href="<%=Constantes.WEB_HOME%>calculadora.jsp">Calculadora</a></li>
-					<li><a href="<%=Constantes.WEB_HOME%>persona/list.jsp">Personas</a></li>
+					<li><a href="<%=Constantes.CONTROLLER_PERSONS%>?op=<%=Constantes.OP_LIST%>">Personas</a></li>
 					<li class="dropdown"><a
 						href="<%=Constantes.WEB_HOME%>ejercicios" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
