@@ -17,12 +17,11 @@ import java.util.List;
  */
 public interface PersistAble<P> {   
 	
-	//sin <P> utilizariamos el siguiente codigo y solo seria valido para el objeto Persona
-	//boolean create(Persona p);    
-	//con esto crea la persona y me devuelve true o false si la crea o no
-
+								//sin <P> utilizariamos el siguiente codigo 
+	boolean create(P pojo);		//boolean create(Persona p);     y solo seria valido para el objeto Persona
+								//con esto crea la persona y me devuelve true o false si la crea o no
 								//asi nos implementaria cualquier clase pojo
-	boolean create(P pojo);		//para poder Create en la BBDD
+								//para poder ejecutar Create en la BBDD
 	
 	List<P> getAll();   		//para poder Read todos los datos de la BBDD
 	

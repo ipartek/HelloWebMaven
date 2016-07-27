@@ -4,8 +4,7 @@ import java.util.List;
 
 import com.ipartek.formacion.model.dao.PersistAble;
 import com.ipartek.formacion.model.dao.PersonaDAOImpl;
-import com.ipartek.formacion.model.dao.PlanetDAO;
-import com.ipartek.formacion.model.dao.PlanetDAOImpl;
+
 import com.ipartek.formacion.pojo.Persona;
 
 public class ServicePersonaImpDB implements ServicePersona {
@@ -13,6 +12,8 @@ public class ServicePersonaImpDB implements ServicePersona {
 	private static ServicePersonaImpDB INSTANCE = null;
 	private PersistAble<Persona> daoPersona;
 
+	
+	//Patron SINGLETON *********************************
 	private ServicePersonaImpDB() {
 		daoPersona = PersonaDAOImpl.getInstance();
 	}
@@ -29,12 +30,14 @@ public class ServicePersonaImpDB implements ServicePersona {
 			INSTANCE = new ServicePersonaImpDB();
 		}
 	}
+	//Fin patrón SINGLETON*******************************
 	
-	
+
 	@Override
 	public List<Persona> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Buscado ultimas 1.000 personas ");
+		return daoPersona.getAll();
+		
 	}
 
 	@Override

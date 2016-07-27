@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
-import com.ipartek.formacion.service.ServicePlanet;
-import com.ipartek.formacion.service.ServicePlanetImplDB;
+import com.ipartek.formacion.service.ServicePersona;
+import com.ipartek.formacion.service.ServicePersonaImpDB;
+
 
 /**
  * Servlet implementation class PersonaServlet
@@ -20,7 +21,7 @@ public class PersonaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
 	
-	private ServicePlanet serviceP = ServicePlanetImplDB.getInstance();
+	private ServicePersona serviceP = ServicePersonaImpDB.getInstance();
        
 
 	/**
@@ -134,6 +135,11 @@ public class PersonaServlet extends HttpServlet {
 		
 		
 		dispatch.forward(request, response);
+		
+	}
+
+	private void guardar(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		
 	}
 

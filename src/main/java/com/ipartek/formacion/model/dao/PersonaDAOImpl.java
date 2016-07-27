@@ -1,21 +1,35 @@
 package com.ipartek.formacion.model.dao;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
+import com.ipartek.formacion.pojo.Persona;
 
+
+/**
+ * Clase que gestiona la conexión a la BBDD para realizar las operaciones CRUD
+ * @author JOSU HERNANDEZ
+ *
+ * @param <P> 
+ */
 public class PersonaDAOImpl<P> implements PersistAble<P> {
 
-	private static PlanetDAOImpl INSTANCE = null;
+	private static PersonaDAOImpl INSTANCE = null;
 	private static DataBaseConnectionImpl db;
 	private Connection conexion;
 
-	private PlanetDAOImpl() {
+	//Patron SINGLETON *********************************
+	
+	private PersonaDAOImpl() {
 		db = DataBaseConnectionImpl.getInstance();
 	}
 
-	public static PlanetDAOImpl getInstance() {
+	public static PersonaDAOImpl getInstance() {
 		if (INSTANCE == null) {
 			createInstance();
 		}
@@ -24,10 +38,10 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 
 	private synchronized static void createInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new PlanetDAOImpl();
+			INSTANCE = new PersonaDAOImpl();
 		}
 	}
-	
+	//Fin patrón SINGLETON*******************************
 	
 	@Override
 	public boolean create(P pojo) {
@@ -35,10 +49,37 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 		return false;
 	}
 
+
 	@Override
 	public List<P> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<P> personas = null;
+		String sql = "{call getAllPersonas()}";     //llamada a la rutina almacenada en BBDD getAllPersonas()
+		
+		
+//		System.out.println("sql=" + sql);
+		try {
+		    conexion = db.getConexion();
+			Persona p = null;
+			CallableStatement cSmt = conexion.prepareCall(sql);
+			ResultSet rs = cSmt.executeQuery();
+			personas = new ArrayList<P>();
+//			System.out.println("personas antes=" + personas);
+			while (rs.next()) {
+				p = new Persona();
+				p.setId(rs.getLong("id"));
+				p.setNombre(rs.getString("nombre"));
+				p.setEmail(rs.getString("email"));
+				// add en lista
+				personas.add((P) p);
+//				System.out.println("personas antes=" + personas);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			db.desconectar();
+		}
+		return (List<P>) personas;
 	}
 
 	@Override

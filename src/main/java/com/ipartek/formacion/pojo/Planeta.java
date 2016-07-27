@@ -21,7 +21,7 @@ public class Planeta {
 	 * @param nombre {@code String}  nombre del planeta
 	 * @param distancia {@code Float}  distancia al planeta desde la Tierra en UA (Unidades Astronomicas 1UA=150.000.000 km)
 	 */
-//constructor vacio
+	//constructor vacio
 	public Planeta() {
 		super();
 		this.id = NEW;   //lo inicializo con un valor que nunca va a tener un planeta

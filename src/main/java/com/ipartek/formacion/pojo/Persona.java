@@ -22,6 +22,34 @@ public class Persona {
 	protected String dni;
 	protected String email;
 	
+	private static final int NEW = -1;
+	
+	
+	
+	/**
+	 * Constructor vacio de Persona 
+	 * inicializamos el id a -1
+	 */
+	public Persona() {
+		super();
+		this.id = NEW;
+		this.email = "";
+		this.nombre = "";
+	
+	}
+	
+	//constructor con dos parametros: el nombre y el identificador
+		public Persona(String nombre, int id) {
+			this();             //llama al constructor vacio por temas de herencia 
+								//asi no necesitamos añadir en el código del constructor con un pàrametro 
+								//los this.id, this.img
+			this.id = id;		//identificador del planeta
+			this.nombre = nombre;  
+		}
+		
+		
+		
+	
 	/**
 	 * Constructor de Persona que tiene como par�metros
 	 * @param nombre {@code String}
@@ -43,6 +71,14 @@ public class Persona {
 	}
 
 
+	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -90,6 +126,13 @@ public class Persona {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	
+	
+	public boolean isNew() {
+		return (this.id==NEW)?true:false;  
+		
 	}
 
 

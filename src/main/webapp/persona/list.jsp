@@ -1,6 +1,6 @@
 <%@ include file="../includes/head.jsp" %>
 
-<h1>Planetas</h1>
+<h1>Personas</h1>
 
 <%
 
@@ -12,7 +12,7 @@
 %>
 
 <a href="<%=Constantes.CONTROLLER_PERSONA%>?op=<%=Constantes.OP_NEW%>" 
-		class="btn btn-primary" role="button">Nuevo Persona</a>
+		class="btn btn-primary" role="button">Nueva Persona</a>
 
 
 <!--  BUSCADOR DESHABILITADO
@@ -35,10 +35,10 @@
 	</thead>	
 	
 	<tbody>	
-		<c:forEach var="p" items="${requestScope.list}">
+		<c:forEach var="pers" items="${requestScope.list}">
 			<tr>
-				<td>${p.nombre}</td>
-				<td>${p.email}</td>
+				<td>${pers.nombre}</td>
+				<td>${pers.email}</td>
 				<td>
 					<a href="<%=Constantes.CONTROLLER_PERSONA%>?op=<%=Constantes.OP_DETAIL%>&id=${p.id}">
 					<i class="fa fa-eye" aria-hidden="true"></i></a>
