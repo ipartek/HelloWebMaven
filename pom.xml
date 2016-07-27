@@ -78,7 +78,7 @@
 			<version>${jstl.version}</version>
 		</dependency>
 		
-		
+		<!-- Liberia de trazas o Logs -->
 		<dependency>
 		    <groupId>log4j</groupId>
 		    <artifactId>log4j</artifactId>

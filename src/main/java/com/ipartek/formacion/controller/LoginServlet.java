@@ -23,7 +23,7 @@ import com.mysql.jdbc.log.Log;
 public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger("LoginServlet");
+	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 	private Properties props = null;
 	
 	private RequestDispatcher dispatcher;
@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {	
-		log.trace("init");
+		LOG.trace("init");
 		super.init(config);
 		props = (Properties) getServletContext().getAttribute(InitListener.ATTRIBUTE_PROPS_NAME);
 	}
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		log.trace("init");
+		LOG.trace("init");
 		try {
 			
 			HttpSession session = request.getSession(true);
@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && 
 				 USUARIO_PASS_ADMIN.equals(pPass)	){
 				
-				log.debug("usuario logeado");
+				LOG.debug("usuario logeado");
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
 				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 				//Ir a Backoffice
 				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
 			}else{			
-				log.debug("usuario no es valido");
+				LOG.debug("usuario no es valido");
 				session.setAttribute("usuario_logeado",null);
 				//guardar mensaje como attributo
 				request.setAttribute("msg", "Credenciales incorrectas");

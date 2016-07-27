@@ -60,17 +60,16 @@ public class InitListener implements ServletContextListener {
     }
 
     /**
+     * Cargar la configuracion de LOG4J de la carpeta de recursos "src/java/resources"
+     * @param sce
      * 
-     * @param sce
-     * @param sce
-     *          ServletContextEvent
      */
     private void loadLog4j(ServletContextEvent sce) {      
       try {
     	Properties props = new Properties();
     	props.load(getClass().getResourceAsStream(PATH_LOG4J));
         PropertyConfigurator.configure(props);
-        LOG.info("LOG CARGADO");
+        LOG.info("LOG cargado con exito");
 
       } catch (Exception e) {
     	  e.printStackTrace();
