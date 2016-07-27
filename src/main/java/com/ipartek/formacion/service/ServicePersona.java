@@ -40,11 +40,4 @@ public interface ServicePersona {
 	 */
 	Persona save(Persona p) throws Exception;
 	
-	/**
-	 * Busca Personas que contengan el <b>criterio</b> buscado en su nombre
-	 * @param criterio
-	 * @return
-	 */
-	List<Persona> search(String criterio);
-	
 }

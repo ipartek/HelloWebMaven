@@ -13,7 +13,7 @@
 				<table>					
 					<form method="get" action="<%=Constantes.CONTROLLER_PERSONA %>">				
 						<input type="hidden" name="op" value="<%=Constantes.OP_NEW %>">
-						<input type="submit" value="Nueva Persona">
+						<input type="submit" class="btn btn-danger" value="Nueva Persona">
 					</form>
 					</td></tr>
 				</table>

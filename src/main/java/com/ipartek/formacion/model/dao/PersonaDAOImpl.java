@@ -36,8 +36,35 @@ public class PersonaDAOImpl implements PersistAble<Persona> {
 
 	@Override
 	public boolean create(Persona pojo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resul = false;
+		String sql = "{call insertPersona(?,?,?)}";
+		CallableStatement cst= null;
+		
+		try {
+			conexion = db.getConexion();
+			cst = conexion.prepareCall(sql);
+			//parametros entrada
+			cst.setString(1, pojo.getNombre());
+			cst.setString(2, pojo.getEmail());
+			
+			if ( cst.executeUpdate() == 1){
+				resul = true;
+				pojo.setId(cst.getInt(3));				
+			}			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			cst = null;
+			db.desconectar();
+		}
+		
+		return resul;
 	}
 
 	@Override
@@ -95,8 +122,36 @@ public class PersonaDAOImpl implements PersistAble<Persona> {
 
 	@Override
 	public boolean update(Persona pojo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resul = false;
+		String sql = "{call updatePersona(?,?,?)}";
+		CallableStatement cst= null;
+		
+		try {
+			conexion = db.getConexion();
+			cst = conexion.prepareCall(sql);
+			//parametros entrada
+			cst.setString(1, pojo.getNombre());
+			cst.setString(2, pojo.getEmail());
+			cst.setLong(3, pojo.getId());
+			
+			//ejecutar
+			if ( cst.executeUpdate() == 1){
+				resul = true;			
+			}			
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cst.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			cst = null;
+			db.desconectar();
+		}
+		
+		return resul;
 	}
 
 	@Override

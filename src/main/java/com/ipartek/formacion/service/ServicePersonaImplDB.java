@@ -6,7 +6,7 @@ import com.ipartek.formacion.model.dao.PersistAble;
 import com.ipartek.formacion.model.dao.PersonaDAOImpl;
 import com.ipartek.formacion.pojo.Persona;
 
-public class ServicePersonaImplDB implements PersistAble<Persona> {
+public class ServicePersonaImplDB implements ServicePersona {
 
 	private static ServicePersonaImplDB INSTANCE = null;
 	private PersistAble<Persona> daoPersona;
@@ -44,15 +44,19 @@ public class ServicePersonaImplDB implements PersistAble<Persona> {
 	}
 
 	@Override
-	public boolean create(Persona pojo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean update(Persona pojo) {
-		// TODO Auto-generated method stub
-		return false;
+	public Persona save(Persona p) throws Exception {
+		boolean resul = false;
+		if ( p.isNew() ){
+			resul = daoPersona.create(p);
+		}else{
+			resul = daoPersona.update(p);
+		}
+				
+		if (resul==false){
+			throw new Exception("Excepcion guardando Persona " + p.toString() );
+		}
+		
+		return p;
 	}
 
 

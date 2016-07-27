@@ -46,7 +46,7 @@
 				<input type="hidden" name="id" value="<%=p.getId()%>">
 				<input type="hidden" name="op" value="<%=Constantes.OP_SAVE%>">
 				<input type="submit" class="btn btn-success" value="Guardar">
-				</td><td><a href="<%=Constantes.CONTROLLER_PERSONA %>?op=<%=Constantes.OP_LIST  %>"><input type="button" class="btn btn-danger" value="Cancelar"></a></td></tr>
+				</td><td><a href="<%=Constantes.CONTROLLER_PERSONA %>?op=<%=Constantes.OP_LIST  %>"><input type="button" class="btn btn-danger" value="Volver"></a></td></tr>
 				</table>
 			</form>
 			

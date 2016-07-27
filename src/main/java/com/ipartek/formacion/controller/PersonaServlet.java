@@ -2,6 +2,7 @@ package com.ipartek.formacion.controller;
 
 import java.io.IOException;
 
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -13,8 +14,8 @@ import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.controller.listener.InitListener;
-import com.ipartek.formacion.model.dao.PersistAble;
 import com.ipartek.formacion.pojo.Persona;
+import com.ipartek.formacion.service.ServicePersona;
 import com.ipartek.formacion.service.ServicePersonaImplDB;
 
 /**
@@ -25,7 +26,7 @@ public class PersonaServlet extends HttpServlet {
 	private final static Logger LOG = Logger.getLogger(PersonaServlet.class);
 	private RequestDispatcher dispatch;
 	
-	private PersistAble<Persona> servicePer = ServicePersonaImplDB.getInstance();
+	private ServicePersona servicePer = (ServicePersona) ServicePersonaImplDB.getInstance();
 
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -151,7 +152,7 @@ public class PersonaServlet extends HttpServlet {
 		String msg = null;
 		
 		try {
-//			servicePer.save(p);
+			servicePer.save(p);
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg="Error al guardar persona " + p.toString();
