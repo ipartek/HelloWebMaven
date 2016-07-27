@@ -35,10 +35,10 @@
 	</thead>	
 	
 	<tbody>	
-		<c:forEach var="pers" items="${requestScope.list}">
+		<c:forEach var="p" items="${requestScope.list}">
 			<tr>
-				<td>${pers.nombre}</td>
-				<td>${pers.email}</td>
+				<td>${p.nombre}</td>
+				<td>${p.email}</td>
 				<td>
 					<a href="<%=Constantes.CONTROLLER_PERSONA%>?op=<%=Constantes.OP_DETAIL%>&id=${p.id}">
 					<i class="fa fa-eye" aria-hidden="true"></i></a>

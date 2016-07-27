@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Persona;
+import com.ipartek.formacion.pojo.Planeta;
 
 
 /**
@@ -73,7 +74,6 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 				personas.add((P) p);
 //				System.out.println("personas antes=" + personas);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -84,20 +84,99 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 
 	@Override
 	public P getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Persona p = null;
+		String sql = "{call buscarPersona(?)}";   //llamada al metodo almacenado creado en HEIDI
+		CallableStatement cst = null;
+		try {
+		    conexion = db.getConexion();
+		    cst = conexion.prepareCall(sql);
+		    //parametros de entrada
+		    cst.setLong(1, id );
+		    
+		    ResultSet rs = cst.executeQuery();
+		    
+		    while (rs.next()){
+		    	p = new Persona();
+				p.setId( rs.getLong("id") );
+				p.setNombre( rs.getString("nombre") );
+				p.setEmail( rs.getString("email") );
+		    }
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try{
+			    cst.close();   //cerrarmos la cst y en caso de que no se pueda se manda un excepcion
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			db.desconectar();  // nos desconectamos de la BBDD
+		}
+		return (P) p;
 	}
 
 	@Override
 	public boolean update(P pojo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+		boolean resul = false;
+		String sql = "{call updatePersona(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
+		CallableStatement cst = null;
+		try {
+		    conexion = db.getConexion();
+		    cst = conexion.prepareCall(sql);
+		    //parametros de entrada
+		    cst.setString(1, pojo.getNombre() );
+		    cst.setString(2, pojo.getImagen() );
+		    cst.setLong(3, pojo.getId() );
+		    
+		    //ejecutar
+		    if ( cst.executeUpdate() == 1 ){
+		    	resul = true;
+		    	
+		    	pojo.setId(cst.getInt(3));
+		    }
+		    
+		    
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try{
+			    cst.close();
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			db.desconectar();
+		}
+		return resul;
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resul = false;
+		String sql = "{call deletePersona(?)}";   //llamada al metodo almacenado creado en HEIDI
+		CallableStatement cst = null;
+		try {
+		    conexion = db.getConexion();
+		    cst = conexion.prepareCall(sql);
+		    //parametros de entrada
+		    cst.setLong(1, id );
+		    
+		    if ( cst.executeUpdate() == 1 ){
+		    	resul = true;
+		    	
+		    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try{
+			    cst.close();
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			db.desconectar();
+		}
+		return resul;
 	}
 
 }

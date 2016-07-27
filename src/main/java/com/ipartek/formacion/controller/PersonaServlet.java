@@ -1,6 +1,7 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
+import com.ipartek.formacion.pojo.Persona;
+import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePersona;
 import com.ipartek.formacion.service.ServicePersonaImpDB;
 
@@ -89,21 +92,27 @@ public class PersonaServlet extends HttpServlet {
 	}
 	
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		request.setAttribute("detail", new Persona() );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONA_DETAIL);		
 		
 	}
 	
 	private void detalle(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		int id = Integer.parseInt(request.getParameter("id"));			
+		request.setAttribute("detail", serviceP.getById(id));
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONA_DETAIL );
 		
 	}
 	
-	private void buscar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		
-	}
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		String msg = "Persona No Elimnado";		
+		int id = Integer.parseInt(request.getParameter("id"));		
+		if ( serviceP.delete(id)){
+			msg = "Persona["+id+"] Elimada Correctamente";	
+		}		
+		request.setAttribute("msg", msg);		
+		listar(request,response);
 		
 	}
 
@@ -118,7 +127,10 @@ public class PersonaServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int op = Integer.parseInt(request.getParameter("op"));
 		
 		switch (op) {
@@ -138,9 +150,47 @@ public class PersonaServlet extends HttpServlet {
 		
 	}
 
-	private void guardar(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
+	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
+		String busqueda = request.getParameter("s");
+		
+		ArrayList<Persona> personasBusqueda = (ArrayList<Persona>) serviceP.search(busqueda);
+		request.setAttribute("list", personasBusqueda );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONA_LIST);
+		
+		String msg = "Busqueda [" + busqueda+ "] 0 coincidencias";
+		if ( !personasBusqueda.isEmpty() ){
+			msg = "Busqueda [" + busqueda+ "] "+personasBusqueda.size()+" coincidencias";
+		}
+		request.setAttribute("msg", msg);
+		
+		
+	}
+	
+
+	private void guardar(HttpServletRequest request, HttpServletResponse response) {
+		//recoger parametros formulario
+		long id       = Long.parseLong(request.getParameter("id"));
+		String email = request.getParameter("email");
+		String nombre = request.getParameter("nombre");
+		
+		//crear Persona
+		Persona p = new Persona();
+		p.setId(id);
+		p.setEmail(email);
+		p.setNombre(nombre);
+		
+		String msg = null;
+		try {
+			serviceP.save(p);			
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "Error al salvar persona " + p.toString() ;
+		}
+		request.setAttribute("msg", msg );
+		request.setAttribute("detail", p);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONA_DETAIL );
 	}
 
 }

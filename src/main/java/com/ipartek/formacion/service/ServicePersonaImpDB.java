@@ -42,20 +42,29 @@ public class ServicePersonaImpDB implements ServicePersona {
 
 	@Override
 	public Persona getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Buscado persona [" + id + "]" );
+		return daoPersona.getById(id);
 	}
 
 	@Override
 	public boolean delete(long id) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println("Eliminada persona [" + id + "]" );
+		return daoPersona.delete(id);
 	}
 
 	@Override
 	public Persona save(Persona p) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		boolean resul = false;
+		if (p.isNew() ) {
+			resul = daoPersona.create(p);
+		}else{
+			resul = daoPersona.update(p);
+		}
+		
+		if (resul ==false){
+			throw new  Exception("Excepcion salvando Persona " + p.toString());
+		}
+		return p;
 	}
 
 	@Override

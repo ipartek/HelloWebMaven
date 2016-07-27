@@ -1,11 +1,11 @@
-<%@page import="com.ipartek.formacion.pojo.Planeta"%>
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@ include file="../includes/head.jsp" %>
 
 <%
 	Persona p = (Persona)request.getAttribute("detail");
 	 
 	//isNew es una variable de tipo boolean que me devuelve true sino false
-	//si el id del planeta es -1
+	//si el id de la persona es -1
 %>
 
 <h1><%=p.getNombre() %></h1>
@@ -29,7 +29,7 @@
 	<input type="text" name="nombre" required value="<%=p.getNombre()%>">
 	<br>
 	
-	<label for="imagen">Email:</label>
+	<label for="name">Email:</label>
 	<input type="text" name="email" required value="<%=p.getEmail()%>">
 	<br>
 	
