@@ -54,6 +54,8 @@ public class Persona {
 	public Persona() {
 		super();
 		this.id = -1;
+		this.nombre = "Nueva persona";
+		this.email = "Nuevo email";
 	}
 
 

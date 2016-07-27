@@ -41,18 +41,23 @@ public class PersonaServlet extends HttpServlet {
 		
 		switch (op) {
 		case Constantes.OP_LIST:
+			LOG.debug("Ha seleccionado listar");			
 			listar(request,response);
 			break;
 		case Constantes.OP_NEW:
+			LOG.debug("Ha seleccionado crear nuevo");	
 			nuevo(request,response);
 			break;
 		case Constantes.OP_DETAIL:
+			LOG.debug("Ha seleccionado ver detalle");	
 			detalle(request,response);
 			break;
 		case Constantes.OP_DELETE:
+			LOG.debug("Ha seleccionado eliminar");	
 			borrar(request,response);
 			break;
 		default:
+			LOG.debug("Se está listando por defecto");	
 			listar(request,response);
 			break;
 		}
@@ -106,6 +111,7 @@ public class PersonaServlet extends HttpServlet {
 		switch (op) {
 		
 		case Constantes.OP_SAVE:
+			LOG.debug("Ha seleccionado guardar");	
 			guardar(request,response);
 			break;		
 		
@@ -138,6 +144,7 @@ public class PersonaServlet extends HttpServlet {
 		} catch (Exception e) {
 			mensaje = "No se ha podido guardar";
 			e.printStackTrace();
+			LOG.error("No se ha podido guardar persona" + e.getStackTrace());
 		}		
 		
 		request.setAttribute("persona", p);
