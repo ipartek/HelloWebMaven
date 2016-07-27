@@ -53,9 +53,8 @@ public class PlanetServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Antes de doGet o doPost");
 		super.service(request, response);
-		System.out.println("Despues de doGet o doPost");
+		
 	}
 	
 	

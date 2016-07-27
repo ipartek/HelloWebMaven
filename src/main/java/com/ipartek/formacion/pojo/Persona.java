@@ -5,6 +5,7 @@ import com.ipartek.formacion.Utilidades;
 /**
  * Clase Persona con atributos
  * <ol>
+ * <liid</li>
  * <li>nombre</li>
  * <li>apellido1</li>
  * <li>apellido2</li>
@@ -14,12 +15,15 @@ import com.ipartek.formacion.Utilidades;
  */
 
 public class Persona {
-
+	
+	protected	int  id;
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;
 	protected String dni;
 	protected String email;
+	
+	private static final int NEW = -1;
 	
 	/**
 	 * Constructor de Persona que tiene como par�metros
@@ -40,6 +44,16 @@ public class Persona {
 		this.dni = dni;
 		this.email = email;
 	}
+	
+	
+
+	public Persona() {
+		super();
+		this.id = NEW;
+		this.nombre = "nueva persona";
+		this.email = "nuevo email";
+	}
+
 
 
 	public String getNombre() {
@@ -90,6 +104,22 @@ public class Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public boolean isNew(){
+		return (this.id==NEW)?true:false;
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 
 	@Override

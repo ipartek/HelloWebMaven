@@ -26,6 +26,9 @@ public class Constantes {
 	//CONTROLADORES
 	public static final String CONTROLLER_PLANETS = "planets";
 	
+	//vistas de personaServlet
+	public static final String VIEW_PERSONA_DETAIL = "persona/detail.jsp";
+	public static final String VIEW_PERSONA_LIST = "persona/list.jsp";
 	
 	
 }
