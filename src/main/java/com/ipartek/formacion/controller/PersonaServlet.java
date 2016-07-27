@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.Constantes;
-import com.ipartek.formacion.controller.listener.InitListener;
 import com.ipartek.formacion.pojo.Persona;
 import com.ipartek.formacion.service.ServicePersona;
 import com.ipartek.formacion.service.ServicePersonaImplDB;
@@ -110,6 +109,9 @@ public class PersonaServlet extends HttpServlet {
 		
 		if (servicePer.delete(id)){
 			msg = "Persona &quot;" + nombrePersona + "&quot; eliminada correctamente";
+	        LOG.info("Persona eliminada correctamente.");
+		}else{
+	        LOG.error("Error al eliminar la persona.");
 		}
 		
 		request.setAttribute("msg",  msg);
@@ -153,12 +155,14 @@ public class PersonaServlet extends HttpServlet {
 		
 		try {
 			servicePer.save(p);
+	        LOG.info("Persona guardada correctamente.");
+			msg = "Los datos de "+nombre+" se han guardado correctamente.";
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg="Error al guardar persona " + p.toString();
+	        LOG.error("Error al guardar la persona.");
+			msg="No se pudo guardar Persona " + nombre;
 		}
 		
-		msg = "Los datos de "+nombre+" se han guardado correctamente.";
 		request.setAttribute("msg", msg);
 		request.setAttribute("detail", p);
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONA_DETAIL);
