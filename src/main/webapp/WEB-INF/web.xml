@@ -111,4 +111,14 @@
     <servlet-name>EjercicioServlet</servlet-name>
     <url-pattern>/ejercicio</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonaServlet</display-name>
+    <servlet-name>PersonaServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PersonaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonaServlet</servlet-name>
+    <url-pattern>/personas</url-pattern>
+  </servlet-mapping>
 </web-app>

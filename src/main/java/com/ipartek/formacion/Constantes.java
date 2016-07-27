@@ -23,7 +23,11 @@ public class Constantes {
 	public static final String VIEW_PLANET_LIST = "planets/list.jsp";
 	public static final String VIEW_PLANET_DETAIL = "planets/detail.jsp";
 	
+	public static final String VIEW_PERSONA_LIST = "persona/list.jsp";
+	public static final String VIEW_PERSONA_DETAIL = "persona/detail.jsp";
+	
 	//CONTROLADORES
 	
 	public static final String CONTROLLER_PLANETS = "planets";  //mapping del servlet
+	public static final String CONTROLLER_PERSONA = "personas";  //mapping del servlet
 }

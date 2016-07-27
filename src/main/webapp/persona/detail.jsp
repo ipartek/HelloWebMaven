@@ -1,12 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@page import="com.ipartek.formacion.pojo.Planeta"%>
+<%@ include file="../includes/head.jsp" %>
 
-</body>
-</html>
+<%
+	Persona p = (Persona)request.getAttribute("detail");
+	 
+	//isNew es una variable de tipo boolean que me devuelve true sino false
+	//si el id del planeta es -1
+%>
+
+<h1><%=p.getNombre() %></h1>
+
+<%	
+	if ( request.getAttribute("msg") != null ){
+		out.print("<hr>");
+		out.print(request.getAttribute("msg"));
+		out.print("<hr>");
+	}	
+%>
+
+
+<form action="<%=Constantes.CONTROLLER_PERSONA%>" method="post">
+
+	<label for="iddisabled">Id:</label>
+	<input type="text" name="iddisabled" disabled value="<%=p.getId()%>">
+	<br>
+
+	<label for="name">Nombre:</label>
+	<input type="text" name="nombre" required value="<%=p.getNombre()%>">
+	<br>
+	
+	<label for="imagen">Email:</label>
+	<input type="text" name="email" required value="<%=p.getEmail()%>">
+	<br>
+	
+	<input type="hidden" name="id" value="<%=p.getId()%>">
+	<input type="hidden" name="op" value="<%=Constantes.OP_SAVE%>">
+	<input type="submit" value="Guardar">
+
+
+</form>
+
+
+<%@ include file="../includes/footer.jsp" %>
