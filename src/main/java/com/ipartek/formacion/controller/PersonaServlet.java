@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
+import com.ipartek.formacion.pojo.Persona;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePersona;
 import com.ipartek.formacion.service.ServicePersonaImplDB;
@@ -69,7 +70,7 @@ int op = Integer.parseInt(request.getParameter("op"));
 		
 		int id = Integer.parseInt(request.getParameter("id"));			
 		request.setAttribute("detail", serviceP.getById(id));
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL );
 		
 	}
 
@@ -77,13 +78,13 @@ int op = Integer.parseInt(request.getParameter("op"));
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {		
 		request.setAttribute("detail", new Planeta() );
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL);		
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);		
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		
 		request.setAttribute("list", serviceP.getAll() );
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_LIST);
 		
 		
 	}
@@ -127,13 +128,13 @@ int op = Integer.parseInt(request.getParameter("op"));
 	private void buscar(HttpServletRequest request, HttpServletResponse response) {
 		
 		String busqueda = request.getParameter("s");		
-		ArrayList<Planeta> planetasBusqueda = (ArrayList<Planeta>) serviceP.search(busqueda);
-		request.setAttribute("list", planetasBusqueda );
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		ArrayList<Persona> personasBusqueda = (ArrayList<Persona>) serviceP.search(busqueda);
+		request.setAttribute("list", personasBusqueda );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_LIST);
 		
 		String msg = "Busqueda [" + busqueda+ "] 0 coincidencias";
-		if ( !planetasBusqueda.isEmpty() ){
-			msg = "Busqueda [" + busqueda+ "] "+planetasBusqueda.size()+" coincidencias";
+		if ( !personasBusqueda.isEmpty() ){
+			msg = "Busqueda [" + busqueda+ "] "+personasBusqueda.size()+" coincidencias";
 		}
 		request.setAttribute("msg", msg);
 		
@@ -149,9 +150,9 @@ int op = Integer.parseInt(request.getParameter("op"));
 		String nombre = request.getParameter("nombre");
 		
 		//crear Planeta
-		Planeta p = new Planeta();
-		p.setId(id);
-		p.setImagen(imagen);
+		Persona p = new Persona("",0,"");
+		p.setId((int) id);
+		p.setEmail(imagen);
 		p.setNombre(nombre);
 		
 		String msg = null;
@@ -159,11 +160,11 @@ int op = Integer.parseInt(request.getParameter("op"));
 			serviceP.save(p);			
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = "Error al salvar planeta " + p.toString() ;
+			msg = "Error al salvar persona " + p.toString() ;
 		}
 		request.setAttribute("msg", msg );
 		request.setAttribute("detail", p);
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_DETAIL );
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL );
 	}
 	
 }

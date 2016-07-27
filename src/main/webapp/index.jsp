@@ -1,5 +1,6 @@
 <%@ include file="includes/head.jsp" %>
 
+<%=Constantes.WEB_HOME+Constantes.CONTROLLER_PLANETS %>
 	<!--  Etiquetas para que se visualice a los usuarios -->
 	<h1>ongi etorri web app</h1>
 	

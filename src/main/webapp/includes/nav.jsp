@@ -1,6 +1,8 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!-- Fixed navbar -->    
+
+
 <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -14,8 +16,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas</a></li>
-            <li class="active"><a href="<%=Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_LIST%>">Personas</a></li>
+            <li class="active"><a href="<%=Constantes.WEB_HOME+Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas</a></li>
+            <li class="active"><a href="<%=Constantes.WEB_HOME+Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_LIST%>">Personas</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
             
             <li class="dropdown">
