@@ -15,15 +15,16 @@ public class Constantes {
 	public static final int OP_NEW    = 2;
 	//public static final int OP_UPDATE = 4;
 	public static final int OP_SAVE = 35;
-	
-	
+		
 	//VISTAS
 	public static final String VIEW_PLANET_LIST = "planets/list.jsp";
 	public static final String VIEW_PLANET_DETAIL = "planets/detail.jsp";
 	
+	public static final String VIEW_PERSON_LIST = "persona/list.jsp";
+	public static final String VIEW_PERSON_DETAIL = "persona/detail.jsp";
+	
 	//CONTROLADORES
 	public static final String CONTROLLER_PLANETS = "planets";
-	
-	
-	
+	public static final String CONTROLLER_PERSONAS = "personas";
+		
 }

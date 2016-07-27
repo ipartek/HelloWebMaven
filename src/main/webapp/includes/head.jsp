@@ -1,4 +1,4 @@
-<%@page import="com.ipartek.formacion.pojo.Persona"%>
+<%@page import="com.ipartek.formacion.pojo.Person"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!-- Importamos los TAG de JSTL -->
