@@ -111,4 +111,17 @@
     <servlet-name>PlanetServlet</servlet-name>
     <url-pattern>/planets</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PersonaServlet</display-name>
+    <servlet-name>PersonaServlet</servlet-name>
+    <servlet-class>com.ipartek.formacion.controller.PersonaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PersonaServlet</servlet-name>
+    <url-pattern>/persona</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>com.ipartek.formacion.controller.listener.InitListener</listener-class>
+  </listener>
 </web-app>

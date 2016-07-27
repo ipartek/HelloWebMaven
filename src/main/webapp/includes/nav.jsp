@@ -15,7 +15,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Planetas</a></li>
-            <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp"><i class="fa fa-user" aria-hidden="true"></i> Candidatos</a></li>
+            <li><a href="<%=Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_LIST%>"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>

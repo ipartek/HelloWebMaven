@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
 	
-	Persona p= new Persona("Admin","Gorriti","Urrutia","1234567A","admin@gmail.com");
+	Persona p= new Persona("Admin","admin@gmail.com");
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
