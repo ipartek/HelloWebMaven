@@ -15,11 +15,14 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
+	protected long id;
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;
 	protected String dni;
 	protected String email;
+	
+	private static final int NEW = -1;
 	
 	/**
 	 * Constructor de Persona que tiene como par�metros
@@ -40,8 +43,25 @@ public class Persona {
 		this.dni = dni;
 		this.email = email;
 	}
+	
+	//Constructor sin parametros
+	public Persona(){
+		super();
+		this.id = NEW;
+		this.nombre = "Anonimo";
+		this.email = "anonimo@dominio.com";
+		
+	}
 
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

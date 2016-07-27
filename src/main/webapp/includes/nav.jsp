@@ -16,9 +16,16 @@
           <ul class="nav navbar-nav">
             <li><a href="<%=Constantes.WEB_HOME %>candidato/list.jsp"><i class="fa fa-users" aria-hidden="true"></i> Candidatos</a></li>
             <li><a href="<%=Constantes.WEB_HOME %>libro/list.jsp"><i class="fa fa-book" aria-hidden="true"></i> Libros</a></li>
-            <li><a href="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_LIST %>"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;Planetas</a></li>                
-            <li class="dropdown">
             
+            <li class="dropdown">          
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil" aria-hidden="true"></i>
+             Bases de Datos <span class="caret"></span></a>
+          		<ul class="dropdown-menu">
+           		 <li><a href="<%=Constantes.CONTROLLER_PLANET %>?op=<%=Constantes.OP_LIST %>"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;Planetas</a></li>
+           		 <li><a href="<%=Constantes.CONTROLLER_PERSONA %>?op=<%=Constantes.OP_LIST %>"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;Personas</a></li>                
+            	</ul>
+            </li>
+            <li class="dropdown">            
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-pencil" aria-hidden="true"></i>
                Ejercicios <span class="caret"></span></a>
               <ul class="dropdown-menu">
