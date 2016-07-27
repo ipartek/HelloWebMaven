@@ -22,6 +22,12 @@ public class Persona {
 	protected String dni;
 	protected String email;
 	
+	private static final int NEW = -1;
+	
+	public boolean isNew(){
+		return (this.id==NEW)?true:false;
+	}
+	
 	/**
 	 * Constructor de Persona que tiene como par�metros
 	 * @param nombre {@code String}
@@ -41,6 +47,30 @@ public class Persona {
 		this.dni = dni;
 		this.email = email;
 	}
+
+	
+	
+
+	public Persona() {
+		super();
+		this.id = -1;
+	}
+
+
+	
+
+	public long getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 
 
 	public String getNombre() {
