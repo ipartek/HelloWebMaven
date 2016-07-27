@@ -15,11 +15,13 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
+	protected int id;
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;
 	protected String dni;
 	protected String email;
+private static final int NEW= -1;
 	
 	/**
 	 * Constructor de Persona que tiene como par�metros
@@ -40,6 +42,20 @@ public class Persona {
 		this.dni = dni;
 		this.email = email;
 	}
+	
+	
+
+
+	public Persona(String nombre, int id, String email) {
+		super();
+		this.nombre = nombre;
+		this.id = id;
+		this.email = email;
+		apellido1="";
+		apellido2="";
+	}
+
+
 
 
 	public String getNombre() {
@@ -92,6 +108,20 @@ public class Persona {
 	}
 
 
+	public int getId() {
+		return id;
+	}
+
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Persona [nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", dni=" + dni
@@ -99,6 +129,13 @@ public class Persona {
 				+ ", getApellido2()=" + getApellido2() + ", getDni()=" + getDni() + ", getEmail()=" + getEmail()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
+	}
+
+
+
+
+	public boolean isNew() {
+		return (this.id==NEW)?true:false;
 	}
 	
 	

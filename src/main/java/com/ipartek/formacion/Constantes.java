@@ -21,8 +21,12 @@ public class Constantes {
 	public static final String VIEW_PLANET_LIST = "planets/list.jsp";
 	public static final String VIEW_PLANET_DETAIL = "planets/detail.jsp";
 	
+	public static final String VIEW_PERSONAS_LIST = "personas/list.jsp";
+	public static final String VIEW_PERSONAS_DETAIL = "personas/detail.jsp";
+	
 	//CONTROLADORES
 	public static final String CONTROLLER_PLANETS = "planets";
+	public static final String CONTROLLER_PERSONAS = "personas";
 	
 	
 	
