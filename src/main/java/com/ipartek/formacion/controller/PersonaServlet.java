@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.Constantes;
+import com.ipartek.formacion.controller.listener.InitListener;
 import com.ipartek.formacion.pojo.Persona;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePersona;
@@ -25,6 +28,9 @@ public class PersonaServlet extends HttpServlet {
 	private RequestDispatcher dispatch;
 	
 	private ServicePersona servicioPersona = ServicePersonaImplDB.getInstance();
+	
+	//con esto podría tener un LOG con las info que yo le pida
+	private final static Logger LOG = Logger.getLogger(PersonaServlet.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

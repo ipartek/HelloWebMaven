@@ -121,4 +121,7 @@
     <servlet-name>PersonaServlet</servlet-name>
     <url-pattern>/persona</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>com.ipartek.formacion.controller.listener.InitListener</listener-class>
+  </listener>
 </web-app>
