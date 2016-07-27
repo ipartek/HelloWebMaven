@@ -27,9 +27,7 @@ public class CandidatoTest {
 
 	@Before
 	public void setUp() throws Exception {
-		try{
-			c = new Candidato("Pepe", "gorriti", "zurrutia", "1111111H", "pepe@gorriti.eu", Candidato.NOTA_MINIMA );
-			
+		try{	
 		}catch(Exception e){
 			
 			fail("No deberia haber fallado el SetUp");

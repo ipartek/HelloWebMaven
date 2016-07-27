@@ -1,7 +1,5 @@
 package com.ipartek.formacion.pojo;
 
-import com.ipartek.formacion.Utilidades;
-
 /**
  * Clase Persona con atributos
  * <ol>
@@ -15,11 +13,13 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
+	protected int id;
 	protected String nombre;
-	protected String apellido1;
-	protected String apellido2;
+	protected String apellido;
 	protected String dni;
 	protected String email;
+	
+	private static final int NEW = -1;
 	
 	/**
 	 * Constructor de Persona que tiene como par�metros
@@ -29,77 +29,74 @@ public class Persona {
 	 * @param dni {@code String}
 	 * @param email {@code String}
 	 */
-	public Persona(String nombre, String apellido1, String apellido2, String dni, String email) {
+
+	public Persona() {
 		super();
-		//this.nombre = nombre;
-		//this.apellido1 = apellido1;
-		//this.apellido2 = apellido2;
-		setNombre(nombre);
-		setApellido1(apellido1);
-		setApellido2(apellido2);		
+	}
+	
+	public Persona(int id, String nombre, String apellido, String dni, String email) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
 		this.dni = dni;
 		this.email = email;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
 	public void setNombre(String nombre) {
-		this.nombre = Utilidades.capitalizar(nombre);
+		this.nombre = nombre;
 	}
 
-
-	public String getApellido1() {
-		return apellido1;
+	public String getApellido() {
+		return apellido;
 	}
 
-
-	public void setApellido1(String apellido1) {
-		this.apellido1 = Utilidades.capitalizar(apellido1);
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
-
-
-	public String getApellido2() {
-		return apellido2;
-	}
-
-
-	public void setApellido2(String apellido2) {
-		this.apellido2 = Utilidades.capitalizar(apellido2);
-	}
-
 
 	public String getDni() {
 		return dni;
 	}
 
-
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
+	public boolean isNew(){
+		return (this.id==NEW)?true:false;
+	}
+	
 	@Override
 	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellido1=" + apellido1 + ", apellido2=" + apellido2 + ", dni=" + dni
-				+ ", email=" + email + ", getNombre()=" + getNombre() + ", getApellido1()=" + getApellido1()
-				+ ", getApellido2()=" + getApellido2() + ", getDni()=" + getDni() + ", getEmail()=" + getEmail()
+		return "Persona [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", email=" + email + ", getNombre()=" + getNombre() + ", getApellido()=" + getApellido()
+				+ ", getDni()=" + getDni() + ", getEmail()=" + getEmail()
 				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
+
+
 	
 	
 	

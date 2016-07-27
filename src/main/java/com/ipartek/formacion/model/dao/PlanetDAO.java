@@ -13,6 +13,4 @@ public interface PlanetDAO extends PersistAble<Planeta> {
 	 */
 	List<Planeta> search(String criterio);
 	
-	
-	
 }

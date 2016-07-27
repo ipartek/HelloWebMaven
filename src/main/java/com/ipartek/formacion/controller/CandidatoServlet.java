@@ -32,7 +32,7 @@ public class CandidatoServlet extends HttpServlet {
 		//crear Candidato
 		Candidato c = null;
 		try{
-			 c = new Candidato("Candido" + parametroId , "apellido1", "apellido2", "dni", "email", 5 );
+			 c = new Candidato( 0, "apellido1", "apellido2", "dni", "email", 5);
 		}catch( CandidatoException e){
 			//TODO enviar a pagina de error
 			e.printStackTrace();

@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
 				
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
-				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
+				Persona p = new Persona(1, "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
 				session.setAttribute("usuario_logeado",p);
 				
 				//Ir a Backoffice
