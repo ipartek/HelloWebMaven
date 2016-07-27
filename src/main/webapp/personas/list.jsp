@@ -37,7 +37,7 @@
 <br>
 <br>
 
-<table id=personas class="tabla">
+<table  class="tabla">
 
 	<thead>
 		<tr>
@@ -48,7 +48,7 @@
 		</tr>
 	</thead>	
 	
-	<tbody>
+	<tbody id=personas>
 		<c:forEach var="pu" items="${requestScope.list}">
 			<tr >
 					<td>${pu.nombre}</td>

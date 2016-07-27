@@ -38,7 +38,7 @@
 <br>
 <br>
 
-<table id=planetas class="tabla">
+<table  class="tabla">
 
 	<thead>
 		<tr>
@@ -49,7 +49,7 @@
 		</tr>
 	</thead>	
 	
-	<tbody>
+	<tbody id=planetas>
 		<c:forEach var="pu" items="${requestScope.list}">
 			<tr >
 					<td><img src="${pu.imagen}" alt="${pu.nombre}"/></td>
