@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Persona;
-import com.ipartek.formacion.pojo.Planeta;
+
 
 
 /**
@@ -30,7 +30,7 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 		db = DataBaseConnectionImpl.getInstance();
 	}
 
-	public static PersonaDAOImpl getInstance() {
+	public static PersonaDAOImpl<Persona> getInstance() {
 		if (INSTANCE == null) {
 			createInstance();
 		}
@@ -39,21 +39,50 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 
 	private synchronized static void createInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new PersonaDAOImpl();
+			INSTANCE = new PersonaDAOImpl<Persona>();
 		}
 	}
 	//Fin patrón SINGLETON*******************************
 	
 	@Override
 	public boolean create(P pojo) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resul = false;
+		String sql = "{call insertPersona(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
+		CallableStatement cst = null;
+		
+		try {
+		    conexion = db.getConexion();
+		    cst = conexion.prepareCall(sql);
+		    //parametros de entrada
+		    cst.setString(1, ((Persona) pojo).getNombre() );
+		    cst.setString(2, ((Persona) pojo).getEmail() );
+		
+		    
+		    if ( cst.executeUpdate() == 1 ){
+		    	resul = true;
+		    	((Persona) pojo).setId(cst.getInt(3) );  //extrigo el tercer parametro de la cst
+		    								 //que corresponde al id
+		    }
+		    
+		    
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try{
+			    cst.close();
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+			
+			db.desconectar();
+		}
+		return resul;
 	}
 
 
 	@Override
 	public List<P> getAll() {
-		List<P> personas = null;
+		List<Persona> personas = null;
 		String sql = "{call getAllPersonas()}";     //llamada a la rutina almacenada en BBDD getAllPersonas()
 		
 		
@@ -63,7 +92,7 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 			Persona p = null;
 			CallableStatement cSmt = conexion.prepareCall(sql);
 			ResultSet rs = cSmt.executeQuery();
-			personas = new ArrayList<P>();
+			personas = (List<Persona>) new ArrayList<P>() ;
 //			System.out.println("personas antes=" + personas);
 			while (rs.next()) {
 				p = new Persona();
@@ -71,7 +100,7 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 				p.setNombre(rs.getString("nombre"));
 				p.setEmail(rs.getString("email"));
 				// add en lista
-				personas.add((P) p);
+				personas.add((Persona) p);
 //				System.out.println("personas antes=" + personas);
 			}
 		} catch (SQLException e) {
@@ -118,6 +147,7 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 
 	@Override
 	public boolean update(P pojo) {
+		
 		boolean resul = false;
 		String sql = "{call updatePersona(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
 		CallableStatement cst = null;
@@ -125,15 +155,15 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 		    conexion = db.getConexion();
 		    cst = conexion.prepareCall(sql);
 		    //parametros de entrada
-		    cst.setString(1, pojo.getNombre() );
-		    cst.setString(2, pojo.getImagen() );
-		    cst.setLong(3, pojo.getId() );
+		    cst.setString(1, ((Persona) pojo).getNombre() );
+		    cst.setString(2, ((Persona) pojo).getEmail() );
+		    cst.setLong(3, ((Persona) pojo).getId() );
 		    
 		    //ejecutar
 		    if ( cst.executeUpdate() == 1 ){
 		    	resul = true;
 		    	
-		    	pojo.setId(cst.getInt(3));
+		    	((Persona) pojo).setId(cst.getInt(3));
 		    }
 		    
 		    
@@ -149,6 +179,8 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 			db.desconectar();
 		}
 		return resul;
+	}
+	
 
 	@Override
 	public boolean delete(long id) {
@@ -178,5 +210,6 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 		}
 		return resul;
 	}
+
 
 }

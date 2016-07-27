@@ -5,6 +5,8 @@ package com.ipartek.formacion.model.dao;
 
 import java.util.List;
 
+import com.ipartek.formacion.pojo.Persona;
+
 /**
  *Declara las operaciones básias de CRUD
  * <ul>
@@ -30,4 +32,5 @@ public interface PersistAble<P> {
 	boolean update(P pojo);		//para poder Update en la BBDD
 	
 	boolean delete(long id);	//para poder Delete en la BBDD
+
 }
