@@ -34,7 +34,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		}
 	}
 
-//	@Override
+	@Override
 	public boolean create(Persona pojo) {
 		boolean resul = false;
 		String sql = "{call insertPersona(?,?,?)}";
@@ -64,7 +64,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return resul;
 	}
 
-//	@Override
+	@Override
 	public List<Persona> getAll() {
 		List<Persona> personas = null;
 		String sql = "{call getAllPersonas()}";
@@ -91,7 +91,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return personas;
 	}
 
-//	@Override
+	@Override
 	public Persona getById(long id) {
 		Persona p = null;
 		CallableStatement cst = null;
@@ -122,7 +122,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return p;
 	}
 
-//	@Override
+	@Override
 	public boolean update(Persona pojo) {
 		boolean resul = false;
 		String sql = "{call updatePersona(?,?,?)}";
@@ -153,7 +153,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 		return resul;
 	}
 
-//	@Override
+	@Override
 	public boolean delete(long id) {
 		boolean resul = false;
 		String sql = "{call deletePersona(?)}";
