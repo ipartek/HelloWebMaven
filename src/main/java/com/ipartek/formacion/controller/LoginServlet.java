@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.controller.listener.InitListener;
 import com.ipartek.formacion.pojo.Persona;
 
 /**
@@ -17,6 +20,7 @@ import com.ipartek.formacion.pojo.Persona;
 public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
+	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 	
 	private RequestDispatcher dispatcher;
 	
