@@ -83,7 +83,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 	@Override
 	public boolean update(Person pojo) {
 		boolean resul = false;
-		String sql = "{call updatePerson(?,?,?)}";
+		String sql = "{call updatePersona(?,?,?)}";
 		CallableStatement cst = null;
 		try{
 			conexion = db.getConexion();
@@ -114,7 +114,7 @@ public class PersonaDAOImpl implements PersonaDAO {
 	@Override
 	public boolean delete(long id) {
 		boolean resul = false;
-		String sql = "{call deletePerson(?)}";
+		String sql = "{call deletePersona(?)}";
 		CallableStatement cst = null;
 		try{
 			conexion = db.getConexion();
@@ -138,20 +138,44 @@ public class PersonaDAOImpl implements PersonaDAO {
 
 	@Override
 	public Person getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Person p = null;
+		CallableStatement cst = null;
+		String sql = "{call buscarPersona(?)}";
+		try {
+			conexion = db.getConexion();			
+			cst = conexion.prepareCall(sql);
+			cst.setLong(1, id);
+			ResultSet rs = cst.executeQuery();			
+			while (rs.next()) {
+				p = new Person();
+				p.setId(rs.getLong("id"));
+				p.setNombre(rs.getString("nombre"));
+				p.setEmail(rs.getString("email"));				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			
+			try {
+				cst.close();
+			} catch (SQLException e) {			
+				e.printStackTrace();
+			}
+			db.desconectar();
+		}
+		return p;
 	}
 
-	@Override
-	public List<Person> search(String criterio) {
-		// TODO Auto-generated method stub
-		return null;
+	private synchronized static void createInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new PersonaDAOImpl();
+		}
 	}
-
-	public static PersonaDAO getInstance() {
-		// TODO Auto-generated method stub
-		return null;
+	public static PersonaDAOImpl getInstance() {
+		if (INSTANCE == null) {
+			createInstance();
+		}
+		return INSTANCE;
 	}
-
-
 }

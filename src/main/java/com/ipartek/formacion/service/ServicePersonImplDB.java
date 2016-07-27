@@ -62,8 +62,8 @@ public class ServicePersonImplDB implements ServicePerson {
 
 	@Override
 	public Person getById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Buscado persona [" + id + "]" );
+		return daoPersona.getById(id);
 	}
 
 
