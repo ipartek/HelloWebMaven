@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.controlador.listener.InitListener;
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Person;
 
@@ -16,7 +19,7 @@ public class PersonDAOImpl implements PersonDAO{
 	private static DataBaseConnectionImpl db;
 	private Connection conexion;
 
-	
+	private final static Logger LOG = Logger.getLogger(PersonDAOImpl.class);
 
 	private PersonDAOImpl() {
 		db = DataBaseConnectionImpl.getInstance();
@@ -54,11 +57,13 @@ public class PersonDAOImpl implements PersonDAO{
 		
 			
 		} catch (SQLException e) {
+			LOG.warn("Error al intentar crear la persona: "+pojo.getNombre()+","+pojo.getEmail());
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -86,6 +91,7 @@ public class PersonDAOImpl implements PersonDAO{
 			}
 
 		} catch (SQLException e) {
+			LOG.error("Error al intentar listar todas las personas");
 			e.printStackTrace();
 		} finally {
 			db.desconectar();
@@ -111,12 +117,14 @@ public class PersonDAOImpl implements PersonDAO{
 			}
 
 		} catch (SQLException e) {
+			LOG.error("Error al intentar encontrar persona con id:"+id);
 			e.printStackTrace();
 		} finally {
 			
 			try {
 				cst.close();
-			} catch (SQLException e) {			
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -143,11 +151,13 @@ public class PersonDAOImpl implements PersonDAO{
 			}			
 			
 		} catch (SQLException e) {
+			LOG.error("Error al intentar conectarse a la BBDD para actualizar Persona"+pojo.getNombre()+","+pojo.getEmail());
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -168,11 +178,13 @@ public class PersonDAOImpl implements PersonDAO{
 				resul = true;				
 			}						
 		} catch (SQLException e) {
+			LOG.error("Error al intentar conectarse a la BBDD para eliminar persona con id: "+id);
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -200,6 +212,7 @@ public class PersonDAOImpl implements PersonDAO{
 			}
 						
 		}catch(Exception e){
+			LOG.warn("Error al intentar listar personas con criterio: "+criterio);
 			e.printStackTrace();
 		}finally{
 			db.desconectar();

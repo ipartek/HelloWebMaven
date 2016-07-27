@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.controlador.listener.InitListener;
 import com.ipartek.formacion.model.DataBaseConnection;
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Planet;
@@ -16,6 +19,8 @@ public class PlanetDAOImpl implements PlanetDAO {
 	private static PlanetDAOImpl INSTANCE = null;
 	private static DataBaseConnectionImpl db;
 	private Connection conexion;
+	
+	private final static Logger LOG = Logger.getLogger(PlanetDAOImpl.class);
 
 	
 
@@ -55,11 +60,13 @@ public class PlanetDAOImpl implements PlanetDAO {
 		
 			
 		} catch (SQLException e) {
+			LOG.warn("Error al conectar a la BBDD para crear el planeta"+pojo.getNombre()+","+pojo.getImagen());
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -87,6 +94,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 			}
 
 		} catch (SQLException e) {
+			LOG.warn("Error al intentar conectarse a la BBDD para listar todos los planetas");
 			e.printStackTrace();
 		} finally {
 			db.desconectar();
@@ -112,12 +120,14 @@ public class PlanetDAOImpl implements PlanetDAO {
 			}
 
 		} catch (SQLException e) {
+			LOG.warn("Error al intentar conectarse a la BBDD encontrar planeta con id:"+id);
 			e.printStackTrace();
 		} finally {
 			
 			try {
 				cst.close();
-			} catch (SQLException e) {			
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -144,11 +154,13 @@ public class PlanetDAOImpl implements PlanetDAO {
 			}			
 			
 		} catch (SQLException e) {
+			LOG.warn("Error al intentar conectarse a la BBDD para modificar planeta: "+pojo.getId()+","+pojo.getNombre()+","+pojo.getImagen());
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -169,11 +181,13 @@ public class PlanetDAOImpl implements PlanetDAO {
 				resul = true;				
 			}						
 		} catch (SQLException e) {
+			LOG.warn("Error al intentar conectarse a la BBDD para eliminar planeta con id: "+id);
 			e.printStackTrace();
 		} finally {
 			try {
 				cst.close();
-			} catch (SQLException e) {				
+			} catch (SQLException e) {	
+				LOG.error("Error al intentar cerrar cst de tipo CallableStatement");
 				e.printStackTrace();
 			}
 			db.desconectar();
@@ -201,6 +215,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 			}
 						
 		}catch(Exception e){
+			LOG.warn("Error al intentar listar planetas con criterio: "+criterio);
 			e.printStackTrace();
 		}finally{
 			db.desconectar();

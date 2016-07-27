@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Person;
 import com.ipartek.formacion.service.ServicePerson;
@@ -20,6 +22,7 @@ import com.ipartek.formacion.service.ServicePersonImplDB;
  */
 public class PersonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final static Logger LOG = Logger.getLogger(PersonServlet.class);
 	private RequestDispatcher dispatch;
 	private ServicePerson serviceP = ServicePersonImplDB.getInstance();
        
@@ -60,6 +63,7 @@ public class PersonServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int op = Integer.parseInt(request.getParameter("op"));
+		LOG.debug("personas : opcion seleccionada " + op);
 		switch (op) {
 		case Constantes.OP_LIST:
 			listar(request, response);
@@ -116,9 +120,11 @@ public class PersonServlet extends HttpServlet {
 		String msg = "Persona con id: " + id + " no ha sido eliminado";
 		if (serviceP.delete(id)) {
 			msg = "Persona con id: " + id + " ha sido eliminado";
+			LOG.info("Persona con id: " + id + " ha sido eliminado");
 			request.setAttribute("msgBueno", msg);
 		} else {
 			request.setAttribute("msgMalo", msg);
+			LOG.info("Persona con id: " + id + " no ha sido eliminado");
 		}
 
 		listar(request, response);
@@ -162,7 +168,7 @@ public class PersonServlet extends HttpServlet {
 			msg = "Busqueda [" + busqueda + "] " + planetasBusqueda.size() + " coincidencias";
 		}
 		request.setAttribute("msgBueno", msg);
-
+		LOG.info("Busqueda realizada. Criterio: "+busqueda+" con "+planetasBusqueda.size()+" resultados");
 	}
 
 	private void guardar(HttpServletRequest request, HttpServletResponse response) {
@@ -184,9 +190,10 @@ public class PersonServlet extends HttpServlet {
 		try {
 			request.setAttribute("detail", serviceP.save(p));
 			msg = "La Persona se ha guardado";
+			LOG.info("Persona guardada"+p.getNombre()+","+p.getEmail());
 			request.setAttribute("msgBueno", msg);
 		} catch (Exception e) {
-
+			LOG.warn("Error al intentar guardar persona"+p.getNombre()+","+p.getEmail());
 			request.setAttribute("msgMalo", msg);
 		}
 

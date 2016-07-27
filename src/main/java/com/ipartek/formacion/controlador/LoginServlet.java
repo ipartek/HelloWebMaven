@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.model.dao.PlanetDAOImpl;
 import com.ipartek.formacion.pojo.Persona;
 
 /**
@@ -22,6 +25,8 @@ public class LoginServlet extends HttpServlet {
 	// credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
+	
+	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -79,7 +84,7 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		
 		}catch (Exception e){
-			
+			LOG.warn("Error al intentar logearse");
 			e.printStackTrace();
 		}
 	}

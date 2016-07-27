@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.Constantes;
+import com.ipartek.formacion.controlador.listener.InitListener;
 import com.ipartek.formacion.pojo.Planet;
 import com.ipartek.formacion.service.ServicePlanet;
 import com.ipartek.formacion.service.ServicePlanetImpArrayList;
@@ -23,6 +26,7 @@ public class PlanetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RequestDispatcher dispatch;
 	private ServicePlanet serviceP = ServicePlanetImplDB.getInstance();
+	private final static Logger LOG = Logger.getLogger(PlanetServlet.class);
 
 	/**
 	 * Se ejecuta solo la primera vez que alguien llama al servlet
@@ -61,6 +65,7 @@ public class PlanetServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		int op = Integer.parseInt(request.getParameter("op"));
+		LOG.debug("planetas : opcion seleccionada " + op);
 		switch (op) {
 		case Constantes.OP_LIST:
 			listar(request, response);
@@ -117,8 +122,10 @@ public class PlanetServlet extends HttpServlet {
 		String msg = "Planeta con id: " + id + " no ha sido eliminado";
 		if (serviceP.delete(id)) {
 			msg = "Planeta con id: " + id + " ha sido eliminado";
+			LOG.info("Planeta con id: " + id + " ha sido eliminado");
 			request.setAttribute("msgBueno", msg);
 		} else {
+			LOG.info("Planeta con id: " + id + " no ha sido eliminado");
 			request.setAttribute("msgMalo", msg);
 		}
 
@@ -163,6 +170,7 @@ public class PlanetServlet extends HttpServlet {
 			msg = "Busqueda [" + busqueda + "] " + planetasBusqueda.size() + " coincidencias";
 		}
 		request.setAttribute("msgBueno", msg);
+		LOG.info("Busqueda realizada. Criterio: "+busqueda+" con "+planetasBusqueda.size()+" resultados");
 
 	}
 
@@ -185,9 +193,10 @@ public class PlanetServlet extends HttpServlet {
 		try {
 			request.setAttribute("detail", serviceP.save(p));
 			msg = "El Planeta se ha guardado";
+			LOG.info("Planeta guardado"+p.getNombre()+","+p.getId());
 			request.setAttribute("msgBueno", msg);
 		} catch (Exception e) {
-
+			LOG.warn("Error al intentar guardar planeta"+p.getNombre()+","+p.getId());
 			request.setAttribute("msgMalo", msg);
 
 		}
