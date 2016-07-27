@@ -12,7 +12,7 @@ public class DataBaseConnectionImpl implements DataBaseConnection {
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
 	private static final String URL = "jdbc:mysql://localhost:3306/hwm";
 	private static final String USER = "root";
-	private static final String PASS = "";
+	private static final String PASS = "root";
 
 	private DataBaseConnectionImpl() {
 		conexion = null;

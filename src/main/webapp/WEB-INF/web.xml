@@ -81,6 +81,7 @@
       <taglib-location>/WEB-INF/tag/HelloTag.tld</taglib-location>
     </taglib>
   </jsp-config>
+  
   <servlet>
     <description>Controlador para soportar operaciones CRUD para planetas</description>
     <display-name>PlanetServlet</display-name>
@@ -91,6 +92,7 @@
     <servlet-name>PlanetServlet</servlet-name>
     <url-pattern>/planets</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
     <display-name>PersonaServlet</display-name>
@@ -99,8 +101,9 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>PersonaServlet</servlet-name>
-    <url-pattern>/PersonaServlet</url-pattern>
+    <url-pattern>/personas</url-pattern>
   </servlet-mapping>
+  
   <listener>
     <listener-class>com.ipartek.formacion.controller.listener.InitListener</listener-class>
   </listener>
