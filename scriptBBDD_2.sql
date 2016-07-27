@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         5.6.17 - MySQL Community Server (GPL)
--- SO del servidor:              Win64
--- HeidiSQL Versión:             9.3.0.5027
+-- Versión del servidor:         5.6.24 - MySQL Community Server (GPL)
+-- SO del servidor:              Win32
+-- HeidiSQL Versión:             9.3.0.4984
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -13,6 +13,15 @@
 -- Volcando estructura de base de datos para hwm
 CREATE DATABASE IF NOT EXISTS `hwm` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `hwm`;
+
+
+-- Volcando estructura para procedimiento hwm.buscarPersona
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `buscarPersona`(IN `personaId` INT)
+BEGIN
+SELECT id,nombre, email FROM `persona` WHERE id = personaId;
+END//
+DELIMITER ;
 
 
 -- Volcando estructura para procedimiento hwm.buscarPlaneta
@@ -119,12 +128,11 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `email` varchar(250) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Volcando datos para la tabla hwm.persona: ~2 rows (aproximadamente)
-DELETE FROM `persona`;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` (`id`, `nombre`, `email`) VALUES
+REPLACE INTO `persona` (`id`, `nombre`, `email`) VALUES
 	(1, 'astrako', 'astrako'),
 	(2, 'jon', '@d');
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
@@ -140,9 +148,8 @@ CREATE TABLE IF NOT EXISTS `planet` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='Pl';
 
 -- Volcando datos para la tabla hwm.planet: ~4 rows (aproximadamente)
-DELETE FROM `planet`;
 /*!40000 ALTER TABLE `planet` DISABLE KEYS */;
-INSERT INTO `planet` (`id`, `nombre`, `imagen`) VALUES
+REPLACE INTO `planet` (`id`, `nombre`, `imagen`) VALUES
 	(4, 'jupiter', 'https://img.rt.com/files/2015.10/original/561e6b71c46188796e8b45a7.jpg'),
 	(8, 'Saturno', 'http://vignette4.wikia.nocookie.net/spore/images/b/ba/Saturno1.jpg/revision/latest?cb=20110423092538&path-prefix=es'),
 	(11, 'ManoloPlanet2', 'http://www.abc.es/Media/201406/05/Theia-choque-Tierra-luna--644x362--644x362.jpg'),
