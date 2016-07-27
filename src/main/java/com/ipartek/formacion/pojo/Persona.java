@@ -49,7 +49,7 @@ private static final int NEW= -1;
 	public Persona(String nombre, int id, String email) {
 		super();
 		this.nombre = nombre;
-		this.id = id;
+		this.id = -1;
 		this.email = email;
 		apellido1="";
 		apellido2="";

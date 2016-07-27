@@ -17,7 +17,7 @@
 		out.print("<hr>");
 	}	
 %>
-<form action="<%=Constantes.CONTROLLER_PLANETS%>" method="post">
+<form action="<%=Constantes.CONTROLLER_PERSONAS%>" method="post">
 
 	<label for="iddisabled">Id:</label>
 	<input type="text" name="iddisabled" disabled value="<%=p.getId()%>">
@@ -27,7 +27,7 @@
 	<input type="text" name="nombre" required value="<%=p.getNombre()%>">
 	<br>
 	
-	<label for="email">URL Email:</label>
+	<label for="email">Email:</label>
 	<input type="text" name="email" required value="<%=p.getEmail()%>">
 	<br>
 	

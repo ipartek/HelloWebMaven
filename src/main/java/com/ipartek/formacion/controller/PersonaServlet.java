@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.pojo.Persona;
-import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePersona;
 import com.ipartek.formacion.service.ServicePersonaImplDB;
 
@@ -77,7 +76,7 @@ int op = Integer.parseInt(request.getParameter("op"));
 	
 
 	private void nuevo(HttpServletRequest request, HttpServletResponse response) {		
-		request.setAttribute("detail", new Planeta() );
+		request.setAttribute("detail", new Persona("",0,"") );
 		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_DETAIL);		
 	}
 
@@ -146,13 +145,13 @@ int op = Integer.parseInt(request.getParameter("op"));
 		
 		//recoger parametros formulario
 		long id       = Long.parseLong(request.getParameter("id"));
-		String imagen = request.getParameter("imagen");
+		String email = request.getParameter("email");
 		String nombre = request.getParameter("nombre");
 		
 		//crear Planeta
 		Persona p = new Persona("",0,"");
 		p.setId((int) id);
-		p.setEmail(imagen);
+		p.setEmail(email);
 		p.setNombre(nombre);
 		
 		String msg = null;
