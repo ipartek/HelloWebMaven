@@ -39,7 +39,7 @@ public class Candidato extends Persona {
 	 * @throws CandidatoException 
 	 */
 	public Candidato(String nombre, String apellido1, String apellido2, String dni, String email, int nota) throws CandidatoException {
-		super(nombre, apellido1, apellido2, dni, email);		
+	//	super(nombre, apellido1, apellido2, dni, email);		
 		//this.nota = nota;
 		this.setNota(nota);
 	}
