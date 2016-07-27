@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.ipartek.formacion.controller.listener.InitListener;
 import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Persona;
 
@@ -14,6 +17,8 @@ public class PersonaDaoImpl implements PersonaDAO {
 	private static PersonaDaoImpl INSTANCE = null;
 	private static DataBaseConnectionImpl db;
 	private Connection conexion;
+	
+	private final static Logger LOG = Logger.getLogger(InitListener.class);
 
 	private PersonaDaoImpl() {
 		db = DataBaseConnectionImpl.getInstance();
@@ -47,7 +52,9 @@ public class PersonaDaoImpl implements PersonaDAO {
 			if ( cst.executeUpdate() == 1 ){
 				resul = true;			
 				pojo.setId( cst.getInt(3) );
-			}	
+			}else{
+				LOG.debug("Ha ocurrido un error al realizar el INSERT en la BD");
+			}
 		
 			
 		} catch (SQLException e) {
@@ -137,7 +144,9 @@ public class PersonaDaoImpl implements PersonaDAO {
 			//ejecutar
 			if ( cst.executeUpdate() == 1 ){
 				resul = true;				
-			}			
+			}else{
+				LOG.debug("Ha ocurrido un error al hacer el UPDATE en la BD");
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -163,7 +172,9 @@ public class PersonaDaoImpl implements PersonaDAO {
 			cst.setLong(1, id );
 			if ( cst.executeUpdate() == 1 ){
 				resul = true;				
-			}						
+			}else{
+				LOG.warn("Ha ocurrido un error al hacer el DELETE en la BD");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
