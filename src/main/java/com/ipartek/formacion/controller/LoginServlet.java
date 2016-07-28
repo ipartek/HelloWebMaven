@@ -1,11 +1,15 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.controller.listener.InitListener;
+import com.ipartek.formacion.model.DataBaseConnectionImpl;
 import com.ipartek.formacion.pojo.Persona;
 
 
@@ -28,10 +33,11 @@ public class LoginServlet extends HttpServlet {
 	private Properties props = null;	
 	private RequestDispatcher dispatcher;
 	
-	//credenciales del usuario administrador
-	private static final String USUARIO_NAME_ADMIN = "admin";
-	private static final String USUARIO_PASS_ADMIN = "admin";
-
+	HttpSession session = null;
+	String pUsuario = ""; 
+	String pPass    = "";
+	String pIdioma  = "";
+	
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {	
@@ -59,35 +65,26 @@ public class LoginServlet extends HttpServlet {
 		LOG.trace("entramos");
 		try {
 			
-			HttpSession session = request.getSession(true);
+			session = request.getSession(true);
 			
 			//recoger parametros
-			String pUsuario = request.getParameter("usuario"); 
-			String pPass    = request.getParameter("pass");
+			pUsuario = request.getParameter("usuario"); 
+			pPass    = request.getParameter("pass");
+			pIdioma  = request.getParameter("idioma");
+						
 			LOG.debug("Parametro usuario=" + pUsuario);
 			LOG.debug("Parametro pass=" + pPass);
+			LOG.debug("Parametro idioma=" + pIdioma);
 			
+			//crear y guardar cookie de idioma			
+			Cookie cIdioma = new Cookie("cidioma", pIdioma);
+			cIdioma.setMaxAge(60*60*24*30); // 1 mes			
+			response.addCookie(cIdioma);	
+			LOG.debug("cookie idioma creada " + pIdioma );
+				
 			
 			//comprobar usuario valido
-			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && 
-				 USUARIO_PASS_ADMIN.equals(pPass)	){
-				
-				LOG.info("Logeado ["+ pUsuario+","+ pPass +"]");
-				//TODO recuperar de la BBDD
-				//guardar usuario en Session
-				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
-				session.setAttribute("usuario_logeado",p);
-				
-				//Ir a Backoffice
-				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
-			}else{			
-				LOG.warn("Usuario NO valido");
-				session.setAttribute("usuario_logeado",null);
-				//guardar mensaje como attributo
-				request.setAttribute("msg", "Credenciales incorrectas");
-				//Volver al Login
-				dispatcher = request.getRequestDispatcher( props.getProperty("view.login"));
-			}
+			login(request,response);
 			
 			dispatcher.forward(request, response);
 			
@@ -97,6 +94,48 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		LOG.trace("salimos");
+	}
+
+	private void login(HttpServletRequest request, HttpServletResponse response) {
+				
+		//TODO txapuza absoluta por llamar direcatament al procedimiento almacenado
+		try{
+			DataBaseConnectionImpl db = DataBaseConnectionImpl.getInstance();
+			Connection con = db.getConexion();
+			CallableStatement cst = con.prepareCall("{call login(?,?)}");
+			cst.setString(1, pPass );
+			cst.setString(2, pUsuario );
+			
+			ResultSet rs = cst.executeQuery();
+			if ( rs.next() ){
+				
+				LOG.info("Logeado ["+ pUsuario+","+ pPass +"]");
+	
+				Persona p = new Persona( rs.getLong("id"), rs.getString("nombre"), rs.getString("email"));
+				session.setAttribute("usuario_logeado",p);
+				
+				//Ir a Backoffice
+				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
+				
+			}else{
+				LOG.warn("Usuario NO valido");
+				session.setAttribute("usuario_logeado",null);
+				//guardar mensaje como attributo			
+				request.setAttribute("msg", "Credenciales incorrectas");
+				//Volver al Login
+				dispatcher = request.getRequestDispatcher( props.getProperty("view.login"));
+			}
+			
+			rs.close();
+			cst.close();
+			con.close();
+			
+		}catch(Exception e){
+			LOG.fatal("No funciona Login");
+			e.printStackTrace();
+			
+		}
+					
 	}
 	
 	

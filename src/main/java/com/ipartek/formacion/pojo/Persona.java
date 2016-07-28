@@ -15,6 +15,27 @@ import com.ipartek.formacion.Utilidades;
 
 public class Persona {
 
+	
+	
+	public Persona(long id, String nombre, String email) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+	}
+
+
+	protected long id;
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 	protected String nombre;
 	protected String apellido1;
 	protected String apellido2;
