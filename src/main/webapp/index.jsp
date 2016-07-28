@@ -4,7 +4,7 @@
 	<!--  Etiquetas para que se visualice a los usuarios -->
 	<h1>ongi etorri web app</h1>
 	
-	<h2>UUSARIOS CONECTADOS:<%=InitListener.contadorUsuarios %></h2>
+	<h2>USARIOS CONECTADOS:<%=InitListener.contadorUsuarios %></h2>
 	
 	<% 
 	for(int i=1; i < 7 ; i++ ){
