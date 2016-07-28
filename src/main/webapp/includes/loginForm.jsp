@@ -23,6 +23,8 @@
 		}
 	%>
 	
+	
+	
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -62,7 +64,30 @@
 					required placeholder="Tu nombre" autofocus="" /> <input
 					type="password" class="form-control" name="password"
 					placeholder="Password" required="" />
-
+				
+				<%
+					Cookie cookies[] = request.getCookies();
+					String idioma = "es";
+					for (int i=0; i < cookies.length; i++){
+						if ("cidioma".equals(cookies[i].getName())){
+							idioma = cookies[i].getValue();
+							break;
+						}
+					}
+				%>
+				<label for="idioma">Selecciona Idioma:</label>
+					<select name=idioma>
+						<%if ( "es".equals(idioma)){ %>
+						<option value="es" selected>Castellano</option>
+						<option value="en" >Ingles</option>
+						<%} else {%>
+						<option value="en" selected>Ingles</option>
+						<option value="es" >Castellano</option>
+						<%} %>
+					</select>
+				<br><br><br>	
+				
+				
 				<button class="btn btn-lg btn-primary btn-block" name="Submit"
 					value="Login" type="Submit">Login</button>
 			</form>

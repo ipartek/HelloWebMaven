@@ -3,6 +3,8 @@
 	<!--  Etiquetas para que se visualice a los usuarios -->
 	<h1>ongi etorri web app</h1>
 	
+	<h2>Usuarios conectados <% %></h2>
+	
 	<% 
 	for(int i=1; i < 7 ; i++ ){
 		out.print("<h"+i+">Cabecera"+i+"</h"+i+">");		

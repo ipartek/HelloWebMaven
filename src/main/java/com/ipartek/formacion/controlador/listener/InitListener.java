@@ -18,6 +18,8 @@ import javax.servlet.ServletContextListener;
  */
 public class InitListener implements ServletContextListener {
 
+	public static int contadorUsuarios = 0;
+	
 	private final static Logger LOG = Logger.getLogger(InitListener.class);
 
 	public final static String ATTRIBUTE_PROPS_NAME = "cons";
