@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.ipartek.formacion.model.dao.PlanetDAOImpl;
 import com.ipartek.formacion.pojo.Persona;
 
 /**
@@ -49,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		
+		LOG.trace("entramos");
 		try{
 			
 			HttpSession session = request.getSession(true);
@@ -57,11 +56,12 @@ public class LoginServlet extends HttpServlet {
 			//recoger parametros
 			String pUsuario = request.getParameter("usuario");
 			String pPassword = request.getParameter("password");
-		
+			LOG.debug("Parametro usuario= "+pUsuario);
+			LOG.debug("Parametro pass= "+pPassword);
 			//comprobar usuario valido
 			if (USUARIO_NAME_ADMIN.equals(pUsuario) &&
 					USUARIO_PASS_ADMIN.equals(pPassword)){
-				
+				LOG.info("logeado ["+pUsuario+","+pPassword+"]");
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
 				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "44444444L", "email@email.com");
@@ -73,6 +73,7 @@ public class LoginServlet extends HttpServlet {
 				
 			
 			}else{
+				LOG.warn("Usuario NO valido");
 				session.setAttribute("usuario_logeado", null);
 				//guardar mensaje de error como atributo
 				request.setAttribute("msg", "Credenciales incorrectas");
@@ -84,9 +85,10 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		
 		}catch (Exception e){
-			LOG.warn("Error al intentar logearse");
+			LOG.error("Excepcion "+e.getMessage());
 			e.printStackTrace();
 		}
+		LOG.trace("salimos");
 	}
 
 }
