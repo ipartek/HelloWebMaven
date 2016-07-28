@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 
 import com.ipartek.formacion.controller.listener.InitListener;
 import com.ipartek.formacion.pojo.Persona;
-import com.mysql.jdbc.log.Log;
+
 
 /**
  * Servlet implementation class LoginServlet
@@ -24,8 +24,8 @@ public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
-	private Properties props = null;
 	
+	private Properties props = null;	
 	private RequestDispatcher dispatcher;
 	
 	//credenciales del usuario administrador
@@ -56,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		LOG.trace("init");
+		LOG.trace("entramos");
 		try {
 			
 			HttpSession session = request.getSession(true);
@@ -64,12 +64,15 @@ public class LoginServlet extends HttpServlet {
 			//recoger parametros
 			String pUsuario = request.getParameter("usuario"); 
 			String pPass    = request.getParameter("pass");
+			LOG.debug("Parametro usuario=" + pUsuario);
+			LOG.debug("Parametro pass=" + pPass);
+			
 			
 			//comprobar usuario valido
 			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && 
 				 USUARIO_PASS_ADMIN.equals(pPass)	){
 				
-				LOG.debug("usuario logeado");
+				LOG.info("Logeado ["+ pUsuario+","+ pPass +"]");
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
 				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
@@ -78,7 +81,7 @@ public class LoginServlet extends HttpServlet {
 				//Ir a Backoffice
 				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
 			}else{			
-				LOG.debug("usuario no es valido");
+				LOG.warn("Usuario NO valido");
 				session.setAttribute("usuario_logeado",null);
 				//guardar mensaje como attributo
 				request.setAttribute("msg", "Credenciales incorrectas");
@@ -89,11 +92,11 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			
 		}catch (Exception e){
-			
+			LOG.error("Excepcion " + e.getMessage() );
 			e.printStackTrace();
 		}
 		
-		
+		LOG.trace("salimos");
 	}
 	
 	
