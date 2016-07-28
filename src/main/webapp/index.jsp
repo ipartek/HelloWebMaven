@@ -1,7 +1,10 @@
+<%@page import="com.ipartek.formacion.controller.listener.InitListener"%>
 <%@ include file="includes/head.jsp" %>
 
 	<!--  Etiquetas para que se visualice a los usuarios -->
 	<h1>ongi etorri web app</h1>
+	
+	<h2>Usuarios Conectados <%=InitListener.contadorUsuarios%></h2>
 	
 	<% 
 	for(int i=1; i < 7 ; i++ ){
