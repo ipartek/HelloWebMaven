@@ -24,7 +24,7 @@
 			i++;
 	%>
 	
-			<li><a href="candidato?id=<%=i%>&p2=pepe&p3=manolin"><%=c.getDni() + " " + c.getNombre() %></a></li>
+			<li><a href="candidato?id=<%=i%>&p2=pepe&p3=manolin"><%=c.getId() + " " + c.getNombre() %></a></li>
 	
 	<% } //final del for %>
 </ol>

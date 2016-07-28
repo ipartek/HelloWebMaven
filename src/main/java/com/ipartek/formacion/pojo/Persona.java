@@ -16,8 +16,21 @@ import com.ipartek.formacion.Utilidades;
 public class Persona {
     private long id;
 	private String nombre;
+	private String apellido1;
+	private String apellido2;
 	private String email;
 	
+	
+	
+	public Persona(long id, String nombre, String apellido1, String apellido2, String email) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido1 = apellido1;
+		this.apellido2 = apellido2;
+		this.email = email;
+	}
+
 	private static final int NEW = -1;
 	
 	/**
@@ -28,6 +41,8 @@ public class Persona {
 	 * @param dni {@code String}
 	 * @param email {@code String}
 	 */
+	
+	
 	public Persona() {
 		super();
 		//this.nombre = nombre;

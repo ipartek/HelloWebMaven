@@ -14,6 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class InitListener implements ServletContextListener {
 
+	
 	private final static Logger LOG = Logger.getLogger(InitListener.class);
 	
 	public final static String ATTRIBUTE_PROPS_NAME = "cons";
@@ -29,6 +30,7 @@ public class InitListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce)  { 
          //loadLog4j(sce);
         // loadProperties(sce);
+    	
     }
 
 	/**

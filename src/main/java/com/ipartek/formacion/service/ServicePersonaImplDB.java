@@ -68,7 +68,7 @@ public class ServicePersonaImplDB implements ServicePersona {
 	@Override
 	public List<Persona> search(String criterio) {
 		System.out.println("Buscar persona criterio " + criterio  );
-		return daoPersona.search(criterio);
+		return null; //daoPersona.search(criterio);
 	}
 
 }

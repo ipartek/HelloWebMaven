@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.formacion.Constantes;
 import com.ipartek.formacion.controller.listener.InitListener;
-import com.ipartek.formacion.controller.listener.Logger;
+
 import com.ipartek.formacion.pojo.Persona;
 import com.ipartek.formacion.pojo.Planeta;
 import com.ipartek.formacion.service.ServicePlanet;
@@ -106,7 +108,7 @@ public class PersonaServlet extends HttpServlet {
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
 		
 		request.setAttribute("list", serviceP.getAll() );
-		dispatch = request.getRequestDispatcher(Constantes.VIEW_PLANET_LIST);
+		dispatch = request.getRequestDispatcher(Constantes.VIEW_PERSONAS_LIST);
 		
 		
 	}
@@ -161,7 +163,7 @@ public class PersonaServlet extends HttpServlet {
 		
 		String msg = null;
 		try {
-			serviceP.save(p);			
+		//	serviceP.save(p);			
 		} catch (Exception e) {
 			e.printStackTrace();
 			msg = "Error al guardar persona " + p.toString() ;

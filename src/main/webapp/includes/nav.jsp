@@ -16,6 +16,8 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="<%=Constantes.CONTROLLER_PLANETS%>?op=<%=Constantes.OP_LIST%>">Planetas</a></li>
             <li><a href="<%=Constantes.WEB_HOME%>candidato/list.jsp">Candidatos</a></li>
+             <li><a href="<%=Constantes.CONTROLLER_PERSONAS%>?op=<%=Constantes.OP_LIST %>">Personas</a></li>
+            
             
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejercicios <span class="caret"></span></a>
