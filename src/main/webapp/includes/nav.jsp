@@ -1,4 +1,5 @@
-    <%@page import="com.ipartek.formacion.pojo.Persona"%>
+    <%@page import="com.ipartek.formacion.pojo.Usuario"%>
+<%@page import="com.ipartek.formacion.pojo.Persona"%>
 <%@page import="com.ipartek.formacion.Constantes"%>
 
 <!-- Fixed navbar -->
@@ -45,9 +46,9 @@
             		<i class="fa fa-user" aria-hidden="true"></i>
 					<span class="label label-info">
             			  <%
-            				Persona p = (Persona)session.getAttribute("usuario_logeado");
-            				if( p != null ){
-            				out.print(p.getNombre());	
+            				Usuario u = (Usuario)session.getAttribute("usuario_logeado");
+            				if( u != null ){
+            				out.print(u.getNombre());	
             				}
            				%>
            				<!-- ${sessionScope.usuario_logeado.nombre}  hace lo mismo que lo de arriba. Está protegido por si es null-->

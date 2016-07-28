@@ -1,7 +1,7 @@
 package com.ipartek.formacion.service;
 
-import com.ipartek.formacion.model.dao.PersonDAO;
-import com.ipartek.formacion.model.dao.PersonDAOImpl;
+import com.ipartek.formacion.model.dao.LoginDAO;
+import com.ipartek.formacion.model.dao.LoginDAOImpl;
 import com.ipartek.formacion.pojo.Usuario;
 
 public class ServiceLoginImplDB implements ServiceLogin {
@@ -28,7 +28,8 @@ public class ServiceLoginImplDB implements ServiceLogin {
 
 	@Override
 	public Usuario getByNomAndPass(String nombre, String pass) {
-		
+		System.out.println("Buscado usuario [" + nombre + " , "+pass+ "]" );
+		return daoLogin.getByNomAndPass(nombre,pass);
 		
 	}
 

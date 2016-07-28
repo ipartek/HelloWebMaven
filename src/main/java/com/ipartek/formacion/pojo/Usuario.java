@@ -7,9 +7,13 @@ public class Usuario {
 	private String nombre;
 	private String pass;
 	
+	private static final int NEW = -1;
 	
 	public Usuario() {
-		// TODO Auto-generated constructor stub
+		super();
+		this.id = NEW;
+		this.nombre = "nombre";
+		this.pass = "pass";
 	}
 
 

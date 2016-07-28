@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.ipartek.formacion.model.dao.PlanetDAOImpl;
 import com.ipartek.formacion.pojo.Persona;
+import com.ipartek.formacion.pojo.Usuario;
+import com.ipartek.formacion.service.ServiceLogin;
+import com.ipartek.formacion.service.ServiceLoginImplDB;
 
 /**
  * Servlet implementation class LoginServlet
@@ -25,6 +27,7 @@ public class LoginServlet extends HttpServlet {
 	// credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
+	private ServiceLogin serviceP = ServiceLoginImplDB.getInstance();
 	
 	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 
@@ -55,23 +58,25 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			
 			//recoger parametros
-			String pUsuario = request.getParameter("usuario");
-			String pPassword = request.getParameter("password");
+			String pUsuario = (String)request.getParameter("usuario");
+			String pPassword = (String)request.getParameter("password");
 			String pIdioma  = request.getParameter("idioma");
 			
 			LOG.debug("Parametro usuario=" + pUsuario);
 			LOG.debug("Parametro pass=" + pPassword);
-LOG.debug("Parametro idioma=" + pIdioma);
+			LOG.debug("Parametro idioma=" + pIdioma);
+			
+			Usuario u = new Usuario();
+			u = (Usuario)serviceP.getByNomAndPass(pUsuario, pPassword);
 		
 			//comprobar usuario valido
-			if (USUARIO_NAME_ADMIN.equals(pUsuario) &&
-					USUARIO_PASS_ADMIN.equals(pPassword)){
+			if (-1 != u.getId()){
 				LOG.info("Logeado ["+ pUsuario+","+ pPassword +"]");
 				
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
-				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "44444444L", "email@email.com");
-				session.setAttribute("usuario_logeado", p);
+				
+				session.setAttribute("usuario_logeado", u);
 				
 				//Ir a Backoffice
 			

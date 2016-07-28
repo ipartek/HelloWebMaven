@@ -25,5 +25,7 @@ public class Constantes {
 	// CONTROLADORES
 	public static final String CONTROLLER_PLANETS = "planets";
 	public static final String CONTROLLER_PERSONAS = "personas";
+	public static final String CONTROLLER_LOGIN = "login";
+	
 
 }
