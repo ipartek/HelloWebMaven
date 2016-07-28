@@ -15,6 +15,8 @@ import javax.servlet.ServletContextListener;
  *
  */
 public class InitListener implements ServletContextListener {
+public static int contadorUsuarios=0;
+
 	//var de tipo log que escribe en un fich de text la sucesión de la aplicacion
 private final static Logger LOG = Logger.getLogger(InitListener.class);
 	

@@ -70,6 +70,27 @@
 						<%
 						}//end if
 				%>
+				<% 
+				Cookie cookies[] =request.getCookies();
+				String idioma="es";
+				for(int i=0;i< cookies.length;i++){
+					if("cidioma".equals(cookies[i].getName())){
+					idioma=cookies[i].getValue();
+					break;
+					}
+				}
+				
+				%>
+				<select name="idioma">
+				<% if ("es".equals(idioma)) {%>
+				<option value="es" selected>Castellano</option>
+				<option value="en" >Ingles</option>
+				<%}else{ %>
+				<option value="es" >Castellano</option>
+				<option value="en" selected>Ingles</option>
+				<%}%>
+				
+				</select>
 				
 				<input type="submit" class="btn btn-success btn-sm"  value="Enviar" />
 			
