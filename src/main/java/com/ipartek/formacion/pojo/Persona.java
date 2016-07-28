@@ -32,6 +32,19 @@ public class Persona {
 	 * @param dni {@code String}
 	 * @param email {@code String}
 	 */
+	public Persona(Long id, String nombre, String apellido1, String apellido2, String dni, String email) {
+		super();
+		//this.nombre = nombre;
+		//this.apellido1 = apellido1;
+		//this.apellido2 = apellido2;
+		setId(id);
+		setNombre(nombre);
+		setApellido1(apellido1);
+		setApellido2(apellido2);		
+		this.dni = dni;
+		this.email = email;
+	}
+	
 	public Persona(String nombre, String apellido1, String apellido2, String dni, String email) {
 		super();
 		//this.nombre = nombre;

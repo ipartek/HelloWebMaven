@@ -66,7 +66,30 @@
 		</div>
 		<%
 	}
+	
+	Cookie cookies[] = request.getCookies();
+	String idioma = "es";
+	for(int i=0;i<cookies.length;i++){
+		if("cidioma".equals(cookies[i].getName())){
+			idioma= cookies[i].getValue();
+			break;
+		}
+	}
 %>
+
+		<h1>${cookie.cidioma.value}</h1>
+
+        <label for="idioma">Selecciona idioma: </label>
+        <select name="idioma">
+        	<% if ("es".equals(idioma)){ %>
+        		<option value="es" selected>Castellano</option>
+        		<option value="en">Ingles</option>
+        	<%}else{ %>
+        		<option value="es">Castellano</option>
+        		<option value="en" selected>Ingles</option>        	
+        	<%} %>
+        </select>
+        
         
         <button class="btn btn-lg btn-primary btn-block" type="submit">Loguearse</button>
       </form>

@@ -124,4 +124,17 @@
   <listener>
     <listener-class>com.ipartek.formacion.controller.listener.InitListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>com.ipartek.formacion.controller.listener.ContadorSesionesListener</listener-class>
+  </listener>
+  <filter>
+    <display-name>FilterAll</display-name>
+    <filter-name>FilterAll</filter-name>
+    <filter-class>com.ipartek.formacion.filter.FilterAll</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>FilterAll</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 </web-app>

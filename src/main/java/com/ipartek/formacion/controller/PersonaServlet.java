@@ -111,7 +111,7 @@ public class PersonaServlet extends HttpServlet {
 			msg = "Persona &quot;" + nombrePersona + "&quot; eliminada correctamente";
 	        LOG.info("Persona eliminada correctamente.");
 		}else{
-	        LOG.error("Error al eliminar la persona.");
+	        LOG.warn("Error al eliminar la persona.");
 		}
 		
 		request.setAttribute("msg",  msg);
@@ -159,7 +159,7 @@ public class PersonaServlet extends HttpServlet {
 			msg = "Los datos de "+nombre+" se han guardado correctamente.";
 		} catch (Exception e) {
 			e.printStackTrace();
-	        LOG.error("Error al guardar la persona.");
+	        LOG.warn("Error al guardar la persona.");
 			msg="No se pudo guardar Persona " + nombre;
 		}
 		
