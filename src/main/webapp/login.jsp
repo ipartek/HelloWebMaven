@@ -58,18 +58,42 @@
 				<br><br>
 				
 				<%							
-						String msg = (String)request.getAttribute("msg");
-						if ( msg != null ){
-						%>
-						<div class="alert alert-danger alert-dismissible" role="alert">
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<% 
-						out.print(msg);
-						%>
-						</div>	
-						<%
-						}//end if
+					String msg = (String)request.getAttribute("msg");
+					if ( msg != null ){
+					%>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<% 
+					out.print(msg);
+					%>
+					</div>	
+					<%
+					}//end if
 				%>
+				
+			   	<h1>${cookie.cidioma.value}</h1>
+			   	
+			   	<%
+			   		Cookie cookies[] = request.getCookies();
+			   		String idioma= "es";
+			   		for(int i=0;i<cookies.length;i++){
+				   		if("cidioma".equals(cookies[i].getName())){
+				   			idioma = cookies[i].getValue();
+				   			break;
+				   		}
+			   		}
+			   	%>
+				
+				<select name="idioma">
+					<%if("es".equals(idioma)){ %>
+						<option value="es" selected>Castellano</option>
+						<option value="en">Ingles</option>
+					<%}else{ %>
+						<option value="es">Castellano</option>
+						<option value="en" selected>Ingles</option>
+					<%} %>
+				</select>
+				<br><br>
 				
 				<input type="submit" class="btn btn-success btn-sm"  value="Enviar" />
 			
