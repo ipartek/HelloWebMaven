@@ -1,7 +1,9 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -26,8 +28,10 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOG = Logger.getLogger(LoginServlet.class);
 	private Properties props = null;
-	
+	private Locale locale;
+	private ResourceBundle propIdiomas;
 	private RequestDispatcher dispatcher;
+	private HttpSession session = null;
 	
 	//credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
@@ -39,6 +43,26 @@ public class LoginServlet extends HttpServlet {
 		LOG.trace("init");
 		super.init(config);
 		props = (Properties) getServletContext().getAttribute(InitListener.ATTRIBUTE_PROPS_NAME);
+	}
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		session = request.getSession(true);
+		String pIdioma = request.getParameter("idioma");
+		// TODO Auto-generated method stub
+		if(request.getParameter("idioma") != null){
+			
+			String language = pIdioma.split("_")[0];
+			String country = pIdioma.split("_")[1];		
+			//locale = new Locale(request.getParameter("idioma"));
+			locale = new Locale(language,country);
+		}else{
+			locale= new Locale("es","ES");
+		}
+		session.setAttribute("idioma",pIdioma);
+		propIdiomas = ResourceBundle.getBundle("i18nmesages", locale );
+		LOG.debug("Cargado Idioma"+" "+locale);
+		super.service(request, response);
 	}
 	
 	/**
@@ -87,15 +111,13 @@ public class LoginServlet extends HttpServlet {
 				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
 				session.setAttribute("usuario_logeado",p);
 				
-				
-				
 				//Ir a Backoffice
 				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
 			}else{			
 				LOG.debug("usuario no es valido");
 				session.removeAttribute("usuario_logeado");
 				//guardar mensaje como attributo
-				request.setAttribute("msg", "Credenciales incorrectas");
+				request.setAttribute("msg",propIdiomas.getString("login.error"));
 				//Volver al Login
 				dispatcher = request.getRequestDispatcher( props.getProperty("view.login"));
 			}

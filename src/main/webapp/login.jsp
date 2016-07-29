@@ -1,7 +1,16 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<!-- Importamos los TAG de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es_ES'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="i18nmesages" /> 
+
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
 <meta charset="utf-8">
 <!-- juego de caracteres -->
@@ -86,11 +95,11 @@
 				
 				<select name="idioma">
 					<%if("es".equals(idioma)){ %>
-						<option value="es" selected>Castellano</option>
-						<option value="en">Ingles</option>
+						<option value="es_ES" selected><fmt:message key="idioma.es.es"/></option>
+						<option value="en_EN"><fmt:message key="idioma.en.en"/></option>
 					<%}else{ %>
-						<option value="es">Castellano</option>
-						<option value="en" selected>Ingles</option>
+						<option value="es_ES"><fmt:message key="idioma.es.es"/></option>
+						<option value="en_EN" selected><fmt:message key="idioma.en.en"/></option>
 					<%} %>
 				</select>
 				<br><br>
