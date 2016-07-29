@@ -5,7 +5,7 @@
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description>primer ejemplo paraa pintar hola mundo por pantalla</description>
+    <description>primer ejemplo para pintar hola mundo por pantalla</description>
     <display-name>MiPrimerServlet</display-name>
     <servlet-name>MiPrimerServlet</servlet-name>
     <servlet-class>com.ipartek.formacion.controller.MiPrimerServlet</servlet-class>
