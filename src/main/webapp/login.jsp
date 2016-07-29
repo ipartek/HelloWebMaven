@@ -47,7 +47,7 @@
 		<div class="wrap">
 			<p class="form-title">Login</p>
 		
-			<form method="post" action="<%=Constantes.WEB_HOME%>login">
+			<form method="post" action="login">
 			
 				
 				<input type="text" name="usuario" required placeholder="Tu nombre">
@@ -70,6 +70,11 @@
 						<%
 						}//end if
 				%>
+				
+				<select name="idioma">
+					<option value="es_ES">Castelano</option>
+					<option value="en_EN">Ingles</option>
+				</select>
 				
 				<input type="submit" class="btn btn-success btn-sm"  value="Enviar" />
 			
