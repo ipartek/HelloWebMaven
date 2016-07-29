@@ -1,6 +1,8 @@
 package com.ipartek.formacion.controlador;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.ipartek.formacion.pojo.Persona;
 import com.ipartek.formacion.pojo.Usuario;
 import com.ipartek.formacion.service.ServiceLogin;
 import com.ipartek.formacion.service.ServiceLoginImplDB;
@@ -23,14 +24,41 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private RequestDispatcher dispatcher;
+	private HttpSession session = null;
+	
 
-	// credenciales del usuario administrador
-	private static final String USUARIO_NAME_ADMIN = "admin";
-	private static final String USUARIO_PASS_ADMIN = "admin";
 	private ServiceLogin serviceP = ServiceLoginImplDB.getInstance();
+	Locale locale;
+	ResourceBundle propIdioma;
+	
 	
 	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		
+		session = request.getSession(true);
+		String pIdioma = request.getParameter("idioma");
+		//Locale por defecto Español
+		if(request.getParameter("idioma")!=null){
+			
+			String language = pIdioma.split("_")[0];
+			String country = pIdioma.split("_")[1];
+			locale = new Locale(language,country);
+			
+		}else{
+			locale = new Locale("es","ES");
+		}
+		
+		session.setAttribute("idioma", pIdioma);
+		
+		//Debemos indicar el package y el nombre del /properties sin la extension 
+		propIdioma = ResourceBundle.getBundle("i18nmesages",locale);
+		
+		LOG.debug("Cargado idioma "+locale);
+		super.service(request, response);
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -68,26 +96,26 @@ public class LoginServlet extends HttpServlet {
 			
 			Usuario u = new Usuario();
 			u = (Usuario)serviceP.getByNomAndPass(pUsuario, pPassword);
-		
-			//comprobar usuario valido
-			if (-1 != u.getId()){
-				LOG.info("Logeado ["+ pUsuario+","+ pPassword +"]");
+			if (u!=null){
+				//comprobar usuario valido
 				
-				//TODO recuperar de la BBDD
-				//guardar usuario en Session
+					LOG.info("Logeado ["+ pUsuario+","+ pPassword +"]");
 				
-				session.setAttribute("usuario_logeado", u);
+					//TODO recuperar de la BBDD
+					//guardar usuario en Session
 				
-				//Ir a Backoffice
+					session.setAttribute("usuario_logeado", u);
+				
+					//Ir a Backoffice
 			
-				dispatcher = request.getRequestDispatcher("index.jsp");
+					dispatcher = request.getRequestDispatcher("index.jsp");
 				
-			
+				
 			}else{
 				LOG.warn("usuario NO es valido");
 				session.removeValue("usuario_logeado");
 				//guardar mensaje de error como atributo
-				request.setAttribute("msg", "Credenciales incorrectas");
+				request.setAttribute("msg", propIdioma.getString("login.error"));
 				
 				//Volver al login 
 				dispatcher = request.getRequestDispatcher("login.jsp");

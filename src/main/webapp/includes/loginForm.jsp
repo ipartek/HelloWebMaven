@@ -1,8 +1,14 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
+<!-- Importamos los Tag de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es_ES'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="i18nmesages" /> 
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
 <meta charset="utf-8">
 <!-- juego de caracteres -->
@@ -58,7 +64,7 @@
 		<div class="wrapper">
 			<form action="<%=Constantes.WEB_HOME%>login" method="post"
 				name="Login_Form" class="form-signin">
-				<h3 class="form-signin-heading">¡Bienvenido! Logéate</h3>
+				<h3 class="form-signin-heading">&iexcl;Bienvenido! Log&eacute;ate</h3>
 				<hr class="colorgraph">
 				<br> <input type="text" class="form-control" name="usuario"
 					required placeholder="Tu nombre" autofocus="" /> <input
@@ -76,10 +82,10 @@
 // 					}
  				%> --%>
 <!-- 				<label for="idioma">Selecciona Idioma:</label> -->
-					<select name=idioma>
+					<select name="idioma">
 <%-- 						<%if ( "es".equals(idioma)){ %> --%>
-						<option value="es" selected>Castellano</option>
-						<option value="en" >Ingles</option>
+						<option value="es_ES" ><fmt:message key="idioma.es.es"/></option>
+						<option value="en_EN" ><fmt:message key="idioma.en.en"/></option>
 <%-- 						<%} else {%> --%>
 <!-- 						<option value="en" selected>Ingles</option> -->
 <!-- 						<option value="es" >Castellano</option> -->
