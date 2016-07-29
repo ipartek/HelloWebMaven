@@ -1,6 +1,8 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,11 +24,42 @@ public class LoginServlet extends HttpServlet {
 	private final static Logger LOG = Logger.getLogger(LoginServlet.class);
 	
 	private RequestDispatcher dispatcher;
+	private HttpSession session = null;	
 	
 	//credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
+	
+	Locale locale;
+	ResourceBundle propIdioma;
 
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		session = request.getSession(true);
+		String pIdioma  = request.getParameter("idioma");
+		
+		//Locale por defecto en Español si viene vacio
+		if (request.getParameter("idioma") != null ) {
+			String language = pIdioma.split("_")[0];
+			String country  = pIdioma.split("_")[1];
+			
+			locale = new Locale(language, country);
+		}else{
+			locale = new Locale("es", "ES");
+		}
+		
+		session.setAttribute("idioma", pIdioma);
+		
+		//Debemos indicar el package donde se encuentra y el nombre del /properties sin la extension del locale
+		propIdioma = ResourceBundle.getBundle("i18nmesages", locale );
+		
+		LOG.debug("Cargado idioma " + locale);
+		
+		super.service(request, response);
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -79,7 +112,7 @@ public class LoginServlet extends HttpServlet {
 				LOG.warn("Usuario NO valido");
 				session.removeValue("usuario_logeado");
 				//guardar mensaje como atributo
-				request.setAttribute("msg", "<h5>Credenciales incorrectas</h5>");
+				request.setAttribute("msg", "<h5>"+propIdioma.getString("login.error")+"</h5>");
 				
 				//Volver a login
 				dispatcher = request.getRequestDispatcher("login.jsp");

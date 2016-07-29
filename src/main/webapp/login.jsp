@@ -1,10 +1,23 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
-<!doctype html>
+<!-- Importamos los tags de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es_ES'}" scope="session" />
+	<% // La linea anterior y esto son lo mismo
+		/*String idioma = "es_ES";
+		if (session.getAttribute("idioma")!=null){
+			idioma = (String)session.getAttribute("idioma");
+		}*/
+	%>
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="i18nmesages" /> 
+
+
 <!-- tipo documento es HTML5 -->
-
-
-<html lang="es">
+<!doctype html>
+<html lang="${idioma}">
 <head>
   <meta charset="utf-8"> <!-- juego de caracteres -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,12 +52,12 @@
         <label for="user" class="sr-only">Usuario</label>
         <div class="input-group">
   		<span class="input-group-addon" id="basic-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-  		<input type="text" name="user" class="form-control" placeholder="Usuario" required autofocus>
+  		<input type="text" name="user" class="form-control" placeholder="<fmt:message key="input.usuario" />" required autofocus>
   		</div>
         
         <label for="inputPassword" class="sr-only">Contraseña</label>
   		
-        <input type="password" name="pass" class="form-control" placeholder="Contraseña" required>
+        <input type="password" name="pass" class="form-control" placeholder="<fmt:message key="input.pass" />" required>
         
         <div class="checkbox">
           <label>
@@ -68,10 +81,10 @@
 	}
 	
 	Cookie cookies[] = request.getCookies();
-	String idioma = "es";
-	for(int i=0;i<cookies.length;i++){
+	String language = "es";
+	for(int i=0;i < cookies.length;i++){
 		if("cidioma".equals(cookies[i].getName())){
-			idioma= cookies[i].getValue();
+			language= cookies[i].getValue();
 			break;
 		}
 	}
@@ -81,17 +94,17 @@
 
         <label for="idioma">Selecciona idioma: </label>
         <select name="idioma">
-        	<% if ("es".equals(idioma)){ %>
-        		<option value="es" selected>Castellano</option>
-        		<option value="en">Ingles</option>
+        	<% if ("es".equals(language)){ %>
+        		<option value="es_ES" selected><fmt:message key="idioma.es.es" /></option>
+        		<option value="en_EN"><fmt:message key="idioma.en.en" /></option>
         	<%}else{ %>
-        		<option value="es">Castellano</option>
-        		<option value="en" selected>Ingles</option>        	
+        		<option value="es_ES"><fmt:message key="idioma.es.es" /></option>
+        		<option value="en_EN" selected><fmt:message key="idioma.en.en" /></option>        	
         	<%} %>
         </select>
         
         
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Loguearse</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="login" /></button>
       </form>
 
 <%@ include file="../includes/footer.jsp" %>
