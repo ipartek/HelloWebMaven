@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 	private Properties props = null;
 	
 	private RequestDispatcher dispatcher;
+	private HttpSession session = null;
 	
 	//credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
@@ -48,15 +49,19 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		session = request.getSession(true);
+		String pIdioma = request.getParameter("idioma");
+		
 		//Locale o idioma seleccionado por el usuario
-		if ( request.getParameter("idioma") != null ){
-			String pIdioma = request.getParameter("idioma");
+		if ( request.getParameter("idioma") != null ){			
 			String language = pIdioma.split("_")[0];
 			String country  = pIdioma.split("_")[1];			
 			locale = new Locale( language, country );			
 		}else{
 			locale = new Locale("es","ES");
 		}	
+		
+		session.setAttribute("idioma", pIdioma );
 		
 		// Debemos indicara el package donde se encuentra y el nombre del /properties sin la extension del locale 
 		propIdioma = ResourceBundle.getBundle("i18nmesages", locale );
