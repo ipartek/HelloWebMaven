@@ -71,6 +71,12 @@
 						}//end if
 				%>
 				
+				<select name="idioma">
+					<option value="es_ES">Castellano</option>
+					<option value="en_EN">Ingles></option>
+				</select>
+				
+				
 				<input type="submit" class="btn btn-success btn-sm"  value="Enviar" />
 			
 			</form>

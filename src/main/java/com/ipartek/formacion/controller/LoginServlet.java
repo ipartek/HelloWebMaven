@@ -1,7 +1,9 @@
 package com.ipartek.formacion.controller;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -23,7 +25,7 @@ import com.mysql.jdbc.log.Log;
 public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger("LoginServlet");
+	private static final Logger LOG = Logger.getLogger(LoginServlet.class);
 	private Properties props = null;
 	
 	private RequestDispatcher dispatcher;
@@ -31,14 +33,38 @@ public class LoginServlet extends HttpServlet {
 	//credenciales del usuario administrador
 	private static final String USUARIO_NAME_ADMIN = "admin";
 	private static final String USUARIO_PASS_ADMIN = "admin";
+	
+	Locale locale =null;
+	ResourceBundle propIdioma = null;
 
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {	
-		log.trace("init");
+		LOG.trace("init");
 		super.init(config);
 		props = (Properties) getServletContext().getAttribute(InitListener.ATTRIBUTE_PROPS_NAME);
 	}
+	
+	@Override
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//Locale o idioma seleccionado por el usuario
+		if ( request.getParameter("idioma") != null ){
+			String pIdioma = request.getParameter("idioma");
+			String language = pIdioma.split("_")[0];
+			String country  = pIdioma.split("_")[1];			
+			locale = new Locale( language, country );			
+		}else{
+			locale = new Locale("es","ES");
+		}	
+		
+		// Debemos indicara el package donde se encuentra y el nombre del /properties sin la extension del locale 
+		propIdioma = ResourceBundle.getBundle("i18nmesages", locale );
+		
+		LOG.debug("Cargado Idioma " + locale );
+		super.service(request, response);
+	}
+	
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -56,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response) {
-		log.trace("init");
+		LOG.trace("init");
 		try {
 			
 			HttpSession session = request.getSession(true);
@@ -69,7 +95,7 @@ public class LoginServlet extends HttpServlet {
 			if ( USUARIO_NAME_ADMIN.equals(pUsuario) && 
 				 USUARIO_PASS_ADMIN.equals(pPass)	){
 				
-				log.debug("usuario logeado");
+				LOG.debug("usuario logeado");
 				//TODO recuperar de la BBDD
 				//guardar usuario en Session
 				Persona p = new Persona("Admin", "Gorriti", "Urrutia", "1111111H", "admin@ipartek.com");
@@ -78,10 +104,10 @@ public class LoginServlet extends HttpServlet {
 				//Ir a Backoffice
 				dispatcher = request.getRequestDispatcher(props.getProperty("view.index"));
 			}else{			
-				log.debug("usuario no es valido");
-				session.setAttribute("usuario_logeado",null);
+				LOG.debug("usuario no es valido");
+				session.removeAttribute("usuario_logeado");
 				//guardar mensaje como attributo
-				request.setAttribute("msg", "Credenciales incorrectas");
+				request.setAttribute("msg", propIdioma.getString("login.error") );
 				//Volver al Login
 				dispatcher = request.getRequestDispatcher( props.getProperty("view.login"));
 			}
