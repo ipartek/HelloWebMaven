@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 	@Override
 	public boolean create(Planeta pojo) {
 		boolean resul = false;
-		String sql = "{call inserPlanetas(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
+		String sql = "{call insertPlaneta(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
 		CallableStatement cst = null;
 		try {
 		    conexion = db.getConexion();
@@ -96,7 +97,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 	@Override
 	public Planeta getById(long id) {
 		Planeta p = null;
-		String sql = "{call buscarPlanetaPorId(?)}";   //llamada al metodo almacenado creado en HEIDI
+		String sql = "{call buscarPlaneta(?)}";   //llamada al metodo almacenado creado en HEIDI
 		CallableStatement cst = null;
 		try {
 		    conexion = db.getConexion();
@@ -130,7 +131,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 	@Override
 	public boolean update(Planeta pojo) {
 		boolean resul = false;
-		String sql = "{call updatePlanetas(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
+		String sql = "{call updatePlaneta(?,?,?)}";   //llamada al metodo almacenado creado en HEIDI
 		CallableStatement cst = null;
 		try {
 		    conexion = db.getConexion();
@@ -143,9 +144,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 		    //ejecutar
 		    if ( cst.executeUpdate() == 1 ){
 		    	resul = true;
-		    	
-		    	pojo.setId(cst.getInt(3));
-		    }
+	    	   }
 		    
 		    
 		} catch (SQLException e) {
@@ -165,7 +164,7 @@ public class PlanetDAOImpl implements PlanetDAO {
 	@Override
 	public boolean delete(long id) {
 		boolean resul = false;
-		String sql = "{call deletePlanetas(?)}";   //llamada al metodo almacenado creado en HEIDI
+		String sql = "{call deletePlaneta(?)}";   //llamada al metodo almacenado creado en HEIDI
 		CallableStatement cst = null;
 		try {
 		    conexion = db.getConexion();

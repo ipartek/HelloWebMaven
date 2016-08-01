@@ -15,7 +15,7 @@
 		class="btn btn-primary" role="button">Nuevo Planeta</a>
 
 <form action="<%=Constantes.CONTROLLER_PLANETS%>" method="post">
-	<input type="search" name="s" required placeholder="Busca tu planeta en todo el Universo">
+	<input type="search" name="s" required placeholder="Busca en el Universo">
 	<input type="hidden" name="op" value="<%=Constantes.OP_SEARCH%>">
 	<input type="submit" value="Buscar">
 </form>

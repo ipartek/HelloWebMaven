@@ -1,8 +1,16 @@
 <%@page import="com.ipartek.formacion.Constantes"%>
 
+<!-- Importamos los TAG de JSTL -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<c:set var="idioma" value="${not empty sessionScope.idioma ? sessionScope.idioma : 'es_ES'}" scope="session" />
+<fmt:setLocale value="${idioma}" />
+<fmt:setBundle basename="i18nmesages" /> 
+
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="${idioma}">
 <head>
 <meta charset="utf-8">
 <!-- juego de caracteres -->
@@ -41,22 +49,15 @@
 
 <body>
 
-
 <div class="container">
-
-
-
 
 	<div class="row">
 
 		<div class="wrap">
 			<p class="form-title">Login</p>
 		
-		
-			<form method="post" action="<%=Constantes.WEB_HOME%>login">
+			<form method="post" action="login">
 			
-				<!-- donde Constantes.WEB_HOME = http://localhost:8080/HelloWebMaven/
-	  			por lo que  action=http://localhost:8080/HelloWebMaven/login/ -->
 				
 				<input type="text" name="usuario" required placeholder="Tu nombre">
 				<br>
@@ -65,19 +66,24 @@
 			
 				<br><br>
 				
-				<%
-					String msg = (String)request.getAttribute("msg");
-					if ( msg != null ){
+				<%							
+						String msg = (String)request.getAttribute("msg");
+						if ( msg != null ){
+						%>
+						<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<% 
+						out.print(msg);
+						%>
+						</div>	
+						<%
+						}//end if
 				%>
-				<div class="alert alert-danger alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<% 
-					out.print(msg);
-				%>
-				</div>	
-				<%
-	}
-%>
+				
+				<select name="idioma">
+					<option value="es_ES"><fmt:message key="idioma.es.es"/></option>
+					<option value="en_EN"><fmt:message key="idioma.en.en"/></option>
+				</select>
 				
 				<input type="submit" class="btn btn-success btn-sm"  value="Enviar" />
 			
@@ -98,7 +104,3 @@
 
 </body>
 </html>
-
-
-
-

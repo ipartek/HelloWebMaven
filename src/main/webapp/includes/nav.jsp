@@ -1,6 +1,7 @@
-   <!-- Fixed navbar -->
-    <%@page import="com.ipartek.formacion.Constantes"%>
-<nav class="navbar navbar-default navbar-fixed-top">
+ <%@page import="com.ipartek.formacion.Constantes"%>
+   
+ <!-- Fixed navbar -->
+   <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,10 +26,9 @@
                 <li><a href="<%=Constantes.WEB_HOME%>ranking">JSTL-Puntuaciones</a></li>
                 <li><a href="<%=Constantes.WEB_HOME%>ejercicios/ejemplo-tag.jsp">TAG propio</a></li>
                 <li><a href="#">Something else here</a></li>
-               
               </ul>
             </li>
-             <li class="dropdown">
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ejemplos <span class="caret"></span></a>
               <ul class="dropdown-menu">
               	<li><a href="<%=Constantes.WEB_HOME%>planetas">Planetas</a></li>

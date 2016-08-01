@@ -60,7 +60,7 @@ public class PersonaDAOImpl<P> implements PersistAble<P> {
 		    
 		    if ( cst.executeUpdate() == 1 ){
 		    	resul = true;
-		    	((Persona) pojo).setId(cst.getInt(3) );  //extrigo el tercer parametro de la cst
+		    	//((Persona) pojo).setId(cst.getInt(3) );  //extrigo el tercer parametro de la cst
 		    								 //que corresponde al id
 		    }
 		    

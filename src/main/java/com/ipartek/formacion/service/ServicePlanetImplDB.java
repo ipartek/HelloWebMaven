@@ -52,11 +52,14 @@ public class ServicePlanetImplDB implements ServicePlanet {
 		boolean resul = false;
 		if (p.isNew() ) {
 			resul = daoPlaneta.create(p);
+			System.out.println("Insertado " + p.toString() );
 		}else{
+			System.out.println("Modificado " + p.toString() );
 			resul = daoPlaneta.update(p);
 		}
 		
 		if (resul ==false){
+			System.out.println("Excepcion " + p.toString() );
 			throw new  Exception("Excepcion salvando Planeta " + p.toString());
 		}
 		

@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.Dispatch;
 
 /**
  * Servlet implementation class LogOutServlet
@@ -36,6 +35,7 @@ public class LogOutServlet extends HttpServlet {
 			
 			HttpSession session = request.getSession(true);  //obtenemos la session. 
 			//Con true le inicializamos la sesion en caso de que no tenga datos ya que sino cascaría
+			session.removeAttribute("usuario_logeado");
 			session.invalidate();     //invalidamos la session
 			
 			//le indicamos que vaya a la pantalla de login
@@ -43,6 +43,7 @@ public class LogOutServlet extends HttpServlet {
 			
 			
 		}catch (Exception e){
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
 		}

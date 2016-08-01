@@ -2,13 +2,14 @@
 
 <%@ include file="../includes/head.jsp" %>
 
-<h1>Detalle del Candidato</h1>
 
 <%
 	//recoger parametro
 	Candidato c = (Candidato)request.getAttribute("candidato");
-
 %>
+
+
+<h1>Candidato: <%=c.getNombre()%></h1>
 
 Nombre: <%=c.getNombre() %><br>
 Apellido1:<br>
